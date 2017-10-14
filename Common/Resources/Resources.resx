@@ -702,4 +702,7 @@
   <data name="ValErr_StringLength" xml:space="preserve">
     <value>{0} ต้องไม่เกิน {1} ตัวอักษร</value>
   </data>
+  <data name="Msg_InvalidPassword" xml:space="preserve">
+    <value>รหัสผ่านไม่ถูกต้อง</value>
+  </data>
 </root>

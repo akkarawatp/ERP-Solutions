@@ -25,7 +25,7 @@ namespace Common.Utilities
     public static class ApplicationHelpers
     {
         private static readonly ILog Logger = LogManager.GetLogger(typeof(ApplicationHelpers));
-        private static readonly ResourceManager rm = new ResourceManager("Common.Resources.Resource", typeof(Resource).Assembly);
+        private static readonly ResourceManager rm = new ResourceManager("Common.Resources.Resources", typeof(Resources.Resources).Assembly);
 
         public static string GetMessage(string resourceKey)
         {
@@ -159,7 +159,7 @@ namespace Common.Utilities
             string currentYear = DateTime.Today.Year > Constants.CompanyStartYear
                 ? String.Format("-{0}", DateTime.Today.Year)
                 : string.Empty;
-            return string.Format(Resource.Lbl_Copyright, Constants.CompanyStartYear, currentYear);
+            return string.Format(Resources.Resources.Lbl_Copyright, Constants.CompanyStartYear, currentYear);
         }
 
         public static string RemoveExtraSpaces(this string line)

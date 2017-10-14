@@ -69,6 +69,7 @@
     <Compile Include="Utilities\BootstrapParameters.cs" />
     <Compile Include="Utilities\BootstrapTableResult.cs" />
     <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\CustomException.cs" />
     <Compile Include="Utilities\DataTableHelpers.cs" />
     <Compile Include="Utilities\DateTimeHelpers.cs" />
     <Compile Include="Utilities\DateUtil.cs" />

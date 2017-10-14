@@ -36,11 +36,11 @@ namespace Common.Utilities
 
         public static class ApplicationStatus
         {
-            public const int All = -1;
-            public const int Active = 1;
-            public const int Inactive = 0;
+            public const string All = "";
+            public const string Active = "Y";
+            public const string Inactive = "N";
 
-            public static string GetMessage(short? status)
+            public static string GetMessage(string status)
             {
                 //if (status == null)
                 //{
@@ -49,17 +49,17 @@ namespace Common.Utilities
 
                 if (status == Inactive)
                 {
-                    return Resource.Ddl_Status_Inactive;
+                    return Resources.Resources.Ddl_Status_Inactive;
                 }
 
                 if (status == Active)
                 {
-                    return Resource.Ddl_Status_Active;
+                    return Resources.Resources.Ddl_Status_Active;
                 }
 
                 if (status == All)
                 {
-                    return Resource.Ddl_Status_All;
+                    return Resources.Resources.Ddl_Status_All;
                 }
 
                 return string.Empty;
@@ -77,11 +77,11 @@ namespace Common.Utilities
                 {
                     if (status == Active)
                     {
-                        return Resource.Emp_Status_Active;
+                        return Resources.Resources.Emp_Status_Active;
                     }
                     if (status == Termiated)
                     {
-                        return Resource.Emp_Status_Termiate;
+                        return Resources.Resources.Emp_Status_Termiate;
                     }
                 }
 
@@ -100,15 +100,15 @@ namespace Common.Utilities
                 {
                     if (VerifyResultStatus.Pass.Equals(status))
                     {
-                        return Resource.Ddl_VerifyResult_Pass;
+                        return Resources.Resources.Ddl_VerifyResult_Pass;
                     }
                     else if (VerifyResultStatus.Fail.Equals(status))
                     {
-                        return Resource.Ddl_VerifyResult_Fail;
+                        return Resources.Resources.Ddl_VerifyResult_Fail;
                     }
                     else
                     {
-                        return Resource.Ddl_VerifyResult_Skip;
+                        return Resources.Resources.Ddl_VerifyResult_Skip;
                     }
                 }
 
@@ -218,17 +218,17 @@ namespace Common.Utilities
             {
                 if (status == Open)
                 {
-                    return Resource.Lbl_JobStatusOpen;
+                    return Resources.Resources.Lbl_JobStatusOpen;
                 }
 
                 if (status == Refer)
                 {
-                    return Resource.Lbl_JobStatusRefer;
+                    return Resources.Resources.Lbl_JobStatusRefer;
                 }
 
                 if (status == Done)
                 {
-                    return Resource.Lbl_JobStatusDone;
+                    return Resources.Resources.Lbl_JobStatusDone;
                 }
 
                 return string.Empty;
@@ -704,11 +704,11 @@ namespace Common.Utilities
                     switch (customerType.Value)
                     {
                         case Customer:
-                            return Resource.Ddl_CustomerType_Customer;
+                            return Resources.Resources.Ddl_CustomerType_Customer;
                         case Prospect:
-                            return Resource.Ddl_CustomerType_Prospect;
+                            return Resources.Resources.Ddl_CustomerType_Prospect;
                         case Employee:
-                            return Resource.Ddl_CustomerType_Employee;
+                            return Resources.Resources.Ddl_CustomerType_Employee;
                         default:
                             return string.Empty;
                     }
@@ -860,12 +860,12 @@ namespace Common.Utilities
             {
                 if (Interested.Equals(interested))
                 {
-                    return Resource.Msg_Interested;
+                    return Resources.Resources.Msg_Interested;
                 }
 
                 if (NoInterested.Equals(interested))
                 {
-                    return Resource.Msg_NoInterested;
+                    return Resources.Resources.Msg_NoInterested;
                 }
 
                 return string.Empty;

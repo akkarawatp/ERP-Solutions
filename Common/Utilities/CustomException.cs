@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSM.Common.Utilities
+namespace Common.Utilities
 {
     [Serializable]
     public class CustomException : Exception
