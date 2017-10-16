@@ -21,6 +21,8 @@ namespace Common.Utilities
 
         #region "AppSettings"
 
+        private const string SystemCode = "SystemCode";
+
         private const string EmailServerString = "Email-Server";
         private const string EmailServerPortString = "Email-Server-Port";
         private const string MailEnable = "MailEnable";
@@ -138,6 +140,12 @@ namespace Common.Utilities
         }
 
         #endregion
+
+        #region "Get Data from App.Setting"
+        public static string GetSystemCode() {
+            return GetAppSetting("SystemCode");
+        }
+#endregion
 
         #region "Save data to Web.config"
 

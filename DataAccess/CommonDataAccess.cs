@@ -11,10 +11,10 @@ namespace DataAccess
 {
     public class CommonDataAccess 
     {
-        private readonly ERPSettingDataAccess _context;
+        private readonly ERPSettingDataContext _context;
         private static readonly ILog Logger = LogManager.GetLogger(typeof(CommonDataAccess));
 
-        public CommonDataAccess(ERPSettingDataAccess context)
+        public CommonDataAccess(ERPSettingDataContext context)
         {
             _context = context;
             _context.Configuration.ValidateOnSaveEnabled = false;

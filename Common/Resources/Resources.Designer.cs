@@ -581,7 +581,29 @@ namespace Common.Resources {
                 return ResourceManager.GetString("Lbl_ConfirmPasswd", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to เปลี่ยนรหัสผ่าน.
+        /// </summary>
+        public static string Lbl_ChangePsswd
+        {
+            get
+            {
+                return ResourceManager.GetString("Lbl_ChangePsswd", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string Lbl_User
+        {
+            get
+            {
+                return ResourceManager.GetString("Lbl_User", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to เนื้อหา.
         /// </summary>

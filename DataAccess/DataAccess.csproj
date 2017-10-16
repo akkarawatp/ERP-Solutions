@@ -53,50 +53,42 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonDataAccess.cs" />
-    <Compile Include="ERPDataContext.Context.cs">
+    <Compile Include="ERPSettingDataContext.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ERPDataContext.Context.tt</DependentUpon>
+      <DependentUpon>ERPSettingDataContext.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ERPDataContext.cs">
+    <Compile Include="ERPSettingDataContext.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ERPDataContext.tt</DependentUpon>
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="ERPDataContext.Designer.cs">
+    <Compile Include="ERPSettingDataContext.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ERPDataContext.edmx</DependentUpon>
+      <DependentUpon>ERPSettingDataContext.edmx</DependentUpon>
     </Compile>
     <Compile Include="MS_USER.cs">
-      <DependentUpon>ERPDataContext.tt</DependentUpon>
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="ERPDataContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ERPDataContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="TB_CHANGE_PSSWD_HISTORY.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TB_LOGIN_HISTORY.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="ERPDataContext.edmx.diagram">
-      <DependentUpon>ERPDataContext.edmx</DependentUpon>
+    <EntityDeploy Include="ERPSettingDataContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERPSettingDataContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ERPSettingDataContext.edmx.diagram">
+      <DependentUpon>ERPSettingDataContext.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ERPDataContext.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ERPDataContext.Context.cs</LastGenOutput>
-      <DependentUpon>ERPDataContext.edmx</DependentUpon>
-    </Content>
-    <Content Include="ERPDataContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ERPDataContext.edmx</DependentUpon>
-      <LastGenOutput>ERPDataContext.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -110,6 +102,18 @@
       <Project>{93ab70e5-fede-4f10-bf19-00b070b17b57}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ERPSettingDataContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERPSettingDataContext.edmx</DependentUpon>
+      <LastGenOutput>ERPSettingDataContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ERPSettingDataContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERPSettingDataContext.edmx</DependentUpon>
+      <LastGenOutput>ERPSettingDataContext.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

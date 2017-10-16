@@ -106,6 +106,51 @@ namespace Common.Utilities
             return "0.0.0.0";
         }
 
+
+        public static string GetClientBrowser()
+        {
+            HttpContext context = HttpContext.Current;
+            if (context != null)
+            {
+                HttpRequest request = context.Request;
+                if (request != null)
+                {
+                    try
+                    {
+                        return "Browser : " + request.Browser.Browser + " Version : " + request.Browser.Version;
+                    }
+                    catch (Exception)
+                    {
+                        return "";
+                    }
+                }
+            }
+
+            return "";
+        }
+
+        public static string GetServerUrl()
+        {
+            HttpContext context = HttpContext.Current;
+            if (context != null)
+            {
+                HttpRequest request = context.Request;
+                if (request != null)
+                {
+                    try
+                    {
+                        return request.Url.AbsoluteUri;
+                    }
+                    catch (Exception)
+                    {
+                        return "";
+                    }
+                }
+            }
+
+            return "";
+        }
+
         private static bool IsPrivateIpAddress(string ipAddress)
         {
             // http://en.wikipedia.org/wiki/Private_network

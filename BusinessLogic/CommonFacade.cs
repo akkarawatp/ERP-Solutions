@@ -26,14 +26,14 @@ namespace BusinessLogic
 {
     public class CommonFacade 
     {
-        private readonly ERPSettingDataAccess _context;
+        private readonly ERPSettingDataContext _context;
         private CommonDataAccess _commonDataAccess;
         private LogMessageBuilder _logMsg = new LogMessageBuilder();
         private static readonly ILog Logger = LogManager.GetLogger(typeof(CommonFacade));
 
         public CommonFacade()
         {
-            _context = new ERPSettingDataAccess();
+            _context = new ERPSettingDataContext();
         }
 
         //public IDictionary<string, string> GetStatusSelectList()
