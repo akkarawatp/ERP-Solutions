@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ERPSettingDataAccess.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="MS_USER">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" />
+          <Property Name="creaed_date" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="psswd" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="prefix_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="gender" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="organize_name" Type="varchar" MaxLength="255" />
+          <Property Name="department_name" Type="varchar" MaxLength="255" />
+          <Property Name="position_name" Type="varchar" MaxLength="255" />
+          <Property Name="last_login_time" Type="datetime" />
+          <Property Name="force_change_psswd" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="login_fail_count" Type="int" Nullable="false" />
+          <Property Name="active_status" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_CHANGE_PSSWD_HISTORY">
+          <Key>
+            <PropertyRef Name="change_psswd_history_id" />
+          </Key>
+          <Property Name="change_psswd_history_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" />
+          <Property Name="creaed_date" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="change_time" Type="datetime" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="system_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="old_psswd" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="new_psswd" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_LOGIN_HISTORY">
+          <Key>
+            <PropertyRef Name="login_history_id" />
+          </Key>
+          <Property Name="login_history_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" />
+          <Property Name="creaed_date" Type="datetime" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="token" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="session_id" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="logon_time" Type="datetime" Nullable="false" />
+          <Property Name="logout_time" Type="datetime" />
+          <Property Name="system_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_ip" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="client_browser" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="server_url" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ERPSettingDataAccessStoreContainer">
+          <EntitySet Name="MS_USER" EntityType="Self.MS_USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CHANGE_PSSWD_HISTORY" EntityType="Self.TB_CHANGE_PSSWD_HISTORY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_LOGIN_HISTORY" EntityType="Self.TB_LOGIN_HISTORY" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ERPSettingDataAccess" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="MS_USER">
+          <Key>
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="psswd" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prefix_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="organize_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="department_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="position_name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="last_login_time" Type="DateTime" Precision="3" />
+          <Property Name="force_change_psswd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="login_fail_count" Type="Int32" Nullable="false" />
+          <Property Name="active_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ERPSettingDataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MS_USER" EntityType="Self.MS_USER" />
+          <EntitySet Name="TB_LOGIN_HISTORY" EntityType="ERPSettingDataAccess.TB_LOGIN_HISTORY" />
+          <EntitySet Name="TB_CHANGE_PSSWD_HISTORY" EntityType="ERPSettingDataAccess.TB_CHANGE_PSSWD_HISTORY" />
+        </EntityContainer>
+        <EntityType Name="TB_LOGIN_HISTORY">
+          <Key>
+            <PropertyRef Name="login_history_id" />
+          </Key>
+          <Property Name="login_history_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="token" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="session_id" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="logon_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="logout_time" Type="DateTime" Precision="3" />
+          <Property Name="system_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="client_ip" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="client_browser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="server_url" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="TB_CHANGE_PSSWD_HISTORY">
+          <Key>
+            <PropertyRef Name="change_psswd_history_id" />
+          </Key>
+          <Property Name="change_psswd_history_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="change_time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="system_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="old_psswd" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="new_psswd" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ERPSettingDataAccessStoreContainer" CdmEntityContainer="ERPSettingDataContext">
+          <EntitySetMapping Name="MS_USER">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_USER">
+              <MappingFragment StoreEntitySet="MS_USER">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="psswd" ColumnName="psswd" />
+                <ScalarProperty Name="prefix_name" ColumnName="prefix_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="organize_name" ColumnName="organize_name" />
+                <ScalarProperty Name="department_name" ColumnName="department_name" />
+                <ScalarProperty Name="position_name" ColumnName="position_name" />
+                <ScalarProperty Name="last_login_time" ColumnName="last_login_time" />
+                <ScalarProperty Name="force_change_psswd" ColumnName="force_change_psswd" />
+                <ScalarProperty Name="login_fail_count" ColumnName="login_fail_count" />
+                <ScalarProperty Name="active_status" ColumnName="active_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_LOGIN_HISTORY">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.TB_LOGIN_HISTORY">
+              <MappingFragment StoreEntitySet="TB_LOGIN_HISTORY">
+                <ScalarProperty Name="server_url" ColumnName="server_url" />
+                <ScalarProperty Name="client_browser" ColumnName="client_browser" />
+                <ScalarProperty Name="client_ip" ColumnName="client_ip" />
+                <ScalarProperty Name="system_code" ColumnName="system_code" />
+                <ScalarProperty Name="logout_time" ColumnName="logout_time" />
+                <ScalarProperty Name="logon_time" ColumnName="logon_time" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="session_id" ColumnName="session_id" />
+                <ScalarProperty Name="token" ColumnName="token" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="login_history_id" ColumnName="login_history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CHANGE_PSSWD_HISTORY">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.TB_CHANGE_PSSWD_HISTORY">
+              <MappingFragment StoreEntitySet="TB_CHANGE_PSSWD_HISTORY">
+                <ScalarProperty Name="new_psswd" ColumnName="new_psswd" />
+                <ScalarProperty Name="old_psswd" ColumnName="old_psswd" />
+                <ScalarProperty Name="system_code" ColumnName="system_code" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="change_time" ColumnName="change_time" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="change_psswd_history_id" ColumnName="change_psswd_history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
