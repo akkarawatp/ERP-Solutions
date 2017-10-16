@@ -190,6 +190,36 @@ namespace BusinessLogic
             return ret;
         }
 
+        
+        private bool UpdateLogoutTime(long loginHisID, DateTime logoutTime) {
+            bool ret = false;
+            _context.Configuration.AutoDetectChangesEnabled = false;
+            try
+            {
+                var log = _context.TB_LOGIN_HISTORY.SingleOrDefault(l => l.login_history_id == loginHisID);
+                log.logout_time = logoutTime;
+                log.updated_by = log.created_by;
+                log.updated_date = logoutTime;
+                
+                if (_context.Configuration.AutoDetectChangesEnabled == false)
+                {
+                    // Set state to Modified
+                    _context.Entry(log).State = System.Data.Entity.EntityState.Modified;
+                    ret = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Exception occur:\n", ex);
+            }
+            finally
+            {
+                _context.Configuration.AutoDetectChangesEnabled = false;
+            }
+
+            return ret;
+        }
+
         public long SaveLoginHistory(UserEntity user, string sid, string SystemCode , DateTime loginTime, string ClientIP, string ClientBrowser, string ServerUrl)
         {
             long ret = 0;
@@ -198,6 +228,8 @@ namespace BusinessLogic
             try
             {
                 TB_LOGIN_HISTORY newLogin = new TB_LOGIN_HISTORY();
+                newLogin.creaed_date = loginTime;
+                newLogin.created_by = user.Username;
                 newLogin.token = Guid.NewGuid().ToString();
                 newLogin.session_id = sid;
                 newLogin.username = user.Username;
@@ -224,7 +256,7 @@ namespace BusinessLogic
             return ret;
         }
 
-        public bool UpdateChangePsswd(long userId, string changeByUsename, string newPsswd, string systemCode) {
+        public bool UpdateChangePsswd(string userName, long loginHisId, string changeByUsename, string newPsswd, string systemCode) {
             bool ret = false;
 
             using (DbContextTransaction trans = _context.Database.BeginTransaction(System.Data.IsolationLevel.ReadCommitted)) {
@@ -232,10 +264,10 @@ namespace BusinessLogic
 
                 try
                 {
-                    var user = _context.MS_USER.SingleOrDefault(u => u.user_id == userId);
+                    var user = _context.MS_USER.SingleOrDefault(u => u.username == userName);
                     string oldPasswd = user.psswd;
 
-                    user.psswd = newPsswd;
+                    user.psswd = EncryptTxt(newPsswd);
                     user.login_fail_count = 0;
 
                     DateTime changeDate = DateTime.Now;
@@ -250,13 +282,17 @@ namespace BusinessLogic
                         cLnq.creaed_date = changeDate;
                         cLnq.created_by = changeByUsename;
                         cLnq.change_time = changeDate;
-                        cLnq.username = user.username;
+                        cLnq.username = userName;
                         cLnq.system_code = systemCode;
-                        cLnq.old_psswd = oldPasswd;
-                        cLnq.new_psswd = newPsswd;
+                        cLnq.old_psswd = oldPasswd;   //Encrypt แล้ว
+                        cLnq.new_psswd = user.psswd;  //Encrypt แล้ว
                         _context.TB_CHANGE_PSSWD_HISTORY.Add(cLnq);
 
-                        ret = (_context.SaveChanges() > 0);
+                        ret = UpdateLogoutTime(loginHisId, changeDate);
+                        if (ret == true)
+                        {
+                            ret = (_context.SaveChanges() > 0);
+                        }
                     }
 
                     if (ret == true)
@@ -277,6 +313,11 @@ namespace BusinessLogic
             return ret;
 
 
+        }
+
+
+        public string EncryptTxt(string txtIn) {
+            return txtIn;
         }
         #endregion
     }

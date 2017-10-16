@@ -29,7 +29,7 @@ namespace Common.Resources {
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public Resources() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -520,6 +520,15 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to เปลี่ยนรหัสผ่าน.
+        /// </summary>
+        public static string Lbl_ChangePsswd {
+            get {
+                return ResourceManager.GetString("Lbl_ChangePsswd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Commu Description.
         /// </summary>
         public static string Lbl_CommDesc {
@@ -581,29 +590,7 @@ namespace Common.Resources {
                 return ResourceManager.GetString("Lbl_ConfirmPasswd", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to เปลี่ยนรหัสผ่าน.
-        /// </summary>
-        public static string Lbl_ChangePsswd
-        {
-            get
-            {
-                return ResourceManager.GetString("Lbl_ChangePsswd", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to User.
-        /// </summary>
-        public static string Lbl_User
-        {
-            get
-            {
-                return ResourceManager.GetString("Lbl_User", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to เนื้อหา.
         /// </summary>
@@ -1334,7 +1321,16 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Username.
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string Lbl_User {
+            get {
+                return ResourceManager.GetString("Lbl_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string Lbl_Username {
             get {
@@ -1388,11 +1384,38 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to กรุณาระบุรหัสผ่านใหม่.
+        /// </summary>
+        public static string Msg_EnteredNewPassword {
+            get {
+                return ResourceManager.GetString("Msg_EnteredNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to กรุณาระบุรหัสผ่านเดิม.
+        /// </summary>
+        public static string Msg_EnteredOldPassword {
+            get {
+                return ResourceManager.GetString("Msg_EnteredOldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to สนใจ.
         /// </summary>
         public static string Msg_Interested {
             get {
                 return ResourceManager.GetString("Msg_Interested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to การยืนยันรหัสผานใหม่ไม่ถูกต้อง.
+        /// </summary>
+        public static string Msg_InvalidConfirmPassword {
+            get {
+                return ResourceManager.GetString("Msg_InvalidConfirmPassword", resourceCulture);
             }
         }
         

@@ -526,7 +526,7 @@
     <value>Url</value>
   </data>
   <data name="Lbl_Username" xml:space="preserve">
-    <value>Windows Username</value>
+    <value>Username</value>
   </data>
   <data name="Lb_PhoneNo_1" xml:space="preserve">
     <value>เบอร์โทรศัพท์ #1</value>
@@ -704,5 +704,20 @@
   </data>
   <data name="Msg_InvalidPassword" xml:space="preserve">
     <value>รหัสผ่านไม่ถูกต้อง</value>
+  </data>
+  <data name="Lbl_ChangePsswd" xml:space="preserve">
+    <value>เปลี่ยนรหัสผ่าน</value>
+  </data>
+  <data name="Lbl_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Msg_EnteredNewPassword" xml:space="preserve">
+    <value>กรุณาระบุรหัสผ่านใหม่</value>
+  </data>
+  <data name="Msg_EnteredOldPassword" xml:space="preserve">
+    <value>กรุณาระบุรหัสผ่านเดิม</value>
+  </data>
+  <data name="Msg_InvalidConfirmPassword" xml:space="preserve">
+    <value>การยืนยันรหัสผานใหม่ไม่ถูกต้อง</value>
   </data>
 </root>
