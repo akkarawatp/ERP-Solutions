@@ -6,6 +6,7 @@ using Common.Utilities;
 using DataAccess;
 using Entity;
 using log4net;
+using System.Configuration;
 
 namespace BusinessLogic
 {
@@ -27,9 +28,7 @@ namespace BusinessLogic
             UserEntity user = GetUserByUsername(username);
             if (user != null)
             {
-                string encryptPwd = passwd;
-
-                if (user.Psswd == encryptPwd)
+                if (user.Psswd == passwd)
                 {
                     return user;
                 }
@@ -268,6 +267,7 @@ namespace BusinessLogic
                     string oldPasswd = user.psswd;
 
                     user.psswd = EncryptTxt(newPsswd);
+                    user.force_change_psswd = "N";
                     user.login_fail_count = 0;
 
                     DateTime changeDate = DateTime.Now;
@@ -311,13 +311,55 @@ namespace BusinessLogic
                 }
             }
             return ret;
-
-
         }
 
+        private  string EncryptionKey = "ERP_Encrypt2017";
+        public  string EncryptTxt(string txtString)
+        {
+            System.Security.Cryptography.RijndaelManaged AES = new System.Security.Cryptography.RijndaelManaged();
+            System.Security.Cryptography.MD5CryptoServiceProvider Hash_AES = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            string encrypted = "";
+            try
+            {
+                byte[] hash = new byte[32];
+                byte[] temp = Hash_AES.ComputeHash(System.Text.ASCIIEncoding.ASCII.GetBytes(EncryptionKey));
+                Array.Copy(temp, 0, hash, 0, 16);
+                Array.Copy(temp, 0, hash, 15, 16);
+                AES.Key = hash;
+                AES.Mode = System.Security.Cryptography.CipherMode.ECB;
+                System.Security.Cryptography.ICryptoTransform DESEncrypter = AES.CreateEncryptor();
+                byte[] Buffer = System.Text.ASCIIEncoding.ASCII.GetBytes(txtString);
+                encrypted = Convert.ToBase64String(DESEncrypter.TransformFinalBlock(Buffer, 0, Buffer.Length));
+            }
+            catch (Exception ex)
+            {
+            }
 
-        public string EncryptTxt(string txtIn) {
-            return txtIn;
+            return encrypted;
+        }
+
+        public  string DeCripTxt(string txtString)
+        {
+            System.Security.Cryptography.RijndaelManaged AES = new System.Security.Cryptography.RijndaelManaged();
+            System.Security.Cryptography.MD5CryptoServiceProvider Hash_AES = new System.Security.Cryptography.MD5CryptoServiceProvider();
+            string decrypted = "";
+            try
+            {
+                byte[] hash = new byte[32];
+                byte[] temp = Hash_AES.ComputeHash(System.Text.ASCIIEncoding.ASCII.GetBytes(EncryptionKey));
+                Array.Copy(temp, 0, hash, 0, 16);
+                Array.Copy(temp, 0, hash, 15, 16);
+                AES.Key = hash;
+                AES.Mode = System.Security.Cryptography.CipherMode.ECB;
+                System.Security.Cryptography.ICryptoTransform DESDecrypter = AES.CreateDecryptor();
+                byte[] Buffer = Convert.FromBase64String(txtString);
+                decrypted = System.Text.ASCIIEncoding.ASCII.GetString(DESDecrypter.TransformFinalBlock(Buffer, 0, Buffer.Length));
+            }
+            catch (Exception ex)
+            {
+            }
+
+            return decrypted;
         }
         #endregion
     }
