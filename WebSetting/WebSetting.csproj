@@ -152,7 +152,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Common\BaseController.cs" />
+    <Compile Include="Controllers\MenuNavigatorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WelcomeController.cs" />
     <Compile Include="Filters\CheckUserSessionAttribute.cs" />
     <Compile Include="Filters\HandleAntiForgeryError.cs" />
     <Compile Include="Filters\LogActionFilter.cs" />
@@ -420,6 +422,8 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\ChangePassword.cshtml" />
     <Content Include="Views\Shared\_Antiforgery.cshtml" />
+    <Content Include="Views\Welcome\Index.cshtml" />
+    <Content Include="Views\MenuNavigator\MainMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
