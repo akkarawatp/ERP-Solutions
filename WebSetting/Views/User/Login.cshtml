@@ -16,8 +16,16 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>CSM - @ViewBag.Title</title>
-    @Styles.Render("~/Content/bootstrap/base")
-    @Styles.Render("~/Content/font-awesome")
+    @*@Styles.Render("~/Content/bootstrap/base")*@
+    @Styles.Render("~/Content/bootstrap.min.css")
+    <!-- Bootstrap responsive -->
+    @Styles.Render("~/Content/bootstrap-responsive.min.css")
+
+    <!-- jQuery UI -->
+    @Styles.Render("~/Content/themes/base/jquery-ui.css")
+    @Styles.Render("~/Content/themes/base/jquery.ui.theme.css")
+    @*@Styles.Render("~/Content/font-awesome")*@
+    @Styles.Render("~/Content/font-awesome.min.css")
     @Styles.Render("~/Content/login.css")
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

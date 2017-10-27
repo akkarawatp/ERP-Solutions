@@ -4,19 +4,38 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>CSM - @ViewBag.Title</title>
-    @Styles.Render("~/Content/bootstrap/base")
-    @Styles.Render("~/Content/bootstrap-datepicker.min.css")
-    @Styles.Render("~/Content/font-awesome")
-    @Styles.Render("~/Content/select2")
-    @Styles.Render("~/Content/summernote.css")
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/sr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/app")
+    <!-- Apple devices fullscreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- Apple devices fullscreen -->
+    <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>ERP - @ViewBag.Title</title>
+    @*@Styles.Render("~/Content/bootstrap/base")*@
+    @Styles.Render("~/css/bootstrap.min.css")
+    <!-- Bootstrap responsive -->
+    @Styles.Render("~/css/bootstrap-responsive.min.css")
+
+    <!-- jQuery UI -->
+    @Styles.Render("~/css/plugins/jquery-ui/smoothness/jquery-ui.css")
+    @Styles.Render("~/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css")
+
+    @Styles.Render("~/css/style.css")
+    @Styles.Render("~/css/themes.css")
+
+    <!-- jQuery -->
+    @Scripts.Render("~/js/jquery.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.core.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.widget.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.mouse.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.resizable.min.js")
+    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.sortable.min.js")
+
+    @Scripts.Render("~/Scripts/bootstrap.min.js")
+    @Scripts.Render("~/Scripts/application.min.js")
+    @Scripts.Render("~/Scripts/demonstration.min.js")
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,40 +45,6 @@
 
     @RenderSection("HeaderScript",required: false)
 
-
-    <style>
-        .dropdown-submenu {
-            position: relative;
-        }
-
-        .dropdown-submenu > .dropdown-menu {
-            top: 0;
-            left: 100%;
-            margin-top: -6px;
-            margin-left: -1px;
-        }
-
-        .dropdown-submenu:hover > .dropdown-menu {
-            display: block;
-        }
-
-        .dropdown-submenu:hover > .dropdown-menu {
-            display: block;
-        }
-
-        .dropdown-submenu:hover > a:after {
-            border-left-color: #fff;
-        }
-
-        .dropdown-submenu.pull-left {
-            float: none;
-        }
-
-        .dropdown-submenu.pull-left > .dropdown-menu {
-            left: -100%;
-            margin-left: 10px;
-        }
-    </style>
 </head>
 <body>
     <div id="header">
@@ -101,7 +86,7 @@
     </div>
     @{ Html.RenderPartial("_Antiforgery");  }
     <!-- /#wrapper -->
-    @Scripts.Render("~/bundles/bootstrap")
+    @*@Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/Scripts/select2.min.js")
     @Scripts.Render("~/Scripts/Select2-locales/select2_locale_th.js")
     @Scripts.Render("~/Scripts/summernote.min.js")
@@ -111,8 +96,8 @@
         @Scripts.Render("~/Scripts/locales/bootstrap-datepicker.th.min.js")
     }
     @Scripts.Render("~/Scripts/tableHeadFixer.js")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/sr")
+    @Scripts.Render("~/bundles/jqueryval")*@
+
     @RenderSection("masterjs", required: false)
 </body>
 </html>
