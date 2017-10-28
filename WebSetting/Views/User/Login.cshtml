@@ -15,15 +15,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>CSM - @ViewBag.Title</title>
+    <title>ERP - @ViewBag.Title</title>
     @*@Styles.Render("~/Content/bootstrap/base")*@
-    @Styles.Render("~/js/bootstrap.min.css")
+    @Styles.Render("~/css/bootstrap.min.css")
     <!-- Bootstrap responsive -->
-    @Styles.Render("~/js/bootstrap-responsive.min.css")
+    @Styles.Render("~/css/bootstrap-responsive.min.css")
 
     <!-- jQuery UI -->
-    @Styles.Render("~/css/plugins/jquery-ui/smoothess/jquery-ui.css")
-    @Styles.Render("~/css/plugins/jquery-ui/smoothess/jquery.ui.theme.css")
+    @Styles.Render("~/css/plugins/jquery-ui/smoothness/jquery-ui.css")
+    @Styles.Render("~/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css")
     @*@Styles.Render("~/Content/font-awesome")*@
     @Styles.Render("~/css/font-awesome.min.css")
     @Styles.Render("~/css/login.css")
@@ -48,29 +48,30 @@
                     <div class="login-form">
                         <div class="form-group">
                             <div class="col-md-12">
-                                <div class="inner-addon right-addon">
-                                    <i class="fa fa fa-user"></i>
+                                <div class="inner-addon">
+                                    
                                     @Html.TextBoxFor(u => u.UserName, new
                                {
                                    @id = "login-username",
                                    @class = "form-control",
-                                   @placeholder = "Enter Username Here",
+                                   @placeholder = "Username",
                                    @maxlength = @Constants.MaxLength.Username
                                })
+                                    <i class="fa fa fa-user"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-12">
-                                <div class="inner-addon right-addon">
-                                    <i class="fa fa fa-lock"></i>
+                                <div class="inner-addon">
                                     @Html.PasswordFor(u => u.Password, new
-                               {
+                                    {
                                    @id = "login-password",
                                    @class = "form-control ",
-                                   @placeholder = "Enter Password Here",
+                                   @placeholder = "Password",
                                    @maxlength = @Constants.MaxLength.Password
-                               })
+                                    })
+                                    <i class="fa fa fa-lock"></i>
                                 </div>
                             </div>
                         </div>
@@ -86,9 +87,10 @@
         }
     </div>
     <div id="dvAlertMsg"></div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/login.js")
+    @Scripts.Render("~/js/jquery-1.9.1.min.js")
+    @Scripts.Render("~/js/jquery.form.min.js")
+    @Scripts.Render("~/js/bootstrap.min.js")
+    @Scripts.Render("~/js/login.js")
     <script type="text/javascript">
         $jq(document).ready(function () {
             var errorMsg = '@errorMessage';

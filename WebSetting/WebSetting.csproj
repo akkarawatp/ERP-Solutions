@@ -173,6 +173,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\font-style.css" />
     <Content Include="css\login.css" />
     <Content Include="css\plugins\chosen\chosen.css" />
     <Content Include="css\plugins\colorbox\colorbox.css" />
@@ -378,7 +379,13 @@
     <Content Include="js\eakroko.js" />
     <Content Include="js\eakroko.min.js" />
     <Content Include="js\html5shiv.js" />
+    <Content Include="js\jquery-1.10.2.js" />
+    <Content Include="js\jquery-1.10.2.min.js" />
+    <Content Include="js\jquery-1.9.1.js" />
+    <Content Include="js\jquery-1.9.1.min.js" />
+    <Content Include="js\jquery.form.min.js" />
     <Content Include="js\jquery.min.js" />
+    <Content Include="js\login.js" />
     <Content Include="js\plugins\bootbox\jquery.bootbox.js" />
     <Content Include="js\plugins\chosen\chosen.jquery.min.js" />
     <Content Include="js\plugins\chosen\chosen.jquery.min.min.js" />
@@ -840,8 +847,6 @@
     <Folder Include="js\plugins\elfinder\files\.quarantine\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="js\plugins\.DS_Store" />
-    <Content Include="js\plugins\._.DS_Store" />
     <Content Include="js\plugins\ckeditor\CHANGES.md" />
     <Content Include="js\plugins\ckeditor\LICENSE.md" />
     <Content Include="js\plugins\ckeditor\plugins\scayt\LICENSE.md" />
@@ -855,6 +860,22 @@
     <Content Include="js\plugins\datatable\as3\ZeroClipboardPdf.as" />
     <Content Include="js\plugins\elfinder\php\mime.types" />
     <Content Include="js\plugins\plupload\plupload.silverlight.xap" />
+    <Content Include="js\jquery-1.10.2.min.map" />
+    <Content Include="js\jquery-1.9.1.min.map" />
+    <Content Include="font\gstatic\59ZRklaO5bWGqF5A9baEERJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="font\gstatic\cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2" />
+    <Content Include="font\gstatic\DXI1ORHCpsQm3Vp6mXoaTa-j2U0lmluP9RWlSytm3ho.woff2" />
+    <Content Include="font\gstatic\DXI1ORHCpsQm3Vp6mXoaTaaRobkAwv3vxw3jMhVENGA.woff2" />
+    <Content Include="font\gstatic\DXI1ORHCpsQm3Vp6mXoaTegdm0LZdjqr5-oayXSOefg.woff2" />
+    <Content Include="font\gstatic\DXI1ORHCpsQm3Vp6mXoaTf8zf_FOSsgRmwsS7Aa9k2w.woff2" />
+    <Content Include="font\gstatic\DXI1ORHCpsQm3Vp6mXoaTRWV49_lSm1NYrwo-zkhivY.woff2" />
+    <Content Include="font\gstatic\DXI1ORHCpsQm3Vp6mXoaTT0LW-43aMEzIO6XUTLjad8.woff2" />
+    <Content Include="font\gstatic\DXI1ORHCpsQm3Vp6mXoaTZX5f-9o1vgP2EXwfjgl7AY.woff2" />
+    <Content Include="font\gstatic\K88pR3goAWT7BTt32Z01mxJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="font\gstatic\LWCjsQkB6EMdfHrEVqA1KRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="font\gstatic\RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="font\gstatic\u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2" />
+    <Content Include="font\gstatic\xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

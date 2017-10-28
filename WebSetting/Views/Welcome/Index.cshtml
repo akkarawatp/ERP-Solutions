@@ -15,92 +15,135 @@
     @Html.Action("MainMenu", "MenuNavigator")
 }
 
-
-@*<h2>@Resources.Lbl_MainMenu</h2>
-
-<div id="dvForm" class="form-box">
-    <h5 class="form-title">Sample Title</h5>
-
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
-            
-            <ul class="title">
-                <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
-                    <a href="#">
-                        <span>
-                            <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
-                                    height="60" width="60" />
-                        </span>
-                        <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
-                    </a>
-                </li>
-                <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
-                    <a href="#">
-                        <span>
-                            <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
-                                    height="60" width="60" />
-                        </span>
-                        <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
-                    </a>
-                </li>
-                <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
-                    <a href="#">
-                        <span>
-                            <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
-                                    height="60" width="60" />
-                        </span>
-                        <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
-                    </a>
-                </li>
-                <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
-                    <a href="#">
-                        <span>
-                            <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
-                                    height="60" width="60" />
-                        </span>
-                        <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
-                    </a>
-                </li>
-                <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
-                    <a href="#">
-                        <span>
-                            <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
-                                    height="60" width="60" />
-                        </span>
-                        <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
-                    </a>
-                </li>
-                <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
-                    <a href="#">
-                        <span>
-                            <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
-                                    height="60" width="60" />
-                        </span>
-                        <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-lg-1"></div>
+<div class="page-header">
+    <div class="pull-left">
+        <h1>@Resources.Lbl_MainMenu</h1>
     </div>
-
-
+</div>
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a href="more-login.html">Home</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li>
+            <a href="components-messages.html">Components</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li>
+            <a href="components-tiles.html">Tiles</a>
+        </li>
+    </ul>
+    <div class="close-bread">
+        <a href="#"><i class="icon-remove"></i></a>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span4"></div>
+    <div class="span4">
+        <ul class="tiles">
+            <li class="blue">
+                <a href="#">
+                    <span><img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png" height="60" width="60" /> </span>
+                    <span class='name'>Phone</span>
+                </a>
+            </li>
+            <li class="red">
+                <a href="#"><span class='count'><i class="icon-envelope"></i> 1</span><span class='name'>Mails</span></a>
+            </li>
+            <li class="lime">
+                <a href="#"><span class='count'><i class="icon-comment"></i> 4</span><span class='name'>Comments</span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="span4"></div>
 </div>
 
-<script>
-    function onSelect(id, isActive, name, color) {
-        if (isActive != "N") {
+    @*<h2>@Resources.Lbl_MainMenu</h2>
 
-            //var url = "frmSelectDepartment.aspx?user_function_id=" + id + '&title=' + name + '&color=' + color;
-            var url = "https://www.google.com";
-            //alert(url);
-            //CreateTransLog('<%=UserData.LoginHistoryID %>', 'เลือก Function ' + name);
-            window.location = url;
+        <div id="dvForm" class="form-box">
+            <h5 class="form-title">Sample Title</h5>
 
-            return false;
-        } else {
-            return false;
-        }
-    }
-</script>*@
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
+
+                    <ul class="title">
+                        <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
+                            <a href="#">
+                                <span>
+                                    <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
+                                            height="60" width="60" />
+                                </span>
+                                <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
+                            </a>
+                        </li>
+                        <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
+                            <a href="#">
+                                <span>
+                                    <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
+                                            height="60" width="60" />
+                                </span>
+                                <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
+                            </a>
+                        </li>
+                        <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
+                            <a href="#">
+                                <span>
+                                    <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
+                                            height="60" width="60" />
+                                </span>
+                                <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
+                            </a>
+                        </li>
+                        <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
+                            <a href="#">
+                                <span>
+                                    <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
+                                            height="60" width="60" />
+                                </span>
+                                <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
+                            </a>
+                        </li>
+                        <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
+                            <a href="#">
+                                <span>
+                                    <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
+                                            height="60" width="60" />
+                                </span>
+                                <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
+                            </a>
+                        </li>
+                        <li onclick="onSelect('1','Y','ข้อมูลพื้นฐาน','#16a0a2')" style="background-color:#16a0a2;">
+                            <a href="#">
+                                <span>
+                                    <img src="https://backend.tescolotuslc.com/learningcenter/storage/functions/2017/03/08/16/85b2/20170308-160946.lps.png"
+                                            height="60" width="60" />
+                                </span>
+                                <span class="text-center" style="font-size:12px;padding-top:25px;vertical-align:middle;">ระบบข้อมูลพื้นฐาน</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+
+
+        </div>
+
+        <script>
+            function onSelect(id, isActive, name, color) {
+                if (isActive != "N") {
+
+                    //var url = "frmSelectDepartment.aspx?user_function_id=" + id + '&title=' + name + '&color=' + color;
+                    var url = "https://www.google.com";
+                    //alert(url);
+                    //CreateTransLog('<%=UserData.LoginHistoryID %>', 'เลือก Function ' + name);
+                    window.location = url;
+
+                    return false;
+                } else {
+                    return false;
+                }
+            }
+        </script>*@

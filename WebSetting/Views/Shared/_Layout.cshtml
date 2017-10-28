@@ -26,38 +26,34 @@
 
     <!-- jQuery -->
     @Scripts.Render("~/js/jquery.min.js")
-    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.core.min.js")
-    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.widget.min.js")
-    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.mouse.min.js")
-    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.resizable.min.js")
-    @Scripts.Render("~/Scripts/jquery-ui/jquery.ui.sortable.min.js")
+    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.core.min.js")
+    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.widget.min.js")
+    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.mouse.min.js")
+    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.resizable.min.js")
+    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.sortable.min.js")
 
-    @Scripts.Render("~/Scripts/bootstrap.min.js")
-    @Scripts.Render("~/Scripts/application.min.js")
-    @Scripts.Render("~/Scripts/demonstration.min.js")
+    @Scripts.Render("~/js/bootstrap.min.js")
+    @Scripts.Render("~/js/application.min.js")
+    @Scripts.Render("~/js/demonstration.min.js")
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        @Scripts.Render("~/Scripts/html5shiv.js")
-        @Scripts.Render("~/Scripts/respond.min.js")
+        @Scripts.Render("~/js/html5shiv.js")
+        @Scripts.Render("~/js/respond.min.js")
     <![endif]-->
 
     @RenderSection("HeaderScript",required: false)
 
 </head>
 <body>
-    <div id="header">
-        @if (IsSectionDefined("MainMenu"))
-        {
-            @RenderSection("MainMenu")
-        }
-        <div class="clear"></div>
-        <hr class="solid-line" />
-    </div>
-
-    <div id="content">
-        <div class="content-panel">
+    @if (IsSectionDefined("MainMenu"))
+    {
+        @RenderSection("MainMenu")
+    }
+        
+    <div class="container-fluid nav-hidden" id="content">
+        <div id="main">
             <div class="container-fluid">
                 <div class="nav-panel">
                     <div class="pull-left">
@@ -68,15 +64,15 @@
 
                 @RenderBody()
             </div>
-        </div>
-        <div class="clearfix"></div>
 
-        <!-- Footer -->
-        <div id="footer">
-            @*@Html.Raw(ApplicationHelpers.GetCopyright())&nbsp;@ApplicationHelpers.GetDisplayDllLastUpdatedDate()*@
+            <div class="clearfix"></div>
+
+            <!-- Footer -->
+            <div id="footer">
+                @*@Html.Raw(ApplicationHelpers.GetCopyright())&nbsp;@ApplicationHelpers.GetDisplayDllLastUpdatedDate()*@
+            </div>
         </div>
     </div>
-    
     <div id="dvLoading" class="ajax-loader"></div>
     <div id="dvAlertMsg"></div>
     <div id="viewCallInfo" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1"
