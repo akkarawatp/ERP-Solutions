@@ -171,6 +171,9 @@
     <Content Include="css\bootstrap-responsive.min.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\login.css" />
     <Content Include="css\plugins\chosen\chosen.css" />
     <Content Include="css\plugins\colorbox\colorbox.css" />
     <Content Include="css\plugins\colorpicker\colorpicker.css" />
@@ -374,6 +377,7 @@
     <Content Include="js\demonstration.min.js" />
     <Content Include="js\eakroko.js" />
     <Content Include="js\eakroko.min.js" />
+    <Content Include="js\html5shiv.js" />
     <Content Include="js\jquery.min.js" />
     <Content Include="js\plugins\bootbox\jquery.bootbox.js" />
     <Content Include="js\plugins\chosen\chosen.jquery.min.js" />
@@ -799,6 +803,7 @@
     <Content Include="js\plugins\xeditable\bootstrap-editable.min.js" />
     <Content Include="js\plugins\xeditable\demo.js" />
     <Content Include="js\plugins\xeditable\demo.min.js" />
+    <Content Include="js\respond.min.js" />
     <Content Include="Log.config">
       <SubType>Designer</SubType>
     </Content>
