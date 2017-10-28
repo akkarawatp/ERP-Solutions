@@ -114,29 +114,22 @@ namespace WebSetting.Controllers.Common
 
         protected void ClearSession()
         {
-            Session["sessionid"] = null;
-
-            // Reset routedata
-            ClearCallId();
-
             // Clear cache
-            var username = HttpContext.User != null ? HttpContext.User.Identity.Name : string.Empty;
+            var username = System.Web.HttpContext.Current.Session["UserName"] != null ? System.Web.HttpContext.Current.Session["UserName"].ToString() : string.Empty;
             if (!string.IsNullOrWhiteSpace(username))
             {
                 var cacheKey = string.Format(CultureInfo.InvariantCulture, "{0}_user_info", username);
                 if (HttpRuntime.Cache[cacheKey] != null) HttpRuntime.Cache.Remove(cacheKey);
             }
 
+            System.Web.HttpContext.Current.Session["sessionid"] = null;
+            System.Web.HttpContext.Current.Session["user_id"] = null;
+            System.Web.HttpContext.Current.Session["UserName"] = null;
+            System.Web.HttpContext.Current.Session["login_his_id"] = null;
+
             Session.Clear();
             Session.Abandon();
             Session.RemoveAll();
         }
-
-        protected void ClearCallId()
-        {
-            if (RouteData.Values.ContainsKey("callId")) RouteData.Values.Remove("callId");
-            if (RouteData.Values.ContainsKey("phoneNo")) RouteData.Values.Remove("phoneNo");
-        }
-
     }
 }

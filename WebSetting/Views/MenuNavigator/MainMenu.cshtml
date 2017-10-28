@@ -361,7 +361,14 @@
                         <a href="#">Account settings</a>
                     </li>
                     <li>
-                        <a href="more-login.html">Sign out</a>
+                        @using (Html.BeginForm("Logout", "User", FormMethod.Post, new { id = "logoutForm", style = "padding: 6px 15px"}))
+                        {
+                            @Html.AntiForgeryToken()
+                            <a href="javascript:;"  style="color:#333;"
+                               onclick="doModal('dvAlertMsg', 'Message Dialog', 'ต้องการออกจากระบบใช่หรือไม่?', 'logout()', 'Confirm');">
+                                Sign out&nbsp;<i class="fa fa-arrow-circle-right"></i>
+                            </a>
+                        }
                     </li>
                 </ul>
             </div>

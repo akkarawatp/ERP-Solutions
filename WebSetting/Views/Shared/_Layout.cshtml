@@ -35,7 +35,7 @@
     @Scripts.Render("~/js/bootstrap.min.js")
     @Scripts.Render("~/js/application.min.js")
     @Scripts.Render("~/js/demonstration.min.js")
-
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -75,11 +75,6 @@
     </div>
     <div id="dvLoading" class="ajax-loader"></div>
     <div id="dvAlertMsg"></div>
-    <div id="viewCallInfo" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1"
-         role="dialog" data-url='@Url.Action("ViewCallInfo", "IVR")'>
-        <div id='callInfoContainer'>
-        </div>
-    </div>
     @{ Html.RenderPartial("_Antiforgery");  }
     <!-- /#wrapper -->
     @*@Scripts.Render("~/bundles/bootstrap")
@@ -93,6 +88,53 @@
     }
     @Scripts.Render("~/Scripts/tableHeadFixer.js")
     @Scripts.Render("~/bundles/jqueryval")*@
+
+    <script>
+        //var $jq = jQuery.noConflict();
+
+        function doModal(placementId, heading, formContent, strSubmitFunc, btnText) {
+            hideModal(placementId);
+
+            var html = '<div id="modalWindow" class="modal fade" data-backdrop="static" data-keyboard="false">';
+            html += '<div class="modal-dialog">';
+            html += '<div class="modal-content">';
+            html += '<div class="modal-header">';
+            html += '<a class="close" data-dismiss="modal">×</a>';
+            html += '<h4>' + heading + '</h4>';
+            html += '</div>';
+            html += '<div class="modal-body">';
+            html += '<p>';
+            html += formContent;
+            html += '</p>';
+            html += '</div>';
+            html += '<div class="modal-footer">';
+            if (btnText != '') {
+                html += '<span class="btn btn-blue btn-xsmall btn-sm"';
+                html += ' onClick="' + strSubmitFunc + '">' + btnText;
+                html += '</span>';
+            }
+            html += '<span class="btn btn-gray btn-xsmall btn-sm" data-dismiss="modal">';
+            html += btnText != '' ? 'Cancel' : 'Close';
+            html += '</span>'; // close button
+            html += '</div>';  // content
+            html += '</div>';  // dialog
+            html += '</div>';  // footer
+            html += '</div>';  // modalWindow
+            $("#" + placementId).html(html);
+            $("#modalWindow").modal('show');
+        }
+
+        function hideModal(placementId) {
+            // Using a very general selector - this is because $('#modalDiv').hide
+            // will remove the modal window but not the mask
+            $('#' + placementId).modal('hide');
+            $('.modal-backdrop').remove();
+        }
+
+        function logout() {
+            document.getElementById('logoutForm').submit();
+        }
+    </script>
 
     @RenderSection("masterjs", required: false)
 </body>

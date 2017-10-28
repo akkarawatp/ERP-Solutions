@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.SessionState;
 using log4net;
+using Common.Utilities;
 
 namespace WebSetting
 {
@@ -37,6 +39,23 @@ namespace WebSetting
             catch (Exception ex)
             {
                 Logger.Error("Exception occur:\n", ex);
+            }
+        }
+
+        protected void Application_PostAcquireRequestState(object sender, EventArgs e)
+        {
+            if (Context.Handler is IRequiresSessionState)
+            {
+                log4net.ThreadContext.Properties["RemoteAddress"] = ApplicationHelpers.GetClientIP();
+                //if (HttpContext.Current.User.Identity.IsAuthenticated)
+                //{
+                //    log4net.ThreadContext.Properties["UserID"] = HttpContext.Current.User.Identity.Name;
+                //}
+
+                if (System.Web.HttpContext.Current.Session["UserName"] != null)
+                {
+                    log4net.ThreadContext.Properties["UserName"] = System.Web.HttpContext.Current.Session["UserName"];
+                }
             }
         }
     }
