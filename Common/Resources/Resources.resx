@@ -720,4 +720,7 @@
   <data name="Msg_InvalidConfirmPassword" xml:space="preserve">
     <value>การยืนยันรหัสผานใหม่ไม่ถูกต้อง</value>
   </data>
+  <data name="Msg_LoginMaxFail" xml:space="preserve">
+    <value>คุณใส่รหัสผ่านผิดเกิน {0} ครั้ง กรุณาติดต่อผู้ดูแลระบบ</value>
+  </data>
 </root>

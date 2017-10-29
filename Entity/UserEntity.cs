@@ -1,9 +1,5 @@
 ﻿using System;
 using Common.Utilities;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entity
 {
@@ -40,5 +36,7 @@ namespace Entity
             }
 
         }
+
+        public long RoleIdValue { get; set; }
     }
 }

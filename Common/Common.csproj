@@ -55,9 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AjaxResult.cs" />
-    <Compile Include="Mail\EmailAddress.cs" />
-    <Compile Include="Mail\MailSender.cs" />
-    <Compile Include="Mail\TextGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -80,7 +77,6 @@
     <Compile Include="Utilities\LocalizedStringLengthAttribute.cs" />
     <Compile Include="Utilities\LogMessageBuilder.cs" />
     <Compile Include="Utilities\StringHelpers.cs" />
-    <Compile Include="Utilities\WebConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Resources.resx">

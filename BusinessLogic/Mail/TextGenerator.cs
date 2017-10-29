@@ -3,7 +3,7 @@ using System.Collections;
 using System.IO;
 using log4net;
 
-namespace Common.Mail
+namespace BusinessLogic.Mail
 {
     public class TextGenerator
     {

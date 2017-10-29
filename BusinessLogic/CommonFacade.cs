@@ -27,7 +27,7 @@ namespace BusinessLogic
     public class CommonFacade 
     {
         private readonly ERPSettingDataContext _context;
-        private CommonDataAccess _commonDataAccess;
+        //private CommonDataAccess _commonDataAccess;
         private LogMessageBuilder _logMsg = new LogMessageBuilder();
         private static readonly ILog Logger = LogManager.GetLogger(typeof(CommonFacade));
 

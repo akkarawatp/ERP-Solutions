@@ -7,10 +7,10 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading;
-using Common.Utilities;
+using BusinessLogic.Config;
 using log4net;
 
-namespace Common.Mail
+namespace BusinessLogic.Mail
 {
     public class MailSender
     {

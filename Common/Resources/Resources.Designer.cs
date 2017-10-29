@@ -1438,6 +1438,15 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to คุณใส่รหัสผ่านผิดเกิน {0} ครั้ง กรุณาติดต่อผู้ดูแลระบบ.
+        /// </summary>
+        public static string Msg_LoginMaxFail {
+            get {
+                return ResourceManager.GetString("Msg_LoginMaxFail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ไม่สนใจ.
         /// </summary>
         public static string Msg_NoInterested {

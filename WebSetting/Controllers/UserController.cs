@@ -7,10 +7,12 @@ using System.Web.Security;
 using log4net;
 using Common.Utilities;
 using Common.Resources;
+using Common.Securities;
 using WebSetting.Models;
 using WebSetting.Controllers.Common;
 using Entity;
 using BusinessLogic;
+using BusinessLogic.Config;
 using Filters;
 
 
@@ -51,10 +53,9 @@ namespace WebSetting.Controllers
                 {
                     UserFacade userFacade = new UserFacade();
                     DateTime loginTime = DateTime.Now;
-                    UserEntity user = userModel.IsValid(userModel.UserName, userFacade.EncryptTxt(userModel.Password), loginTime);
+                    UserEntity user = userModel.IsValid(userModel.UserName, StringCipher.EncryptTxt(userModel.Password), loginTime);
                     if (user != null && user.UserId > 0)
                     {
-                        
                         if (userFacade.UpdateLastLoginTime(user.UserId, loginTime) == true)
                         {
                             string ClientIP = ApplicationHelpers.GetClientIP();
@@ -165,15 +166,23 @@ namespace WebSetting.Controllers
 
             try
             {
-                Logger.Info(_logMsg.Clear().SetPrefixMsg("Logout").Add("UserID", userId).ToInputLogString());
-                ClearSession();
-                FormsAuthentication.SignOut();
-                Logger.Info(_logMsg.Clear().SetPrefixMsg("Logout").ToSuccessLogString());
+                UserFacade userFacade = new UserFacade();
+                bool ret = userFacade.UpdateLogoutTime(Convert.ToInt64(System.Web.HttpContext.Current.Session["login_his_id"]), DateTime.Now, true);
+                if (ret == true)
+                {
+                    Logger.Info(_logMsg.Clear().SetPrefixMsg("Logout").Add("UserID", userId).ToInputLogString());
+                    ClearSession();
+                    FormsAuthentication.SignOut();
+                    Logger.Info(_logMsg.Clear().SetPrefixMsg("Logout").ToSuccessLogString());
+                }
+                else {
+                    Logger.Info(_logMsg.Clear().SetPrefixMsg("Logout").Add("Error Message", "Update Logout Time fail").ToFailLogString());
+                }
             }
             catch (Exception ex)
             {
                 Logger.Error("Exception occur:\n", ex);
-                Logger.Info(_logMsg.Clear().SetPrefixMsg("Logout").Add("Error Message", ex.Message).ToFailLogString());
+                Logger.Info(_logMsg.Clear().SetPrefixMsg("Logout").Add("Exception Message", ex.Message).ToFailLogString());
             }
             return Redirect(loginUrl);
         }

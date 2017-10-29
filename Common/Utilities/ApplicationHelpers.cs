@@ -219,18 +219,18 @@ namespace Common.Utilities
             }
         }
 
-        public static bool Authenticate(string username, string password)
-        {
-            var taskUsername = WebConfig.GetTaskUsername();
-            var taskPassword = WebConfig.GetTaskPassword();
-            var isValidTaskUser = taskUsername.Equals(username) && taskPassword.Equals(password);
+        //public static bool Authenticate(string username, string password)
+        //{
+        //    var taskUsername = WebConfig.GetTaskUsername();
+        //    var taskPassword = WebConfig.GetTaskPassword();
+        //    var isValidTaskUser = taskUsername.Equals(username) && taskPassword.Equals(password);
 
-            var webUsername = WebConfig.GetWebUsername();
-            var webPassword = WebConfig.GetWebPassword();
-            var isValidWebUser = webUsername.Equals(username) && webPassword.Equals(password);
+        //    var webUsername = WebConfig.GetWebUsername();
+        //    var webPassword = WebConfig.GetWebPassword();
+        //    var isValidWebUser = webUsername.Equals(username) && webPassword.Equals(password);
 
-            return (isValidTaskUser || isValidWebUser);
-        }
+        //    return (isValidTaskUser || isValidWebUser);
+        //}
 
         public static string StripHtmlTags(string html)
         {
@@ -515,11 +515,11 @@ namespace Common.Utilities
 
         #region "Get latest updated date of the DLL"
 
-        public static string GetDisplayDllLastUpdatedDate()
-        {
-            string softwareVersion = WebConfig.GetSoftwareVersion();
-            return softwareVersion;
-        }
+        //public static string GetDisplayDllLastUpdatedDate()
+        //{
+        //    string softwareVersion = WebConfig.GetSoftwareVersion();
+        //    return softwareVersion;
+        //}
 
         private static DateTime GetDllLastUpdatedDate()
         {

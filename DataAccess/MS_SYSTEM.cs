@@ -12,23 +12,24 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class TB_LOGIN_HISTORY
+    public partial class MS_SYSTEM
     {
-        public long login_history_id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MS_SYSTEM()
+        {
+            this.MS_MENU = new HashSet<MS_MENU>();
+        }
+    
+        public long system_id { get; set; }
         public string created_by { get; set; }
         public System.DateTime creaed_date { get; set; }
         public string updated_by { get; set; }
         public Nullable<System.DateTime> updated_date { get; set; }
-        public string token { get; set; }
-        public string session_id { get; set; }
-        public string username { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public System.DateTime logon_time { get; set; }
-        public Nullable<System.DateTime> logout_time { get; set; }
         public string system_code { get; set; }
-        public string client_ip { get; set; }
-        public string client_browser { get; set; }
-        public string server_url { get; set; }
+        public string system_name { get; set; }
+        public string active_status { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MS_MENU> MS_MENU { get; set; }
     }
 }

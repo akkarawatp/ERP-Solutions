@@ -5,13 +5,114 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ERPSettingDataAccess.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CF_POLICY_CONFIG">
+          <Key>
+            <PropertyRef Name="policy_config_id" />
+          </Key>
+          <Property Name="policy_config_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="max_login_fail" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CF_SYSTEM_CONFIG">
+          <Key>
+            <PropertyRef Name="system_config_id" />
+          </Key>
+          <Property Name="system_config_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="created_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="db_setting" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="db_purchase" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="db_sales" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="db_wms" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="db_inventory" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="db_transportation" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="db_prodction" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="db_planning" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MS_MENU">
+          <Key>
+            <PropertyRef Name="menu_id" />
+          </Key>
+          <Property Name="menu_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="system_id" Type="bigint" Nullable="false" />
+          <Property Name="menu_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="can_edit" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="can_delete" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="menu_url" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="css_menu_icon" Type="varchar" MaxLength="100" />
+          <Property Name="menu_seq" Type="int" Nullable="false" />
+          <Property Name="parent_menu_id" Type="bigint" Nullable="false" />
+          <Property Name="active_status" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MS_ROLE">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="role_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="active_status" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MS_ROLE_MENU">
+          <Key>
+            <PropertyRef Name="role_menu_id" />
+          </Key>
+          <Property Name="role_menu_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="role_id" Type="bigint" Nullable="false" />
+          <Property Name="menu_id" Type="bigint" Nullable="false" />
+          <Property Name="is_view" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="is_edit" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="is_delete" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="is_na" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MS_ROLE_USER">
+          <Key>
+            <PropertyRef Name="role_user_id" />
+          </Key>
+          <Property Name="role_user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="role_id" Type="bigint" Nullable="false" />
+          <Property Name="user_id" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MS_SYSTEM">
+          <Key>
+            <PropertyRef Name="system_id" />
+          </Key>
+          <Property Name="system_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
+          <Property Name="updated_by" Type="varchar" MaxLength="100" />
+          <Property Name="updated_date" Type="datetime" />
+          <Property Name="system_code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="system_name" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="active_status" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
         <EntityType Name="MS_USER">
           <Key>
             <PropertyRef Name="user_id" />
           </Key>
           <Property Name="user_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="created_by" Type="varchar" MaxLength="100" />
-          <Property Name="creaed_date" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
           <Property Name="updated_by" Type="varchar" MaxLength="100" />
           <Property Name="updated_date" Type="datetime" />
           <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
@@ -33,8 +134,8 @@
             <PropertyRef Name="change_psswd_history_id" />
           </Key>
           <Property Name="change_psswd_history_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="created_by" Type="varchar" MaxLength="100" />
-          <Property Name="creaed_date" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
           <Property Name="updated_by" Type="varchar" MaxLength="100" />
           <Property Name="updated_date" Type="datetime" />
           <Property Name="change_time" Type="datetime" Nullable="false" />
@@ -48,8 +149,8 @@
             <PropertyRef Name="login_history_id" />
           </Key>
           <Property Name="login_history_id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="created_by" Type="varchar" MaxLength="100" />
-          <Property Name="creaed_date" Type="datetime" />
+          <Property Name="created_by" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="creaed_date" Type="datetime" Nullable="false" />
           <Property Name="updated_by" Type="varchar" MaxLength="100" />
           <Property Name="updated_date" Type="datetime" />
           <Property Name="token" Type="varchar" MaxLength="500" Nullable="false" />
@@ -64,10 +165,97 @@
           <Property Name="client_browser" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="server_url" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <Association Name="FK_MS_MENU_REFERENCE_MS_SYSTE">
+          <End Role="MS_SYSTEM" Type="Self.MS_SYSTEM" Multiplicity="1" />
+          <End Role="MS_MENU" Type="Self.MS_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_SYSTEM">
+              <PropertyRef Name="system_id" />
+            </Principal>
+            <Dependent Role="MS_MENU">
+              <PropertyRef Name="system_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE__REFERENCE_MS_MENU">
+          <End Role="MS_MENU" Type="Self.MS_MENU" Multiplicity="1" />
+          <End Role="MS_ROLE_MENU" Type="Self.MS_ROLE_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_MENU">
+              <PropertyRef Name="menu_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_MENU">
+              <PropertyRef Name="menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE__REFERENCE_MS_ROLE">
+          <End Role="MS_ROLE" Type="Self.MS_ROLE" Multiplicity="1" />
+          <End Role="MS_ROLE_USER" Type="Self.MS_ROLE_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_ROLE">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_USER">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE__REFERENCE_MS_USER">
+          <End Role="MS_USER" Type="Self.MS_USER" Multiplicity="1" />
+          <End Role="MS_ROLE_USER" Type="Self.MS_ROLE_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_USER">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_USER">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE1_REFERENCE_MS_ROLE">
+          <End Role="MS_ROLE" Type="Self.MS_ROLE" Multiplicity="1" />
+          <End Role="MS_ROLE_MENU" Type="Self.MS_ROLE_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_ROLE">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_MENU">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ERPSettingDataAccessStoreContainer">
+          <EntitySet Name="CF_POLICY_CONFIG" EntityType="Self.CF_POLICY_CONFIG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CF_SYSTEM_CONFIG" EntityType="Self.CF_SYSTEM_CONFIG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MS_MENU" EntityType="Self.MS_MENU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MS_ROLE" EntityType="Self.MS_ROLE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MS_ROLE_MENU" EntityType="Self.MS_ROLE_MENU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MS_ROLE_USER" EntityType="Self.MS_ROLE_USER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MS_SYSTEM" EntityType="Self.MS_SYSTEM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MS_USER" EntityType="Self.MS_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_CHANGE_PSSWD_HISTORY" EntityType="Self.TB_CHANGE_PSSWD_HISTORY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TB_LOGIN_HISTORY" EntityType="Self.TB_LOGIN_HISTORY" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_MS_MENU_REFERENCE_MS_SYSTE" Association="Self.FK_MS_MENU_REFERENCE_MS_SYSTE">
+            <End Role="MS_SYSTEM" EntitySet="MS_SYSTEM" />
+            <End Role="MS_MENU" EntitySet="MS_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_MENU" Association="Self.FK_MS_ROLE__REFERENCE_MS_MENU">
+            <End Role="MS_MENU" EntitySet="MS_MENU" />
+            <End Role="MS_ROLE_MENU" EntitySet="MS_ROLE_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_ROLE" Association="Self.FK_MS_ROLE__REFERENCE_MS_ROLE">
+            <End Role="MS_ROLE" EntitySet="MS_ROLE" />
+            <End Role="MS_ROLE_USER" EntitySet="MS_ROLE_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_USER" Association="Self.FK_MS_ROLE__REFERENCE_MS_USER">
+            <End Role="MS_USER" EntitySet="MS_USER" />
+            <End Role="MS_ROLE_USER" EntitySet="MS_ROLE_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE1_REFERENCE_MS_ROLE" Association="Self.FK_MS_ROLE1_REFERENCE_MS_ROLE">
+            <End Role="MS_ROLE" EntitySet="MS_ROLE" />
+            <End Role="MS_ROLE_MENU" EntitySet="MS_ROLE_MENU" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -78,8 +266,8 @@
             <PropertyRef Name="user_id" />
           </Key>
           <Property Name="user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="creaed_date" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="creaed_date" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="updated_date" Type="DateTime" Precision="3" />
           <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -95,19 +283,47 @@
           <Property Name="force_change_psswd" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="login_fail_count" Type="Int32" Nullable="false" />
           <Property Name="active_status" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MS_ROLE_USER" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER" FromRole="MS_USER" ToRole="MS_ROLE_USER" />
         </EntityType>
         <EntityContainer Name="ERPSettingDataContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="MS_USER" EntityType="Self.MS_USER" />
           <EntitySet Name="TB_LOGIN_HISTORY" EntityType="ERPSettingDataAccess.TB_LOGIN_HISTORY" />
           <EntitySet Name="TB_CHANGE_PSSWD_HISTORY" EntityType="ERPSettingDataAccess.TB_CHANGE_PSSWD_HISTORY" />
+          <EntitySet Name="MS_MENU" EntityType="ERPSettingDataAccess.MS_MENU" />
+          <EntitySet Name="MS_ROLE" EntityType="ERPSettingDataAccess.MS_ROLE" />
+          <EntitySet Name="MS_ROLE_MENU" EntityType="ERPSettingDataAccess.MS_ROLE_MENU" />
+          <EntitySet Name="MS_ROLE_USER" EntityType="ERPSettingDataAccess.MS_ROLE_USER" />
+          <EntitySet Name="MS_SYSTEM" EntityType="ERPSettingDataAccess.MS_SYSTEM" />
+          <AssociationSet Name="FK_MS_MENU_REFERENCE_MS_SYSTE" Association="ERPSettingDataAccess.FK_MS_MENU_REFERENCE_MS_SYSTE">
+            <End Role="MS_SYSTEM" EntitySet="MS_SYSTEM" />
+            <End Role="MS_MENU" EntitySet="MS_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_MENU" Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_MENU">
+            <End Role="MS_MENU" EntitySet="MS_MENU" />
+            <End Role="MS_ROLE_MENU" EntitySet="MS_ROLE_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_ROLE" Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE">
+            <End Role="MS_ROLE" EntitySet="MS_ROLE" />
+            <End Role="MS_ROLE_USER" EntitySet="MS_ROLE_USER" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE1_REFERENCE_MS_ROLE" Association="ERPSettingDataAccess.FK_MS_ROLE1_REFERENCE_MS_ROLE">
+            <End Role="MS_ROLE" EntitySet="MS_ROLE" />
+            <End Role="MS_ROLE_MENU" EntitySet="MS_ROLE_MENU" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_USER" Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER">
+            <End Role="MS_USER" EntitySet="MS_USER" />
+            <End Role="MS_ROLE_USER" EntitySet="MS_ROLE_USER" />
+          </AssociationSet>
+          <EntitySet Name="CF_POLICY_CONFIG" EntityType="ERPSettingDataAccess.CF_POLICY_CONFIG" />
+          <EntitySet Name="CF_SYSTEM_CONFIG" EntityType="ERPSettingDataAccess.CF_SYSTEM_CONFIG" />
         </EntityContainer>
         <EntityType Name="TB_LOGIN_HISTORY">
           <Key>
             <PropertyRef Name="login_history_id" />
           </Key>
           <Property Name="login_history_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="creaed_date" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="creaed_date" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="updated_date" Type="DateTime" Precision="3" />
           <Property Name="token" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -127,8 +343,8 @@
             <PropertyRef Name="change_psswd_history_id" />
           </Key>
           <Property Name="change_psswd_history_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="creaed_date" Type="DateTime" Precision="3" />
+          <Property Name="created_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="creaed_date" Type="DateTime" Precision="3" Nullable="false" />
           <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="updated_date" Type="DateTime" Precision="3" />
           <Property Name="change_time" Type="DateTime" Nullable="false" Precision="3" />
@@ -136,6 +352,176 @@
           <Property Name="system_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="old_psswd" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="new_psswd" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="MS_MENU">
+          <Key>
+            <PropertyRef Name="menu_id" />
+          </Key>
+          <Property Name="menu_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="system_id" Type="Int64" Nullable="false" />
+          <Property Name="menu_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="can_edit" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="can_delete" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="menu_url" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="css_menu_icon" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="menu_seq" Type="Int32" Nullable="false" />
+          <Property Name="parent_menu_id" Type="Int64" Nullable="false" />
+          <Property Name="active_status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MS_SYSTEM" Relationship="ERPSettingDataAccess.FK_MS_MENU_REFERENCE_MS_SYSTE" FromRole="MS_MENU" ToRole="MS_SYSTEM" />
+          <NavigationProperty Name="MS_ROLE_MENU" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_MENU" FromRole="MS_MENU" ToRole="MS_ROLE_MENU" />
+        </EntityType>
+        <EntityType Name="MS_ROLE">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="role_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="active_status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MS_ROLE_USER" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" FromRole="MS_ROLE" ToRole="MS_ROLE_USER" />
+          <NavigationProperty Name="MS_ROLE_MENU" Relationship="ERPSettingDataAccess.FK_MS_ROLE1_REFERENCE_MS_ROLE" FromRole="MS_ROLE" ToRole="MS_ROLE_MENU" />
+        </EntityType>
+        <EntityType Name="MS_ROLE_MENU">
+          <Key>
+            <PropertyRef Name="role_menu_id" />
+          </Key>
+          <Property Name="role_menu_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="role_id" Type="Int64" Nullable="false" />
+          <Property Name="menu_id" Type="Int64" Nullable="false" />
+          <Property Name="is_view" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="is_edit" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="is_delete" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="is_na" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MS_MENU" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_MENU" FromRole="MS_ROLE_MENU" ToRole="MS_MENU" />
+          <NavigationProperty Name="MS_ROLE" Relationship="ERPSettingDataAccess.FK_MS_ROLE1_REFERENCE_MS_ROLE" FromRole="MS_ROLE_MENU" ToRole="MS_ROLE" />
+        </EntityType>
+        <EntityType Name="MS_ROLE_USER">
+          <Key>
+            <PropertyRef Name="role_user_id" />
+          </Key>
+          <Property Name="role_user_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="role_id" Type="Int64" Nullable="false" />
+          <Property Name="user_id" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="MS_ROLE" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" FromRole="MS_ROLE_USER" ToRole="MS_ROLE" />
+          <NavigationProperty Name="MS_USER" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER" FromRole="MS_ROLE_USER" ToRole="MS_USER" />
+        </EntityType>
+        <EntityType Name="MS_SYSTEM">
+          <Key>
+            <PropertyRef Name="system_id" />
+          </Key>
+          <Property Name="system_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="system_code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="system_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="active_status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MS_MENU" Relationship="ERPSettingDataAccess.FK_MS_MENU_REFERENCE_MS_SYSTE" FromRole="MS_SYSTEM" ToRole="MS_MENU" />
+        </EntityType>
+        <Association Name="FK_MS_MENU_REFERENCE_MS_SYSTE">
+          <End Type="ERPSettingDataAccess.MS_SYSTEM" Role="MS_SYSTEM" Multiplicity="1" />
+          <End Type="ERPSettingDataAccess.MS_MENU" Role="MS_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_SYSTEM">
+              <PropertyRef Name="system_id" />
+            </Principal>
+            <Dependent Role="MS_MENU">
+              <PropertyRef Name="system_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE__REFERENCE_MS_MENU">
+          <End Type="ERPSettingDataAccess.MS_MENU" Role="MS_MENU" Multiplicity="1" />
+          <End Type="ERPSettingDataAccess.MS_ROLE_MENU" Role="MS_ROLE_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_MENU">
+              <PropertyRef Name="menu_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_MENU">
+              <PropertyRef Name="menu_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE__REFERENCE_MS_ROLE">
+          <End Type="ERPSettingDataAccess.MS_ROLE" Role="MS_ROLE" Multiplicity="1" />
+          <End Type="ERPSettingDataAccess.MS_ROLE_USER" Role="MS_ROLE_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_ROLE">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_USER">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE1_REFERENCE_MS_ROLE">
+          <End Type="ERPSettingDataAccess.MS_ROLE" Role="MS_ROLE" Multiplicity="1" />
+          <End Type="ERPSettingDataAccess.MS_ROLE_MENU" Role="MS_ROLE_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_ROLE">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_MENU">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE__REFERENCE_MS_USER">
+          <End Type="ERPSettingDataAccess.MS_USER" Role="MS_USER" Multiplicity="1" />
+          <End Type="ERPSettingDataAccess.MS_ROLE_USER" Role="MS_ROLE_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_USER">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_USER">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CF_POLICY_CONFIG">
+          <Key>
+            <PropertyRef Name="policy_config_id" />
+          </Key>
+          <Property Name="policy_config_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="max_login_fail" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CF_SYSTEM_CONFIG">
+          <Key>
+            <PropertyRef Name="system_config_id" />
+          </Key>
+          <Property Name="system_config_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="created_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="db_setting" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="db_purchase" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="db_sales" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="db_wms" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="db_inventory" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="db_transportation" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="db_prodction" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="db_planning" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -202,6 +588,114 @@
                 <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
                 <ScalarProperty Name="created_by" ColumnName="created_by" />
                 <ScalarProperty Name="change_psswd_history_id" ColumnName="change_psswd_history_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_MENU">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_MENU">
+              <MappingFragment StoreEntitySet="MS_MENU">
+                <ScalarProperty Name="active_status" ColumnName="active_status" />
+                <ScalarProperty Name="parent_menu_id" ColumnName="parent_menu_id" />
+                <ScalarProperty Name="menu_seq" ColumnName="menu_seq" />
+                <ScalarProperty Name="css_menu_icon" ColumnName="css_menu_icon" />
+                <ScalarProperty Name="menu_url" ColumnName="menu_url" />
+                <ScalarProperty Name="can_delete" ColumnName="can_delete" />
+                <ScalarProperty Name="can_edit" ColumnName="can_edit" />
+                <ScalarProperty Name="menu_name" ColumnName="menu_name" />
+                <ScalarProperty Name="system_id" ColumnName="system_id" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_ROLE">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_ROLE">
+              <MappingFragment StoreEntitySet="MS_ROLE">
+                <ScalarProperty Name="active_status" ColumnName="active_status" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_ROLE_MENU">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_ROLE_MENU">
+              <MappingFragment StoreEntitySet="MS_ROLE_MENU">
+                <ScalarProperty Name="is_na" ColumnName="is_na" />
+                <ScalarProperty Name="is_delete" ColumnName="is_delete" />
+                <ScalarProperty Name="is_edit" ColumnName="is_edit" />
+                <ScalarProperty Name="is_view" ColumnName="is_view" />
+                <ScalarProperty Name="menu_id" ColumnName="menu_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="role_menu_id" ColumnName="role_menu_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_ROLE_USER">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_ROLE_USER">
+              <MappingFragment StoreEntitySet="MS_ROLE_USER">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="role_user_id" ColumnName="role_user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_SYSTEM">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_SYSTEM">
+              <MappingFragment StoreEntitySet="MS_SYSTEM">
+                <ScalarProperty Name="active_status" ColumnName="active_status" />
+                <ScalarProperty Name="system_name" ColumnName="system_name" />
+                <ScalarProperty Name="system_code" ColumnName="system_code" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="system_id" ColumnName="system_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CF_POLICY_CONFIG">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.CF_POLICY_CONFIG">
+              <MappingFragment StoreEntitySet="CF_POLICY_CONFIG">
+                <ScalarProperty Name="max_login_fail" ColumnName="max_login_fail" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="policy_config_id" ColumnName="policy_config_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CF_SYSTEM_CONFIG">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.CF_SYSTEM_CONFIG">
+              <MappingFragment StoreEntitySet="CF_SYSTEM_CONFIG">
+                <ScalarProperty Name="db_planning" ColumnName="db_planning" />
+                <ScalarProperty Name="db_prodction" ColumnName="db_prodction" />
+                <ScalarProperty Name="db_transportation" ColumnName="db_transportation" />
+                <ScalarProperty Name="db_inventory" ColumnName="db_inventory" />
+                <ScalarProperty Name="db_wms" ColumnName="db_wms" />
+                <ScalarProperty Name="db_sales" ColumnName="db_sales" />
+                <ScalarProperty Name="db_purchase" ColumnName="db_purchase" />
+                <ScalarProperty Name="db_setting" ColumnName="db_setting" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="created_date" ColumnName="created_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="system_config_id" ColumnName="system_config_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

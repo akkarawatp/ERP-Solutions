@@ -8,6 +8,18 @@
         <EntityTypeShape EntityType="ERPSettingDataAccess.MS_USER" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.TB_LOGIN_HISTORY" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.TB_CHANGE_PSSWD_HISTORY" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_MENU" Width="1.5" PointX="7.375" PointY="8.625" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_ROLE" Width="1.5" PointX="7.375" PointY="3.25" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_ROLE_MENU" Width="1.5" PointX="9.625" PointY="5.875" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_ROLE_USER" Width="1.5" PointX="9.625" PointY="2" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_SYSTEM" Width="1.5" PointX="5.125" PointY="9.25" />
+        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_MENU_REFERENCE_MS_SYSTE" />
+        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_MENU" />
+        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" />
+        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE1_REFERENCE_MS_ROLE" />
+        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.CF_POLICY_CONFIG" Width="1.5" PointX="3.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.CF_SYSTEM_CONFIG" Width="1.5" PointX="0.75" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

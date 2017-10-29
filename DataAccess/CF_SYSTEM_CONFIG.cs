@@ -12,17 +12,20 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class TB_CHANGE_PSSWD_HISTORY
+    public partial class CF_SYSTEM_CONFIG
     {
-        public long change_psswd_history_id { get; set; }
+        public long system_config_id { get; set; }
         public string created_by { get; set; }
-        public System.DateTime creaed_date { get; set; }
+        public System.DateTime created_date { get; set; }
         public string updated_by { get; set; }
         public Nullable<System.DateTime> updated_date { get; set; }
-        public System.DateTime change_time { get; set; }
-        public string username { get; set; }
-        public string system_code { get; set; }
-        public string old_psswd { get; set; }
-        public string new_psswd { get; set; }
+        public string db_setting { get; set; }
+        public string db_purchase { get; set; }
+        public string db_sales { get; set; }
+        public string db_wms { get; set; }
+        public string db_inventory { get; set; }
+        public string db_transportation { get; set; }
+        public string db_prodction { get; set; }
+        public string db_planning { get; set; }
     }
 }

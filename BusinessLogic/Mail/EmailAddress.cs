@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Common.Mail
+namespace BusinessLogic.Mail
 {
     [Serializable]
     public sealed class EmailAddress

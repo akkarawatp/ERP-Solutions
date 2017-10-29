@@ -6,7 +6,8 @@ using Common.Utilities;
 using DataAccess;
 using Entity;
 using log4net;
-using System.Configuration;
+using Common.Securities;
+using BusinessLogic.Config;
 
 namespace BusinessLogic
 {
@@ -28,12 +29,21 @@ namespace BusinessLogic
             UserEntity user = GetUserByUsername(username);
             if (user != null)
             {
+                //ตรวจสอบจำนวนครั้งที่ใส่รหัสผ่านผิด
+                int maxLoginFail = PolicyConfig.GetMaxLoginFail();
+                if (user.LoginFailCount >= maxLoginFail) {
+                    Logger.Info(_logMsg.Clear().SetPrefixMsg("Login").Add("Alert Max Login Fail ", username).ToInputLogString());
+
+                    throw new CustomException(string.Format(Resources.Msg_LoginMaxFail, maxLoginFail.ToString()));
+                }
+
                 if (user.Psswd == passwd)
                 {
                     return user;
                 }
                 else
                 {
+                    UpdateLoginFailCount(user.UserId, user.LoginFailCount + 1);
                     throw new CustomException(Resources.Msg_InvalidPassword);
                 }
             }
@@ -162,6 +172,32 @@ namespace BusinessLogic
             _context.SaveChanges();
         }
 
+        public bool UpdateLoginFailCount(long userId, int loginFailCount) {
+            bool ret = false;
+            _context.Configuration.AutoDetectChangesEnabled = false;
+            try {
+                var user = _context.MS_USER.SingleOrDefault(u => u.user_id == userId);
+                user.login_fail_count = loginFailCount;
+
+                if (_context.Configuration.AutoDetectChangesEnabled == false)
+                {
+                    // Set state to Modified
+                    _context.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                    ret = (_context.SaveChanges() > 0);
+                }
+
+
+            }
+            catch (Exception ex) {
+                Logger.Error("Exception occur:\n", ex);
+            }
+            finally {
+                _context.Configuration.AutoDetectChangesEnabled = false;
+            }
+
+            return ret;
+        }
+
         public bool UpdateLastLoginTime(long userId, DateTime loginTime) {
             bool ret = false;
             _context.Configuration.AutoDetectChangesEnabled = false;
@@ -190,7 +226,7 @@ namespace BusinessLogic
         }
 
         
-        private bool UpdateLogoutTime(long loginHisID, DateTime logoutTime) {
+        public bool UpdateLogoutTime(long loginHisID, DateTime logoutTime, bool isSaveChange) {
             bool ret = false;
             _context.Configuration.AutoDetectChangesEnabled = false;
             try
@@ -205,6 +241,8 @@ namespace BusinessLogic
                     // Set state to Modified
                     _context.Entry(log).State = System.Data.Entity.EntityState.Modified;
                     ret = true;
+                    if (isSaveChange == true)
+                        _context.SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -266,7 +304,7 @@ namespace BusinessLogic
                     var user = _context.MS_USER.SingleOrDefault(u => u.username == userName);
                     string oldPasswd = user.psswd;
 
-                    user.psswd = EncryptTxt(newPsswd);
+                    user.psswd = StringCipher.EncryptTxt(newPsswd);
                     user.force_change_psswd = "N";
                     user.login_fail_count = 0;
 
@@ -288,7 +326,7 @@ namespace BusinessLogic
                         cLnq.new_psswd = user.psswd;  //Encrypt แล้ว
                         _context.TB_CHANGE_PSSWD_HISTORY.Add(cLnq);
 
-                        ret = UpdateLogoutTime(loginHisId, changeDate);
+                        ret = UpdateLogoutTime(loginHisId, changeDate, false);
                         if (ret == true)
                         {
                             ret = (_context.SaveChanges() > 0);
@@ -313,54 +351,7 @@ namespace BusinessLogic
             return ret;
         }
 
-        private  string EncryptionKey = "ERP_Encrypt2017";
-        public  string EncryptTxt(string txtString)
-        {
-            System.Security.Cryptography.RijndaelManaged AES = new System.Security.Cryptography.RijndaelManaged();
-            System.Security.Cryptography.MD5CryptoServiceProvider Hash_AES = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            string encrypted = "";
-            try
-            {
-                byte[] hash = new byte[32];
-                byte[] temp = Hash_AES.ComputeHash(System.Text.ASCIIEncoding.ASCII.GetBytes(EncryptionKey));
-                Array.Copy(temp, 0, hash, 0, 16);
-                Array.Copy(temp, 0, hash, 15, 16);
-                AES.Key = hash;
-                AES.Mode = System.Security.Cryptography.CipherMode.ECB;
-                System.Security.Cryptography.ICryptoTransform DESEncrypter = AES.CreateEncryptor();
-                byte[] Buffer = System.Text.ASCIIEncoding.ASCII.GetBytes(txtString);
-                encrypted = Convert.ToBase64String(DESEncrypter.TransformFinalBlock(Buffer, 0, Buffer.Length));
-            }
-            catch (Exception ex)
-            {
-            }
-
-            return encrypted;
-        }
-
-        public  string DeCripTxt(string txtString)
-        {
-            System.Security.Cryptography.RijndaelManaged AES = new System.Security.Cryptography.RijndaelManaged();
-            System.Security.Cryptography.MD5CryptoServiceProvider Hash_AES = new System.Security.Cryptography.MD5CryptoServiceProvider();
-            string decrypted = "";
-            try
-            {
-                byte[] hash = new byte[32];
-                byte[] temp = Hash_AES.ComputeHash(System.Text.ASCIIEncoding.ASCII.GetBytes(EncryptionKey));
-                Array.Copy(temp, 0, hash, 0, 16);
-                Array.Copy(temp, 0, hash, 15, 16);
-                AES.Key = hash;
-                AES.Mode = System.Security.Cryptography.CipherMode.ECB;
-                System.Security.Cryptography.ICryptoTransform DESDecrypter = AES.CreateDecryptor();
-                byte[] Buffer = Convert.FromBase64String(txtString);
-                decrypted = System.Text.ASCIIEncoding.ASCII.GetString(DESDecrypter.TransformFinalBlock(Buffer, 0, Buffer.Length));
-            }
-            catch (Exception ex)
-            {
-            }
-
-            return decrypted;
-        }
+        
         #endregion
     }
 }

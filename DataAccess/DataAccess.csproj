@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CF_POLICY_CONFIG.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CF_SYSTEM_CONFIG.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="CommonDataAccess.cs" />
     <Compile Include="ERPSettingDataContext.Context.cs">
       <AutoGen>True</AutoGen>
@@ -67,6 +73,21 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ERPSettingDataContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MS_MENU.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MS_ROLE.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MS_ROLE_MENU.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MS_ROLE_USER.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MS_SYSTEM.cs">
+      <DependentUpon>ERPSettingDataContext.tt</DependentUpon>
     </Compile>
     <Compile Include="MS_USER.cs">
       <DependentUpon>ERPSettingDataContext.tt</DependentUpon>

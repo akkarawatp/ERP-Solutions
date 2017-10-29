@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Web.Configuration;
 using log4net;
+using Common.Utilities;
 
 ///<summary>
 /// Class Name : WebConfig
@@ -13,7 +14,7 @@ using log4net;
 /// Date         Author           Description
 /// ----         ------           -----------
 ///</remarks>
-namespace Common.Utilities
+namespace BusinessLogic.Config
 {
     public class WebConfig
     {

@@ -12,34 +12,26 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class MS_USER
+    public partial class MS_ROLE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public MS_USER()
+        public MS_ROLE()
         {
             this.MS_ROLE_USER = new HashSet<MS_ROLE_USER>();
+            this.MS_ROLE_MENU = new HashSet<MS_ROLE_MENU>();
         }
     
-        public long user_id { get; set; }
+        public long role_id { get; set; }
         public string created_by { get; set; }
         public System.DateTime creaed_date { get; set; }
         public string updated_by { get; set; }
         public Nullable<System.DateTime> updated_date { get; set; }
-        public string username { get; set; }
-        public string psswd { get; set; }
-        public string prefix_name { get; set; }
-        public string first_name { get; set; }
-        public string last_name { get; set; }
-        public string gender { get; set; }
-        public string organize_name { get; set; }
-        public string department_name { get; set; }
-        public string position_name { get; set; }
-        public Nullable<System.DateTime> last_login_time { get; set; }
-        public string force_change_psswd { get; set; }
-        public int login_fail_count { get; set; }
+        public string role_name { get; set; }
         public string active_status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MS_ROLE_USER> MS_ROLE_USER { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MS_ROLE_MENU> MS_ROLE_MENU { get; set; }
     }
 }
