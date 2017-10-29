@@ -194,6 +194,7 @@
     <Content Include="css\structure.css" />
     <Content Include="css\style.css" />
     <Content Include="css\summernote.css" />
+    <Content Include="css\themes.css" />
     <Content Include="css\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="css\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="css\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -352,6 +353,19 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="js\jquery-ui\jquery.ui.core.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.datepicker.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.draggable.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.droppable.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.mouse.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.position.js" />
+    <Content Include="js\jquery-ui\jquery.ui.resizable.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.selectable.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.slider.js" />
+    <Content Include="js\jquery-ui\jquery.ui.sortable.min.js" />
+    <Content Include="js\jquery-ui\jquery.ui.spinner.js" />
+    <Content Include="js\jquery-ui\jquery.ui.widget.min.js" />
+    <Content Include="js\jquery.min.js" />
     <Content Include="Log.config">
       <SubType>Designer</SubType>
     </Content>

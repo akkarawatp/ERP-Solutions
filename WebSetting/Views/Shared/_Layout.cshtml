@@ -12,30 +12,25 @@
     <!-- Apple devices fullscreen -->
     <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>ERP - @ViewBag.Title</title>
-    @*@Styles.Render("~/Content/bootstrap/base")*@
-    @Styles.Render("~/css/bootstrap.min.css")
-    <!-- Bootstrap responsive -->
-    @Styles.Render("~/css/bootstrap-responsive.min.css")
-
-    <!-- jQuery UI -->
-    @Styles.Render("~/css/plugins/jquery-ui/smoothness/jquery-ui.css")
-    @Styles.Render("~/css/plugins/jquery-ui/smoothness/jquery.ui.theme.css")
+    @Styles.Render("~/Content/bootstrap/base")
+    @Styles.Render("~/css/bootstrap-datepicker.min.css")
+    @Styles.Render("~/Content/font-awesome")
+    @Styles.Render("~/Content/select2")
+    @Styles.Render("~/css/summernote.css")
+    @*@Styles.Render("~/Content/css")*@
 
     @Styles.Render("~/css/style.css")
     @Styles.Render("~/css/themes.css")
 
-    <!-- jQuery -->
-    @Scripts.Render("~/js/jquery.min.js")
-    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.core.min.js")
-    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.widget.min.js")
-    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.mouse.min.js")
-    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.resizable.min.js")
-    @Scripts.Render("~/js/plugins/jquery-ui/jquery.ui.sortable.min.js")
 
-    @Scripts.Render("~/js/bootstrap.min.js")
-    @Scripts.Render("~/js/application.min.js")
-    @Scripts.Render("~/js/demonstration.min.js")
-    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/app")
+    @Scripts.Render("~/js/jquery-ui/jquery.ui.core.min.js")
+    @Scripts.Render("~/js/jquery-ui/jquery.ui.widget.min.js")
+    @Scripts.Render("~/js/jquery-ui/jquery.ui.mouse.min.js")
+    @Scripts.Render("~/js/jquery-ui/jquery.ui.resizable.min.js")
+    @Scripts.Render("~/js/jquery-ui/jquery.ui.sortable.min.js")
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -52,24 +47,10 @@
         @RenderSection("MainMenu")
     }
         
-    <div class="container-fluid nav-hidden" id="content">
-        <div id="main">
+    <div class="container-fluid" id="content">
+        <div id="main" style="margin-left:0px;">
             <div class="container-fluid">
-                <div class="nav-panel">
-                    <div class="pull-left">
-                        @RenderSection("Breadcrumb", required: false)
-                    </div>
-                </div>
-                <div class="clear"></div>
-
                 @RenderBody()
-            </div>
-
-            <div class="clearfix"></div>
-
-            <!-- Footer -->
-            <div id="footer">
-                @*@Html.Raw(ApplicationHelpers.GetCopyright())&nbsp;@ApplicationHelpers.GetDisplayDllLastUpdatedDate()*@
             </div>
         </div>
     </div>
@@ -77,65 +58,17 @@
     <div id="dvAlertMsg"></div>
     @{ Html.RenderPartial("_Antiforgery");  }
     <!-- /#wrapper -->
-    @*@Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/Scripts/select2.min.js")
-    @Scripts.Render("~/Scripts/Select2-locales/select2_locale_th.js")
-    @Scripts.Render("~/Scripts/summernote.min.js")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/js/select2.min.js")
+    @Scripts.Render("~/js/Select2-locales/select2_locale_th.js")
+    @Scripts.Render("~/js/summernote.min.js")
     @if (ViewBag.ShowThaiBuddhistCalendar == null)
     {
-        @Scripts.Render("~/Scripts/bootstrap-datepicker.min.js")
-        @Scripts.Render("~/Scripts/locales/bootstrap-datepicker.th.min.js")
+        @Scripts.Render("~/js/bootstrap-datepicker.min.js")
+        @Scripts.Render("~/js/locales/bootstrap-datepicker.th.min.js")
     }
-    @Scripts.Render("~/Scripts/tableHeadFixer.js")
-    @Scripts.Render("~/bundles/jqueryval")*@
-
-    <script>
-        //var $jq = jQuery.noConflict();
-
-        function doModal(placementId, heading, formContent, strSubmitFunc, btnText) {
-            hideModal(placementId);
-
-            var html = '<div id="modalWindow" class="modal fade" data-backdrop="static" data-keyboard="false">';
-            html += '<div class="modal-dialog">';
-            html += '<div class="modal-content">';
-            html += '<div class="modal-header">';
-            html += '<a class="close" data-dismiss="modal">×</a>';
-            html += '<h4>' + heading + '</h4>';
-            html += '</div>';
-            html += '<div class="modal-body">';
-            html += '<p>';
-            html += formContent;
-            html += '</p>';
-            html += '</div>';
-            html += '<div class="modal-footer">';
-            if (btnText != '') {
-                html += '<span class="btn btn-blue btn-xsmall btn-sm"';
-                html += ' onClick="' + strSubmitFunc + '">' + btnText;
-                html += '</span>';
-            }
-            html += '<span class="btn btn-gray btn-xsmall btn-sm" data-dismiss="modal">';
-            html += btnText != '' ? 'Cancel' : 'Close';
-            html += '</span>'; // close button
-            html += '</div>';  // content
-            html += '</div>';  // dialog
-            html += '</div>';  // footer
-            html += '</div>';  // modalWindow
-            $("#" + placementId).html(html);
-            $("#modalWindow").modal('show');
-        }
-
-        function hideModal(placementId) {
-            // Using a very general selector - this is because $('#modalDiv').hide
-            // will remove the modal window but not the mask
-            $('#' + placementId).modal('hide');
-            $('.modal-backdrop').remove();
-        }
-
-        function logout() {
-            document.getElementById('logoutForm').submit();
-        }
-    </script>
-
-    @RenderSection("masterjs", required: false)
+    @Scripts.Render("~/js/tableHeadFixer.js")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("FooterScript", required: false)
 </body>
 </html>
