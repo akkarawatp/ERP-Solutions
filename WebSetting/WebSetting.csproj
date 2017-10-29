@@ -183,6 +183,7 @@
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\font-awesome.css" />
     <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\font-style.css" />
     <Content Include="css\login.css" />
     <Content Include="css\select2-bootstrap\select2-bootstrap.css" />
     <Content Include="css\select2-bootstrap\select2-spinner.gif" />
@@ -400,7 +401,6 @@
     <Content Include="js\Select2-locales\select2_locale_th.js" />
     <Content Include="js\select2.js" />
     <Content Include="js\select2.min.js" />
-    <Content Include="js\sr.js" />
     <Content Include="js\summernote.min.js" />
     <Content Include="js\tableHeadFixer.js" />
     <None Include="js\_references.js" />
