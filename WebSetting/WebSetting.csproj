@@ -190,7 +190,6 @@
     <Content Include="css\select2-bootstrap\select2.css" />
     <Content Include="css\select2-bootstrap\select2.png" />
     <Content Include="css\select2-bootstrap\select2x2.png" />
-    <Content Include="css\Site.css" />
     <Content Include="css\structure.css" />
     <Content Include="css\style.css" />
     <Content Include="css\summernote.css" />

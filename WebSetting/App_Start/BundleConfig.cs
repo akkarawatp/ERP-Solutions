@@ -38,9 +38,9 @@ namespace WebSetting
                 .Include("~/js/bootstraptable/bootstrap-table-th-TH.min.js")
                 .Include("~/js/autoNumeric.min.js")
                 );
-            bundles.Add(new StyleBundle("~/Content/bootstrap/base").Include("~/css/bootstrap.min.css", "~/css/base/jquery-ui.css", "~/css/themes/base/jquery.ui.theme.css"));
+            //bundles.Add(new StyleBundle("~/Content/bootstrap/base").Include("~/css/bootstrap.css", "~/css/base/jquery-ui.css", "~/css/themes/base/jquery.ui.theme.css"));
             bundles.Add(new StyleBundle("~/Content/bootstrap/theme").Include("~/css/bootstrap-theme.min.css"));
-            bundles.Add(new StyleBundle("~/Content/font-awesome").Include("~/css/font-awesome.min.css"));
+            //bundles.Add(new StyleBundle("~/Content/font-awesome").Include("~/css/font-awesome.min.css"));
         }
 
         public static void AddDefaultIgnorePatterns(IgnoreList ignoreList)
