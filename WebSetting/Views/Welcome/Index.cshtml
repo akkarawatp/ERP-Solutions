@@ -13,30 +13,14 @@
 {
     @Html.Action("MainMenu", "MenuNavigator")
 }
+@section Breadcrumb
+{
+    <strong class="font-blue">@Resources.Lbl_MainMenu</strong>
+}
 
-<div class="page-header">
-    <div class="pull-left">
-        <h1>@Resources.Lbl_MainMenu</h1>
-    </div>
-</div>
-<div class="breadcrumbs">
-    <ul>
-        <li>
-            <a href="more-login.html">Home</a>
-            <i class="icon-angle-right"></i>
-        </li>
-        <li>
-            <a href="components-messages.html">Components</a>
-            <i class="icon-angle-right"></i>
-        </li>
-        <li>
-            <a href="components-tiles.html">Tiles</a>
-        </li>
-    </ul>
-</div>
-<div class="row-fluid">
-    <div class="span4"></div>
-    <div class="span4">
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
         <ul class="tiles">
             <li class="blue">
                 <a href="#">
@@ -55,6 +39,6 @@
             </li>
         </ul>
     </div>
-    <div class="span4"></div>
+    <div class="col-md-4"></div>
 </div>
 

@@ -22,7 +22,7 @@ namespace DataAccess
         public long role_id { get; set; }
         public long user_id { get; set; }
     
-        public virtual MS_ROLE MS_ROLE { get; set; }
         public virtual MS_USER MS_USER { get; set; }
+        public virtual MS_ROLE MS_ROLE { get; set; }
     }
 }

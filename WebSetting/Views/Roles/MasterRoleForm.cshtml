@@ -1,0 +1,134 @@
+﻿@using Common.Resources
+@model WebSetting.Models.RoleModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderScript
+{
+
+}
+
+@section MainMenu
+{
+    @Html.Action("MainMenu", "MenuNavigator")
+}
+
+@section Breadcrumb
+{
+    <strong class="font-blue">@Resources.Lbl_Master</strong>
+    <strong class="font-green-jungle">&rsaquo;&rsaquo; @Resources.Lbl_Role</strong>
+}
+
+<div class="form-horizontal">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h5 class="form-title">@ViewBag.Title</h5>
+    <hr class="dotted-line" />
+
+    <div class="bs-example">
+        <div class="row margin-top-15">
+            @Html.HiddenFor(m => m.roleID)
+            <div class="form-group">
+                <div class="col-sm-1">
+                    <label class="control-label left-label">Role Name <span class="require">*</span>:</label>
+                </div>
+                <div class="col-sm-5">
+                    @Html.TextBoxFor(m => m.roleName, new { @class = "form-control input-sm", @id = "txtRoleName", @maxlength = 500 })
+                    @Html.ValidationMessageFor(m => m.roleName)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-1">
+                    <label class="control-label left-label">สถานะ <span class="require">*</span>:</label>
+                </div>
+                <div class="col-sm-5">
+                    <select id="activeStatus" class="form-control input-sm">
+                        <option value="Y" selected="selected">Active</option>
+                        <option value="N">Inactive</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-6 text-right">
+                    <button id="btnSave" type="button" class="btn btn-sm btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
+                    <span id="btnBack" class="btn btn-sm btn-default"><i class="fa fa-times"></i> Cancel</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("_Antiforgery")
+@section FooterScript
+{
+    <script type="text/javascript">
+        $jq(document).ready(function () {
+            $jq('#btnBack').click(onBtnBackClick);
+            $jq('#btnSave').click(onBtnSaveClick);
+        });
+
+        function onBtnBackClick(event) {
+            event.preventDefault();
+            var msg = 'ต้องการยกเลิกการบันทึกข้อมูลใช่หรือไม่?';
+            if ($jq.trim(msg) != '') {
+                doModal('dvAlertMsg', 'Message Dialog', msg, 'closeMasterRoleForm()', 'Confirm');
+            }
+            return false;
+        }
+
+        function closeMasterRoleForm() {
+            location.replace('@Url.Action("List", "Roles")');
+        }
+
+        function onBtnSaveClick() {
+            var roleId = $jq("#roleID").val();
+            var roleName = $jq("#txtRoleName").val();
+            var activeStatus = $jq("#activeStatus").val();
+
+            if (roleName.trim() == "") {
+                var warningMsg = "กรุณากรอก Role Name";
+                doModal("dvAlertMsg", "Message Dialog", warningMsg, "", "");
+                return false;
+            }
+
+            $jq.ajax({
+                url: "@Url.Action("SaveRole","Roles")",
+                method: "POST",
+                data: {
+                    __RequestVerificationToken: getAntiForgeryToken(),
+                    roleId: roleId,
+                    roleName: roleName,
+                    activeStatus: activeStatus
+                },
+            })
+            .done(function (result) {
+                    if (typeof (result) == "string") {
+                        if (isLoginForm(result)) {
+                            location.replace('@FormsAuthentication.LoginUrl');
+                            return;
+                        }
+                    }
+                    if (result.RedirectUrl != undefined) {
+                        topLocation(result.RedirectUrl);
+                    } else {
+                        if (result.is_success) {
+                            alert(result.message);
+                            window.location = '@Url.Action("List", "Roles")';
+                        } else {
+                            var warningMsg = result.message;
+                            doModal("dvAlertMsg", "Message Dialog", warningMsg, "", "");
+                            return;
+                        }
+                    }
+                })
+                .fail(function() {
+
+                });
+        }
+    </script>
+}

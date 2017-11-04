@@ -2,9 +2,9 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using CSM.Business;
-using CSM.Entity;
-using CSM.Web.Models;
+using BusinessLogic;
+using Entity;
+using WebSetting.Models;
 using log4net;
 
 namespace Filters
@@ -12,8 +12,8 @@ namespace Filters
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
     public sealed class CheckUserRoleAttribute : ActionFilterAttribute, IDisposable
     {
+        CommonFacade _commonFacade = null;
         public int AccessRoles { get; set; }
-        private readonly ICommonFacade _commonFacade;
         private static readonly ILog Logger = LogManager.GetLogger(typeof(CheckUserRoleAttribute));
 
         public CheckUserRoleAttribute(string screenCode) : base()
@@ -32,25 +32,25 @@ namespace Filters
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            HttpSessionStateBase session = filterContext.HttpContext.Session;
-            UserIdentity id = (UserIdentity)HttpContext.Current.User.Identity;
-            UserEntity user = id.UserInfo;
+            //HttpSessionStateBase session = filterContext.HttpContext.Session;
+            //UserIdentity id = (UserIdentity)HttpContext.Current.User.Identity;
+            //UserEntity user = id.UserInfo;
 
-            if (session["sessionid"] != null && this.AccessRoles != 0 && (this.AccessRoles & user.RoleValue) == 0)
-            {
-                if (!filterContext.HttpContext.Request.IsAjaxRequest())
-                {
-                    filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "User" }, { "action", "AccessDenied" } });
-                    base.OnActionExecuting(filterContext);
-                }
-                else {
-                    filterContext.Result = new JsonResult
-                    {
-                        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-                        Data = new { Valid = false, RedirectUrl = UrlHelper.GenerateContentUrl("~/User/AccessDenied", filterContext.HttpContext) }
-                    };
-                }
-            }
+            //if (session["sessionid"] != null && this.AccessRoles != 0 && (this.AccessRoles & user.RoleValue) == 0)
+            //{
+            //    if (!filterContext.HttpContext.Request.IsAjaxRequest())
+            //    {
+            //        filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "controller", "User" }, { "action", "AccessDenied" } });
+            //        base.OnActionExecuting(filterContext);
+            //    }
+            //    else {
+            //        filterContext.Result = new JsonResult
+            //        {
+            //            JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+            //            Data = new { Valid = false, RedirectUrl = UrlHelper.GenerateContentUrl("~/User/AccessDenied", filterContext.HttpContext) }
+            //        };
+            //    }
+            //}
         }
 
         #region "IDisposable"
@@ -69,7 +69,7 @@ namespace Filters
             {
                 if (disposing)
                 {
-                    if (_commonFacade != null) { _commonFacade.Dispose(); }
+                    if (_commonFacade != null) { _commonFacade = null; }
                 }
             }
             _disposed = true;

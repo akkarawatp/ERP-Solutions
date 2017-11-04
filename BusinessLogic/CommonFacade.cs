@@ -289,22 +289,22 @@ namespace BusinessLogic
         //    return cloned;
         //}
 
-        //public int GetRoleValueByScreenCode(string screenCode)
-        //{
-        //    int roleValue = 0;
-        //    List<ScreenEntity> screenRoles = this.GetCacheScreenRoles();
+        public int GetRoleValueByScreenCode(string screenCode)
+        {
+            int roleValue = 0;
+            //List<ScreenEntity> screenRoles = this.GetCacheScreenRoles();
 
-        //    if (!string.IsNullOrWhiteSpace(screenCode) && screenRoles != null)
-        //    {
-        //        ScreenEntity screen = screenRoles.FirstOrDefault(x => x.ScreenCode.ToUpper(CultureInfo.InvariantCulture).Equals(screenCode.ToUpper(CultureInfo.InvariantCulture)));
-        //        if (screen != null)
-        //        {
-        //            roleValue = screen.Roles.Sum(x => x.RoleValue);
-        //        }
-        //    }
+            //if (!string.IsNullOrWhiteSpace(screenCode) && screenRoles != null)
+            //{
+            //    ScreenEntity screen = screenRoles.FirstOrDefault(x => x.ScreenCode.ToUpper(CultureInfo.InvariantCulture).Equals(screenCode.ToUpper(CultureInfo.InvariantCulture)));
+            //    if (screen != null)
+            //    {
+            //        roleValue = screen.Roles.Sum(x => x.RoleValue);
+            //    }
+            //}
 
-        //    return roleValue;
-        //}
+            return roleValue;
+        }
 
         //public List<MenuEntity> GetReportList(int roleValue)
         //{

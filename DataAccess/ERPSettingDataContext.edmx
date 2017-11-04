@@ -290,7 +290,6 @@
           <EntitySet Name="TB_LOGIN_HISTORY" EntityType="ERPSettingDataAccess.TB_LOGIN_HISTORY" />
           <EntitySet Name="TB_CHANGE_PSSWD_HISTORY" EntityType="ERPSettingDataAccess.TB_CHANGE_PSSWD_HISTORY" />
           <EntitySet Name="MS_MENU" EntityType="ERPSettingDataAccess.MS_MENU" />
-          <EntitySet Name="MS_ROLE" EntityType="ERPSettingDataAccess.MS_ROLE" />
           <EntitySet Name="MS_ROLE_MENU" EntityType="ERPSettingDataAccess.MS_ROLE_MENU" />
           <EntitySet Name="MS_ROLE_USER" EntityType="ERPSettingDataAccess.MS_ROLE_USER" />
           <EntitySet Name="MS_SYSTEM" EntityType="ERPSettingDataAccess.MS_SYSTEM" />
@@ -302,6 +301,13 @@
             <End Role="MS_MENU" EntitySet="MS_MENU" />
             <End Role="MS_ROLE_MENU" EntitySet="MS_ROLE_MENU" />
           </AssociationSet>
+          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_USER" Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER">
+            <End Role="MS_USER" EntitySet="MS_USER" />
+            <End Role="MS_ROLE_USER" EntitySet="MS_ROLE_USER" />
+          </AssociationSet>
+          <EntitySet Name="CF_POLICY_CONFIG" EntityType="ERPSettingDataAccess.CF_POLICY_CONFIG" />
+          <EntitySet Name="CF_SYSTEM_CONFIG" EntityType="ERPSettingDataAccess.CF_SYSTEM_CONFIG" />
+          <EntitySet Name="MS_ROLE" EntityType="ERPSettingDataAccess.MS_ROLE" />
           <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_ROLE" Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE">
             <End Role="MS_ROLE" EntitySet="MS_ROLE" />
             <End Role="MS_ROLE_USER" EntitySet="MS_ROLE_USER" />
@@ -310,12 +316,6 @@
             <End Role="MS_ROLE" EntitySet="MS_ROLE" />
             <End Role="MS_ROLE_MENU" EntitySet="MS_ROLE_MENU" />
           </AssociationSet>
-          <AssociationSet Name="FK_MS_ROLE__REFERENCE_MS_USER" Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER">
-            <End Role="MS_USER" EntitySet="MS_USER" />
-            <End Role="MS_ROLE_USER" EntitySet="MS_ROLE_USER" />
-          </AssociationSet>
-          <EntitySet Name="CF_POLICY_CONFIG" EntityType="ERPSettingDataAccess.CF_POLICY_CONFIG" />
-          <EntitySet Name="CF_SYSTEM_CONFIG" EntityType="ERPSettingDataAccess.CF_SYSTEM_CONFIG" />
         </EntityContainer>
         <EntityType Name="TB_LOGIN_HISTORY">
           <Key>
@@ -374,20 +374,6 @@
           <NavigationProperty Name="MS_SYSTEM" Relationship="ERPSettingDataAccess.FK_MS_MENU_REFERENCE_MS_SYSTE" FromRole="MS_MENU" ToRole="MS_SYSTEM" />
           <NavigationProperty Name="MS_ROLE_MENU" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_MENU" FromRole="MS_MENU" ToRole="MS_ROLE_MENU" />
         </EntityType>
-        <EntityType Name="MS_ROLE">
-          <Key>
-            <PropertyRef Name="role_id" />
-          </Key>
-          <Property Name="role_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="creaed_date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="updated_date" Type="DateTime" Precision="3" />
-          <Property Name="role_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="active_status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-          <NavigationProperty Name="MS_ROLE_USER" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" FromRole="MS_ROLE" ToRole="MS_ROLE_USER" />
-          <NavigationProperty Name="MS_ROLE_MENU" Relationship="ERPSettingDataAccess.FK_MS_ROLE1_REFERENCE_MS_ROLE" FromRole="MS_ROLE" ToRole="MS_ROLE_MENU" />
-        </EntityType>
         <EntityType Name="MS_ROLE_MENU">
           <Key>
             <PropertyRef Name="role_menu_id" />
@@ -417,8 +403,8 @@
           <Property Name="updated_date" Type="DateTime" Precision="3" />
           <Property Name="role_id" Type="Int64" Nullable="false" />
           <Property Name="user_id" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="MS_ROLE" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" FromRole="MS_ROLE_USER" ToRole="MS_ROLE" />
           <NavigationProperty Name="MS_USER" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER" FromRole="MS_ROLE_USER" ToRole="MS_USER" />
+          <NavigationProperty Name="MS_ROLE" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" FromRole="MS_ROLE_USER" ToRole="MS_ROLE" />
         </EntityType>
         <EntityType Name="MS_SYSTEM">
           <Key>
@@ -455,30 +441,6 @@
             </Principal>
             <Dependent Role="MS_ROLE_MENU">
               <PropertyRef Name="menu_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MS_ROLE__REFERENCE_MS_ROLE">
-          <End Type="ERPSettingDataAccess.MS_ROLE" Role="MS_ROLE" Multiplicity="1" />
-          <End Type="ERPSettingDataAccess.MS_ROLE_USER" Role="MS_ROLE_USER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MS_ROLE">
-              <PropertyRef Name="role_id" />
-            </Principal>
-            <Dependent Role="MS_ROLE_USER">
-              <PropertyRef Name="role_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MS_ROLE1_REFERENCE_MS_ROLE">
-          <End Type="ERPSettingDataAccess.MS_ROLE" Role="MS_ROLE" Multiplicity="1" />
-          <End Type="ERPSettingDataAccess.MS_ROLE_MENU" Role="MS_ROLE_MENU" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MS_ROLE">
-              <PropertyRef Name="role_id" />
-            </Principal>
-            <Dependent Role="MS_ROLE_MENU">
-              <PropertyRef Name="role_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -523,6 +485,44 @@
           <Property Name="db_prodction" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="db_planning" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="MS_ROLE">
+          <Key>
+            <PropertyRef Name="role_id" />
+          </Key>
+          <Property Name="role_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="created_by" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="creaed_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="updated_by" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="updated_date" Type="DateTime" Precision="3" />
+          <Property Name="role_name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="active_status" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="MS_ROLE_USER" Relationship="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" FromRole="MS_ROLE" ToRole="MS_ROLE_USER" />
+          <NavigationProperty Name="MS_ROLE_MENU" Relationship="ERPSettingDataAccess.FK_MS_ROLE1_REFERENCE_MS_ROLE" FromRole="MS_ROLE" ToRole="MS_ROLE_MENU" />
+        </EntityType>
+        <Association Name="FK_MS_ROLE__REFERENCE_MS_ROLE">
+          <End Type="ERPSettingDataAccess.MS_ROLE" Role="MS_ROLE" Multiplicity="1" />
+          <End Type="ERPSettingDataAccess.MS_ROLE_USER" Role="MS_ROLE_USER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_ROLE">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_USER">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MS_ROLE1_REFERENCE_MS_ROLE">
+          <End Type="ERPSettingDataAccess.MS_ROLE" Role="MS_ROLE" Multiplicity="1" />
+          <End Type="ERPSettingDataAccess.MS_ROLE_MENU" Role="MS_ROLE_MENU" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MS_ROLE">
+              <PropertyRef Name="role_id" />
+            </Principal>
+            <Dependent Role="MS_ROLE_MENU">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -611,19 +611,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MS_ROLE">
-            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_ROLE">
-              <MappingFragment StoreEntitySet="MS_ROLE">
-                <ScalarProperty Name="active_status" ColumnName="active_status" />
-                <ScalarProperty Name="role_name" ColumnName="role_name" />
-                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
-                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
-                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
-                <ScalarProperty Name="created_by" ColumnName="created_by" />
-                <ScalarProperty Name="role_id" ColumnName="role_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MS_ROLE_MENU">
             <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_ROLE_MENU">
               <MappingFragment StoreEntitySet="MS_ROLE_MENU">
@@ -696,6 +683,19 @@
                 <ScalarProperty Name="created_date" ColumnName="created_date" />
                 <ScalarProperty Name="created_by" ColumnName="created_by" />
                 <ScalarProperty Name="system_config_id" ColumnName="system_config_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MS_ROLE">
+            <EntityTypeMapping TypeName="ERPSettingDataAccess.MS_ROLE">
+              <MappingFragment StoreEntitySet="MS_ROLE">
+                <ScalarProperty Name="active_status" ColumnName="active_status" />
+                <ScalarProperty Name="role_name" ColumnName="role_name" />
+                <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+                <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+                <ScalarProperty Name="creaed_date" ColumnName="creaed_date" />
+                <ScalarProperty Name="created_by" ColumnName="created_by" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

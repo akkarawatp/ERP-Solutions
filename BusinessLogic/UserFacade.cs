@@ -13,11 +13,9 @@ namespace BusinessLogic
 {
     public class UserFacade
     {
-        //private CommonFacade _commonFacade;
         private readonly ERPSettingDataContext _context;
-        //private UserDataAccess _userDataAccess;
         private LogMessageBuilder _logMsg = new LogMessageBuilder();
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(CommonFacade));
+        private static readonly ILog Logger = LogManager.GetLogger(typeof(UserFacade));
         public UserFacade()
         {
             _context = new ERPSettingDataContext();
