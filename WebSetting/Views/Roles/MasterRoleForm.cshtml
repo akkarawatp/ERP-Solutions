@@ -46,10 +46,7 @@
                     <label class="control-label left-label">สถานะ <span class="require">*</span>:</label>
                 </div>
                 <div class="col-sm-5">
-                    <select id="activeStatus" class="form-control input-sm">
-                        <option value="Y" selected="selected">Active</option>
-                        <option value="N">Inactive</option>
-                    </select>
+                    @Html.DropDownListFor(m => m.activeStatus, Model.ActiveStatusList, new {@id= "activeStatus", @class = "form-control input-sm" })
                 </div>
             </div>
         </div>

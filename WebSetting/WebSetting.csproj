@@ -485,6 +485,10 @@
       <Project>{93ab70e5-fede-4f10-bf19-00b070b17b57}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MvcPaging\MvcPaging.csproj">
+      <Project>{17f3e57e-072c-4977-93d8-2fcf739769da}</Project>
+      <Name>MvcPaging</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

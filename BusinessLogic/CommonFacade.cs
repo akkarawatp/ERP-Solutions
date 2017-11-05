@@ -12,16 +12,6 @@ using Entity;
 using log4net;
 using System.Globalization;
 
-///<summary>
-/// Class Name : CommonFacade
-/// Purpose    : -
-/// Author     : Neda Peyrone
-///</summary>
-///<remarks>
-/// Change History:
-/// Date         Author           Description
-/// ----         ------           -----------
-///</remarks>
 namespace BusinessLogic
 {
     public class CommonFacade 
@@ -36,24 +26,24 @@ namespace BusinessLogic
             _context = new ERPSettingDataContext();
         }
 
-        //public IDictionary<string, string> GetStatusSelectList()
-        //{
-        //    return this.GetStatusSelectList(null);
-        //}
+        public IDictionary<string, string> GetStatusSelectList()
+        {
+            return this.GetStatusSelectList(null);
+        }
 
-        //public IDictionary<string, string> GetStatusSelectList(string textName, int? textValue = null)
-        //{
-        //    IDictionary<string, string> dic = new Dictionary<string, string>();
+        public IDictionary<string, string> GetStatusSelectList(string textName, int? textValue = null)
+        {
+            IDictionary<string, string> dic = new Dictionary<string, string>();
 
-        //    if (!string.IsNullOrWhiteSpace(textName))
-        //    {
-        //        dic.Add(textValue.ConvertToString(), textName);
-        //    }
+            if (!string.IsNullOrWhiteSpace(textName))
+            {
+                dic.Add(textValue.ConvertToString(), textName);
+            }
 
-        //    dic.Add(Constants.ApplicationStatus.Active.ToString(CultureInfo.InvariantCulture), Resource.Ddl_Status_Active);
-        //    dic.Add(Constants.ApplicationStatus.Inactive.ToString(CultureInfo.InvariantCulture), Resource.Ddl_Status_Inactive);
-        //    return dic;
-        //}
+            dic.Add(Constants.ApplicationStatus.Active.ToString(CultureInfo.InvariantCulture), Resources.Ddl_Status_Active);
+            dic.Add(Constants.ApplicationStatus.Inactive.ToString(CultureInfo.InvariantCulture), Resources.Ddl_Status_Inactive);
+            return dic;
+        }
 
         //public List<DocumentTypeEntity> GetActiveDocumentTypes(int documentCategory)
         //{

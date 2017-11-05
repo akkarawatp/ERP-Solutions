@@ -71,10 +71,13 @@
 @section FooterScript
 {
     <script type="text/javascript">
+        var searchFilter;
+        var successFilter;
         var pageSize = 20; // for autocomplete
-        var expandValue = 0;
 
         $jq(document).ready(function () {
+            initializeSearchFilter();
+
             $jq("#form1").keypress(function (e) {
                 var kCode = e.keyCode || e.charCode; //for cross browser
                 if (kCode == 13) {
@@ -89,6 +92,9 @@
             $jq("#btnSearch").click(function (e) {
                 e.preventDefault();
                 clearServerErrors();
+
+                searchFilter.RoleName = $jq("#txtSearchRoleName").val();
+
 
                 loadData();
                 return false;
@@ -112,68 +118,60 @@
             });
         });
 
-        @*function initializeSearchFilter() {
+        function initializeSearchFilter() {
             searchFilter = {
-            FirstName: $jq("#txtFirstName").val(),
-            LastName: $jq("#txtLastName").val(),
-            CardNo: $jq("#txtCardNo").val(),
-            AccountNo: $jq("#txtAccountNo").val(),
-            PhoneNo: $jq("#txtPhoneNo").val(),
-            CustomerType: $jq("#ddlCustomerType").val(),
-            Registration: $jq("#txtRegistration").val(),
-            Product: $jq("#ddlCustomerProduct").val(),
-            //Grade: $jq("#txtGrade").val(),
-            //BranchName: $jq("#txtBranchName").val(),
-            //Status: $jq("#ddlStatus").val(),
-            PageNo: '@Model.SearchFilter.PageNo',
-            PageSize: '@Model.SearchFilter.PageSize',
-            SortField: '@Model.SearchFilter.SortField',
-            SortOrder: '@Model.SearchFilter.SortOrder'
+                RoleName: $jq("#txtSearchRoleName").val(),
+                PageNo: '@Model.SearchFilter.PageNo',
+                PageSize: '@Model.SearchFilter.PageSize',
+                SortField: '@Model.SearchFilter.SortField',
+                SortOrder: '@Model.SearchFilter.SortOrder'
             };
             successFilter = searchFilter;
-        };*@
+        };
 
+        function onEditClick(roleId) {
+            var actionUrl = '@Url.Action("EditRole", "Roles")';
+            $jq('#dvTarget').html('');
+            var input = $jq("<input>").attr("type", "hidden").attr("name", "roleId").val(roleId);
+            $jq('#dvTarget').append('<form action="' + actionUrl + '" method="POST" class="hidden"></form>');
+            $jq('#dvTarget form').append($jq(input));
+            $jq('#dvTarget form').submit();
+        }
 
         function initializePaging() {
-        $jq("#dvSearchResult .input-page").change(function (event) {
-            searchFilter = successFilter;
-            searchFilter.PageNo = $jq(this).val();
-            loadData();
-            return false;
-        }).keypress(function (event) {
-            return validateDigit(event);
-        });
+            $jq("#dvSearchResult .input-page").change(function (event) {
+                searchFilter = successFilter;
+                searchFilter.PageNo = $jq(this).val();
+                loadData();
+                return false;
+            }).keypress(function (event) {
+                return validateDigit(event);
+            });
 
-        $jq("#dvSearchResult #pagesizelist").change(function (event) {
-            searchFilter = successFilter;
-            searchFilter.PageNo = "1";
-            searchFilter.PageSize = $jq(this).val();
-            loadData();
-            return false;
-        });
+            $jq("#dvSearchResult #pagesizelist").change(function (event) {
+                searchFilter = successFilter;
+                searchFilter.PageNo = "1";
+                searchFilter.PageSize = $jq(this).val();
+                loadData();
+                return false;
+            });
 
-        $jq('#dvSearchResult .pagination ul li a').on('click', function (event) {
-            searchFilter = successFilter;
-            searchFilter.PageNo = getUrlParameter($jq(this).attr("href"), "page");
-            loadData();
-            return false;
-        });
-
-        try {
-            $jq("#tblCustomerList").tableHeadFixer({ "head": false, "left": 3 });
-        }
-        catch (e) { }
-    };
+            $jq('#dvSearchResult .pagination ul li a').on('click', function (event) {
+                searchFilter = successFilter;
+                searchFilter.PageNo = getUrlParameter($jq(this).attr("href"), "page");
+                loadData();
+                return false;
+            });
+        };
 
         function loadData() {
 
-            if ($jq("#txtSearchRoleName").val()=="") {
+            if (searchFilter.RoleName == "") {
                 var warningMsg = '@Resources.Msg_EnteredAtLeastOneCriteria';
                 doModal('dvAlertMsg', 'Message Dialog', warningMsg, '', '');
                 return false;
             }
 
-            var searchFilter = { 'roleName': $jq("#txtSearchRoleName").val() };
             $jq.ajax({
                 url: '@Url.Action("SearchRole", "Roles")',
                 type: "POST",
@@ -183,7 +181,7 @@
                 success: function (result) {
                     if (result.Valid == null) {
                         $jq("#dvSearchResult").html('');
-                        //successFilter = searchFilter;
+                        successFilter = searchFilter;
                         $jq("#dvSearchResult").html(result);
                         initializePaging();
                     } else {
