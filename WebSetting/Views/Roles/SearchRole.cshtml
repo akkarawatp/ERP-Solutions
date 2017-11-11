@@ -17,8 +17,8 @@
 
 @section Breadcrumb
 {
-    <strong class="font-blue">@Resources.Lbl_Master</strong>
-    <strong class="font-green-jungle">&rsaquo;&rsaquo; @Resources.Lbl_Role</strong>
+    <strong class="font-blue">@Resources.Title_Master</strong>
+    <strong class="font-green-jungle">&rsaquo;&rsaquo; @Resources.Title_Role</strong>
 }
 
 @using (Html.BeginForm("SearchRoles", "Roles", FormMethod.Post, new { @class = "form-horizontal", @id = "form1", @DefaultButton = "btnSearch" }))
@@ -62,7 +62,6 @@
     </div>
     <div class="clear"></div>
 
-    <div class="clear"></div>
     <div id="dvSearchResult">
     </div>
 }
@@ -77,6 +76,7 @@
 
         $jq(document).ready(function () {
             initializeSearchFilter();
+            loadData();
 
             $jq("#form1").keypress(function (e) {
                 var kCode = e.keyCode || e.charCode; //for cross browser
@@ -95,14 +95,12 @@
 
                 searchFilter.RoleName = $jq("#txtSearchRoleName").val();
 
-
                 loadData();
                 return false;
             });
 
-            $jq("#btnReset").click(function (e) {
+            $jq("#btnClear").click(function (e) {
                 e.preventDefault();
-                alert("Reset Click");
                 $jq("#dvForm input[type='text'],#dvForm select").val('');
                 $jq("#dvSearchResult").html('');
                 clearServerErrors();
@@ -166,11 +164,11 @@
 
         function loadData() {
 
-            if (searchFilter.RoleName == "") {
+            @*if (searchFilter.RoleName == "") {
                 var warningMsg = '@Resources.Msg_EnteredAtLeastOneCriteria';
                 doModal('dvAlertMsg', 'Message Dialog', warningMsg, '', '');
                 return false;
-            }
+            }*@
 
             $jq.ajax({
                 url: '@Url.Action("SearchRole", "Roles")',

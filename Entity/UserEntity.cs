@@ -1,5 +1,6 @@
 ﻿using System;
 using Common.Utilities;
+using Entity.Common;
 
 namespace Entity
 {
@@ -7,14 +8,14 @@ namespace Entity
     {
         public long UserId { get; set; }
         public DateTime? CreatedDate { get; set; }
-        public DateTime? Updateddate { get; set; }
+        public DateTime? UpdatedDate { get; set; }
         public string CreatedBy { get; set; }
         public string UpdatedBy { get; set; }
         public string Username { get; set; }
         public string Psswd { get; set; }
         public string PrefixName { get; set; }
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Gender { get; set; }
         public string OrganizeName { get; set; }
         public string DepartmentName { get; set; }
@@ -31,12 +32,23 @@ namespace Entity
                     ret = this.PrefixName.NullSafeTrim();
                 }
 
-                ret += this.Firstname.NullSafeTrim() + " " + this.Lastname.NullSafeTrim();
+                ret += this.FirstName.NullSafeTrim() + " " + this.LastName.NullSafeTrim();
                 return ret;
             }
 
         }
 
         public long RoleIdValue { get; set; }
+    }
+
+    public class UserSearchFilter : Pager
+    {
+        public string Username { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string OrganizeName { get; set; }
+        public string DepartmentName { get; set; }
+        public string PositionName { get; set; }
+        public string ActiveStatus { get; set; }
     }
 }

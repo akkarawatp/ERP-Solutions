@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Globalization;
+using LinqKit;
 using Common.Resources;
 using Common.Utilities;
 using DataAccess;
@@ -24,10 +25,12 @@ namespace BusinessLogic
             _context = new ERPSettingDataContext();
         }
 
-        public IEnumerable<RoleEntity> getRoleList(RolesSearchFilter SearchFilter)
+        public IEnumerable<RoleEntity> searchRoleList(RolesSearchFilter SearchFilter)
         {
-            var query = from r in _context.MS_ROLE
-                        where (!SearchFilter.RoleName.Equals("") && r.role_name.Contains(SearchFilter.RoleName.Trim()))
+            var whr = PredicateBuilder.True<MS_ROLE>();
+            if (SearchFilter.RoleName != null) whr = whr.And(r => r.role_name.Contains(SearchFilter.RoleName.Trim()));
+
+            var query = from r in _context.MS_ROLE.AsExpandable().Where(whr)
                         select new RoleEntity
                         {
                             RoleId = r.role_id,

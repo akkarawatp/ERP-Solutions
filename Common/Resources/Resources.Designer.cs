@@ -97,128 +97,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ทั้งหมด.
-        /// </summary>
-        public static string Ddl_Channel_All {
-            get {
-                return ResourceManager.GetString("Ddl_Channel_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ทั้งหมด.
-        /// </summary>
-        public static string Ddl_CustomerProduct_All {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerProduct_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Funding.
-        /// </summary>
-        public static string Ddl_CustomerProduct_Funding {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerProduct_Funding", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to HP.
-        /// </summary>
-        public static string Ddl_CustomerProduct_HP {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerProduct_HP", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Insurance.
-        /// </summary>
-        public static string Ddl_CustomerProduct_Insurance {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerProduct_Insurance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Loan.
-        /// </summary>
-        public static string Ddl_CustomerProduct_Loan {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerProduct_Loan", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ทั้งหมด.
-        /// </summary>
-        public static string Ddl_CustomerType_All {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerType_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Customer.
-        /// </summary>
-        public static string Ddl_CustomerType_Customer {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerType_Customer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Employee.
-        /// </summary>
-        public static string Ddl_CustomerType_Employee {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerType_Employee", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prospect.
-        /// </summary>
-        public static string Ddl_CustomerType_Prospect {
-            get {
-                return ResourceManager.GetString("Ddl_CustomerType_Prospect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ทั้งหมด.
-        /// </summary>
-        public static string Ddl_Module_All {
-            get {
-                return ResourceManager.GetString("Ddl_Module_All", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to -- กรุณาระบุ --.
         /// </summary>
         public static string Ddl_PleaseSelect {
             get {
                 return ResourceManager.GetString("Ddl_PleaseSelect", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Due.
-        /// </summary>
-        public static string Ddl_Sla_Due {
-            get {
-                return ResourceManager.GetString("Ddl_Sla_Due", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OverDue.
-        /// </summary>
-        public static string Ddl_Sla_OverDue {
-            get {
-                return ResourceManager.GetString("Ddl_Sla_OverDue", resourceCulture);
             }
         }
         
@@ -295,42 +178,6 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Active.
-        /// </summary>
-        public static string Emp_Status_Active {
-            get {
-                return ResourceManager.GetString("Emp_Status_Active", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Termiated.
-        /// </summary>
-        public static string Emp_Status_Termiate {
-            get {
-                return ResourceManager.GetString("Emp_Status_Termiate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to From SR Status ต้องไม่ซ้ำกับ To SR Staus.
-        /// </summary>
-        public static string Error_FromStatus_ToStatus {
-            get {
-                return ResourceManager.GetString("Error_FromStatus_ToStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to สัญญาที่บันทึกซ้ำกับข้อมูลที่มีอยู่แล้ว กรุณาเลือกสัญญาใหม่.
-        /// </summary>
-        public static string Error_SaveDuplicateContact {
-            get {
-                return ResourceManager.GetString("Error_SaveDuplicateContact", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to บันทึกข้อมูลไม่สำเร็จ.
         /// </summary>
         public static string Error_SaveFailed {
@@ -358,15 +205,6 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to มีการใช้งาน URL ที่ระบุ กรุณาตรวจอสอบข้อมูลใหม่.
-        /// </summary>
-        public static string Error_SaveUrl {
-            get {
-                return ResourceManager.GetString("Error_SaveUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ไม่สามารถเชื่อมต่อกับระบบได้ กรุณาตรวจสอบอีกครั้ง.
         /// </summary>
         public static string Error_System {
@@ -376,56 +214,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ได้มีการ Close Job ที่เลือกแล้ว กรุณาตรวจสอบข้อมูลใหม่.
-        /// </summary>
-        public static string Error_UpdateFailedDuplicate {
-            get {
-                return ResourceManager.GetString("Error_UpdateFailedDuplicate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to เบอร์โทรศัพท์ #1.
-        /// </summary>
-        public static string Lb_PhoneNo_1 {
-            get {
-                return ResourceManager.GetString("Lb_PhoneNo_1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to เบอร์โทรศัพท์ #2.
-        /// </summary>
-        public static string Lb_PhoneNo_2 {
-            get {
-                return ResourceManager.GetString("Lb_PhoneNo_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to เบอร์โทรศัพท์ #3.
-        /// </summary>
-        public static string Lb_PhoneNo_3 {
-            get {
-                return ResourceManager.GetString("Lb_PhoneNo_3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You are not allowed to access this part of the site.&lt;br /&gt;Please contact system administrator or IT support for assistance..
         /// </summary>
         public static string Lbl_AccessDenied {
             get {
                 return ResourceManager.GetString("Lbl_AccessDenied", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to เลขที่บัญชี/สัญญา.
-        /// </summary>
-        public static string Lbl_AccountNo {
-            get {
-                return ResourceManager.GetString("Lbl_AccountNo", resourceCulture);
             }
         }
         
@@ -493,7 +286,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subscription ID.
+        ///   Looks up a localized string similar to เลขที่บัตร ปชช.
         /// </summary>
         public static string Lbl_CardNo {
             get {
@@ -502,20 +295,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Subscription ID.
+        ///   Looks up a localized string similar to เลขที่หนังสือเดินทาง.
         /// </summary>
         public static string Lbl_CardNo_Passport {
             get {
                 return ResourceManager.GetString("Lbl_CardNo_Passport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to CASA Account Detail.
-        /// </summary>
-        public static string Lbl_CASAAccountDetail {
-            get {
-                return ResourceManager.GetString("Lbl_CASAAccountDetail", resourceCulture);
             }
         }
         
@@ -529,60 +313,6 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Commu Description.
-        /// </summary>
-        public static string Lbl_CommDesc {
-            get {
-                return ResourceManager.GetString("Lbl_CommDesc", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ชื่อ.
-        /// </summary>
-        public static string Lbl_CommFirstname {
-            get {
-                return ResourceManager.GetString("Lbl_CommFirstname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Commu Name.
-        /// </summary>
-        public static string Lbl_CommName {
-            get {
-                return ResourceManager.GetString("Lbl_CommName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Communication Pool.
-        /// </summary>
-        public static string Lbl_CommPool {
-            get {
-                return ResourceManager.GetString("Lbl_CommPool", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to นามสกุล.
-        /// </summary>
-        public static string Lbl_CommSurname {
-            get {
-                return ResourceManager.GetString("Lbl_CommSurname", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Communication Pool Information.
-        /// </summary>
-        public static string Lbl_CommunicationPoolInformation {
-            get {
-                return ResourceManager.GetString("Lbl_CommunicationPoolInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string Lbl_ConfirmPasswd {
@@ -592,16 +322,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to เนื้อหา.
-        /// </summary>
-        public static string Lbl_Content {
-            get {
-                return ResourceManager.GetString("Lbl_Content", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copyright &amp;copy; {0}{1} Kiatnakin Bank PLC.
+        ///   Looks up a localized string similar to Copyright &amp;copy; {0}{1}.
         /// </summary>
         public static string Lbl_Copyright {
             get {
@@ -655,60 +376,6 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Edit Comm. Pool Configuration.
-        /// </summary>
-        public static string Lbl_EditCommPoolConfiguration {
-            get {
-                return ResourceManager.GetString("Lbl_EditCommPoolConfiguration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit Configuration URL.
-        /// </summary>
-        public static string Lbl_EditConfigUrl {
-            get {
-                return ResourceManager.GetString("Lbl_EditConfigUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit Contact Relationship.
-        /// </summary>
-        public static string Lbl_EditContactRelationship {
-            get {
-                return ResourceManager.GetString("Lbl_EditContactRelationship", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit Customer.
-        /// </summary>
-        public static string Lbl_EditCustomer {
-            get {
-                return ResourceManager.GetString("Lbl_EditCustomer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit News &amp; Announcement.
-        /// </summary>
-        public static string Lbl_EditNewsAnnouncement {
-            get {
-                return ResourceManager.GetString("Lbl_EditNewsAnnouncement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Edit SR Status.
-        /// </summary>
-        public static string Lbl_EditSRStatus {
-            get {
-                return ResourceManager.GetString("Lbl_EditSRStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to วันที่มีผล.
         /// </summary>
         public static string Lbl_EffectiveDate {
@@ -727,7 +394,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to รหัสพนักงานธนาคาร.
+        ///   Looks up a localized string similar to รหัสพนักงาน.
         /// </summary>
         public static string Lbl_EmployeeCode {
             get {
@@ -763,20 +430,20 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ชื่อ.
+        /// </summary>
+        public static string Lbl_FirstName {
+            get {
+                return ResourceManager.GetString("Lbl_FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string Lbl_FirstNameEnglish {
             get {
                 return ResourceManager.GetString("Lbl_FirstNameEnglish", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ชื่อลูกค้า.
-        /// </summary>
-        public static string Lbl_FirstNameThai {
-            get {
-                return ResourceManager.GetString("Lbl_FirstNameThai", resourceCulture);
             }
         }
         
@@ -790,20 +457,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to From SR Status.
+        ///   Looks up a localized string similar to ชื่อลูกค้า.
         /// </summary>
-        public static string Lbl_FromSRStatus {
+        public static string Lbl_FirstNameThai_Customer {
             get {
-                return ResourceManager.GetString("Lbl_FromSRStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ผู้ค้ำประกัน.
-        /// </summary>
-        public static string Lbl_Guarantor {
-            get {
-                return ResourceManager.GetString("Lbl_Guarantor", resourceCulture);
+                return ResourceManager.GetString("Lbl_FirstNameThai_Customer", resourceCulture);
             }
         }
         
@@ -835,38 +493,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Comm. Pool.
+        ///   Looks up a localized string similar to นามสกุล.
         /// </summary>
-        public static string Lbl_JobCommPool {
+        public static string Lbl_LastName {
             get {
-                return ResourceManager.GetString("Lbl_JobCommPool", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Done.
-        /// </summary>
-        public static string Lbl_JobStatusDone {
-            get {
-                return ResourceManager.GetString("Lbl_JobStatusDone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Not Start.
-        /// </summary>
-        public static string Lbl_JobStatusOpen {
-            get {
-                return ResourceManager.GetString("Lbl_JobStatusOpen", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to On process.
-        /// </summary>
-        public static string Lbl_JobStatusRefer {
-            get {
-                return ResourceManager.GetString("Lbl_JobStatusRefer", resourceCulture);
+                return ResourceManager.GetString("Lbl_LastName", resourceCulture);
             }
         }
         
@@ -880,15 +511,6 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to นามสกุลลูกค้า.
-        /// </summary>
-        public static string Lbl_LastNameThai {
-            get {
-                return ResourceManager.GetString("Lbl_LastNameThai", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to นามสกุลผู้ติดต่อ.
         /// </summary>
         public static string Lbl_LastNameThai_Contact {
@@ -898,92 +520,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loan Account Detail.
+        ///   Looks up a localized string similar to นามสกุลลูกค้า.
         /// </summary>
-        public static string Lbl_LoanAccountDetail {
+        public static string Lbl_LastNameThai_Customer {
             get {
-                return ResourceManager.GetString("Lbl_LoanAccountDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to เมนูหลัก.
-        /// </summary>
-        public static string Lbl_MainMenu {
-            get {
-                return ResourceManager.GetString("Lbl_MainMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Customer&apos;s Note.
-        /// </summary>
-        public static string Lbl_ManageAdminNote {
-            get {
-                return ResourceManager.GetString("Lbl_ManageAdminNote", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Master.
-        /// </summary>
-        public static string Lbl_Master {
-            get {
-                return ResourceManager.GetString("Lbl_Master", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New Comm. Pool Configuration.
-        /// </summary>
-        public static string Lbl_NewCommPoolConfiguration {
-            get {
-                return ResourceManager.GetString("Lbl_NewCommPoolConfiguration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New Configuration URL.
-        /// </summary>
-        public static string Lbl_NewConfigUrl {
-            get {
-                return ResourceManager.GetString("Lbl_NewConfigUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New Contact Relationship.
-        /// </summary>
-        public static string Lbl_NewContactRelationship {
-            get {
-                return ResourceManager.GetString("Lbl_NewContactRelationship", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New Customer.
-        /// </summary>
-        public static string Lbl_NewCustomer {
-            get {
-                return ResourceManager.GetString("Lbl_NewCustomer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New News &amp; Announcement.
-        /// </summary>
-        public static string Lbl_NewNewsAnnouncement {
-            get {
-                return ResourceManager.GetString("Lbl_NewNewsAnnouncement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New SR Status.
-        /// </summary>
-        public static string Lbl_NewSRStatus {
-            get {
-                return ResourceManager.GetString("Lbl_NewSRStatus", resourceCulture);
+                return ResourceManager.GetString("Lbl_LastNameThai_Customer", resourceCulture);
             }
         }
         
@@ -1141,110 +682,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Role.
+        ///   Looks up a localized string similar to Role Name.
         /// </summary>
-        public static string Lbl_Role {
+        public static string Lbl_RoleName {
             get {
-                return ResourceManager.GetString("Lbl_Role", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to รหัสเจ้าหน้าที่การตลาด.
-        /// </summary>
-        public static string Lbl_SaleCode {
-            get {
-                return ResourceManager.GetString("Lbl_SaleCode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Audit Log &amp; Batch Monitoring.
-        /// </summary>
-        public static string Lbl_SearchAuditLogBatchMonitoring {
-            get {
-                return ResourceManager.GetString("Lbl_SearchAuditLogBatchMonitoring", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Comm. Pool Configuration.
-        /// </summary>
-        public static string Lbl_SearchCommPoolConfiguration {
-            get {
-                return ResourceManager.GetString("Lbl_SearchCommPoolConfiguration", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Communication Pool.
-        /// </summary>
-        public static string Lbl_SearchCommunicationPool {
-            get {
-                return ResourceManager.GetString("Lbl_SearchCommunicationPool", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Configuration URL.
-        /// </summary>
-        public static string Lbl_SearchConfigUrl {
-            get {
-                return ResourceManager.GetString("Lbl_SearchConfigUrl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Contact Relationship.
-        /// </summary>
-        public static string Lbl_SearchContactRelationship {
-            get {
-                return ResourceManager.GetString("Lbl_SearchContactRelationship", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Customer.
-        /// </summary>
-        public static string Lbl_SearchCustomer {
-            get {
-                return ResourceManager.GetString("Lbl_SearchCustomer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search Customer&apos;s Note.
-        /// </summary>
-        public static string Lbl_SearchCustomerNote {
-            get {
-                return ResourceManager.GetString("Lbl_SearchCustomerNote", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search News &amp; Announcement.
-        /// </summary>
-        public static string Lbl_SearchNewsAnnouncement {
-            get {
-                return ResourceManager.GetString("Lbl_SearchNewsAnnouncement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search SR Status.
-        /// </summary>
-        public static string Lbl_SearchSRStatus {
-            get {
-                return ResourceManager.GetString("Lbl_SearchSRStatus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Service Request.
-        /// </summary>
-        public static string Lbl_ServiceRequest {
-            get {
-                return ResourceManager.GetString("Lbl_ServiceRequest", resourceCulture);
+                return ResourceManager.GetString("Lbl_RoleName", resourceCulture);
             }
         }
         
@@ -1276,29 +718,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TD Account Detail.
-        /// </summary>
-        public static string Lbl_TDAccountDetail {
-            get {
-                return ResourceManager.GetString("Lbl_TDAccountDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Subject.
         /// </summary>
         public static string Lbl_Topic {
             get {
                 return ResourceManager.GetString("Lbl_Topic", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To SRS tatus.
-        /// </summary>
-        public static string Lbl_ToSRStatus {
-            get {
-                return ResourceManager.GetString("Lbl_ToSRStatus", resourceCulture);
             }
         }
         
@@ -1321,15 +745,6 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User.
-        /// </summary>
-        public static string Lbl_User {
-            get {
-                return ResourceManager.GetString("Lbl_User", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
         public static string Lbl_Username {
@@ -1339,38 +754,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ไม่สามารถอ่านข้อมูลจากระบบ CAR / ข้อมูลนี้เป็นข้อมูลจากฐานข้อมูล CSM.
-        /// </summary>
-        public static string Msg_CannotConnectCARService {
-            get {
-                return ResourceManager.GetString("Msg_CannotConnectCARService", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ไม่สามารถเชื่อมต่อ Active Directory  กรุณาติดต่อ system administrator.
-        /// </summary>
-        public static string Msg_CannotConnectToAD {
-            get {
-                return ResourceManager.GetString("Msg_CannotConnectToAD", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ไม่สามารถเชื่อมต่อฐานข้อมูล  กรุณาติดต่อ system administrator.
         /// </summary>
         public static string Msg_CannotConnectToDB {
             get {
                 return ResourceManager.GetString("Msg_CannotConnectToDB", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ต้องการสร้าง SR ใช่หรือไม่.
-        /// </summary>
-        public static string Msg_ConfirmCreateNewSR {
-            get {
-                return ResourceManager.GetString("Msg_ConfirmCreateNewSR", resourceCulture);
             }
         }
         
@@ -1465,29 +853,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to กรุณาระบุสัญญาอย่างน้อย 1 สัญญา.
-        /// </summary>
-        public static string Msg_PleaseInputRelationship {
-            get {
-                return ResourceManager.GetString("Msg_PleaseInputRelationship", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ไม่พบสิทธิ์ในการเข้าใช้ระบบ กรุณาติดต่อ system administrator.
         /// </summary>
         public static string Msg_UserRoleNotFound {
             get {
                 return ResourceManager.GetString("Msg_UserRoleNotFound", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Report_CommunicationPool.
-        /// </summary>
-        public static string Report_CommunicationPool_FileName {
-            get {
-                return ResourceManager.GetString("Report_CommunicationPool_FileName", resourceCulture);
             }
         }
         
@@ -1501,38 +871,38 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report_NCB.
+        ///   Looks up a localized string similar to เมนูหลัก.
         /// </summary>
-        public static string Report_Ncb_FileName {
+        public static string Title_MainMenu {
             get {
-                return ResourceManager.GetString("Report_Ncb_FileName", resourceCulture);
+                return ResourceManager.GetString("Title_MainMenu", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report_SR.
+        ///   Looks up a localized string similar to Master.
         /// </summary>
-        public static string Report_SR_FileName {
+        public static string Title_Master {
             get {
-                return ResourceManager.GetString("Report_SR_FileName", resourceCulture);
+                return ResourceManager.GetString("Title_Master", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report_Verify_Detail.
+        ///   Looks up a localized string similar to Role.
         /// </summary>
-        public static string Report_Verify_Detail_FileName {
+        public static string Title_Role {
             get {
-                return ResourceManager.GetString("Report_Verify_Detail_FileName", resourceCulture);
+                return ResourceManager.GetString("Title_Role", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report_Verify.
+        ///   Looks up a localized string similar to User.
         /// </summary>
-        public static string Report_Verify_FileName {
+        public static string Title_User {
             get {
-                return ResourceManager.GetString("Report_Verify_FileName", resourceCulture);
+                return ResourceManager.GetString("Title_User", resourceCulture);
             }
         }
         

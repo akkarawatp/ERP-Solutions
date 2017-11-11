@@ -66,29 +66,6 @@ namespace Common.Utilities
             }
         }
 
-        public static class EmployeeStatus
-        {
-            public const int Active = 1;
-            public const int Termiated = 0;
-
-            public static string GetMessage(short? status)
-            {
-                if (status.HasValue)
-                {
-                    if (status == Active)
-                    {
-                        return Resources.Resources.Emp_Status_Active;
-                    }
-                    if (status == Termiated)
-                    {
-                        return Resources.Resources.Emp_Status_Termiate;
-                    }
-                }
-
-                return string.Empty;
-            }
-        }
-
         public static class ReportSRStatus
         {
             public const bool Pass = true;
@@ -214,25 +191,25 @@ namespace Common.Utilities
             public const int Refer = 1;
             public const int Done = 2;
 
-            public static string GetMessage(int? status)
-            {
-                if (status == Open)
-                {
-                    return Resources.Resources.Lbl_JobStatusOpen;
-                }
+            //public static string GetMessage(int? status)
+            //{
+            //    if (status == Open)
+            //    {
+            //        return Resources.Resources.Lbl_JobStatusOpen;
+            //    }
 
-                if (status == Refer)
-                {
-                    return Resources.Resources.Lbl_JobStatusRefer;
-                }
+            //    if (status == Refer)
+            //    {
+            //        return Resources.Resources.Lbl_JobStatusRefer;
+            //    }
 
-                if (status == Done)
-                {
-                    return Resources.Resources.Lbl_JobStatusDone;
-                }
+            //    if (status == Done)
+            //    {
+            //        return Resources.Resources.Lbl_JobStatusDone;
+            //    }
 
-                return string.Empty;
-            }
+            //    return string.Empty;
+            //}
         }
 
         public static class CacheKey
@@ -691,280 +668,7 @@ namespace Common.Utilities
             public const int Announcement = 3;
         }
 
-        public static class CustomerType
-        {
-            public const int Customer = 1;
-            public const int Prospect = 2;
-            public const int Employee = 3;
-
-            public static string GetMessage(int? customerType)
-            {
-                if (customerType.HasValue)
-                {
-                    switch (customerType.Value)
-                    {
-                        case Customer:
-                            return Resources.Resources.Ddl_CustomerType_Customer;
-                        case Prospect:
-                            return Resources.Resources.Ddl_CustomerType_Prospect;
-                        case Employee:
-                            return Resources.Resources.Ddl_CustomerType_Employee;
-                        default:
-                            return string.Empty;
-                    }
-                }
-
-                return string.Empty;
-            }
-        }
-
-        public static class CustomerProduct {
-            public const string Loan = "Loan";
-            public const string Funding = "Funding";
-            public const string HP = "HP";
-            public const string Insurance = "Insurance";
-
-            //public static string GetMessage(string customerProduct) {
-            //    switch (customerProduct)
-            //    {
-            //        case Loan:
-            //            return Resource.Ddl_CustomerProduct_Loan;
-            //        case Funding:
-            //            return Resource.Ddl_CustomerProduct_Funding;
-            //        case HP:
-            //            return Resource.Ddl_CustomerProduct_HP;
-            //        case Insurance:
-            //            return Resource.Ddl_CustomerProduct_Insurance;
-            //        default:
-            //            return string.Empty;
-            //    }
-
-            //    return string.Empty;
-            //}
-        }
-
-        public static class SubscriptTypeCode
-        {
-            public const string Personal = "18"; //"01";
-        }
-
-        public static class ChannelCode
-        {
-            public const string Email = "EMAIL";
-            public const string Fax = "FAX";
-            public const string KKWebSite = "KKWEB";
-        }
-
-        public static class DocumentLevel
-        {
-            public const string Customer = "Customer";
-            public const string Sr = "SR";
-        }
-
-        public static class SRPage
-        {
-            public const int DefaultPageId = 1;
-            public const int AFSPageId = 2;
-            public const int NCBPageId = 3;
-
-            public const string DefaultPageCode = "DEFAULT";
-            public const string AFSPageCode = "AFS";
-            public const string NCBPageCode = "NCB";
-        }
-
-        public static class SrLogAction
-        {
-            public const string ChangeStatus = "Change Status";
-            public const string ChangeOwner = "Change Owner";
-            public const string Delegate = "Delegate";
-        }
-
-
-        public static class SRStatusId
-        {
-            public const int Draft = 1;
-            public const int Open = 2;
-            public const int WaitingCustomer = 3;
-            public const int InProgress = 4;
-            public const int RouteBack = 5;
-            public const int Cancelled = 6;
-            public const int Closed = 7;
-
-            public static int[] JobOnHandStatuses { get { return new int[] { Open, WaitingCustomer, InProgress, RouteBack }; } }
-
-            public static string GetStatusName(int id)
-            {
-                switch (id)
-                {
-                    case Draft:
-                        return "Draft";
-                    case Open:
-                        return "Open";
-                    case WaitingCustomer:
-                        return "Waiting Customer";
-                    case InProgress:
-                        return "In Progress";
-                    case RouteBack:
-                        return "Route Back";
-                    case Cancelled:
-                        return "Cancelled";
-                    case Closed:
-                        return "Closed";
-                    default:
-                        return "";
-                }
-            }
-        }
-
-        public static class SRStatusCode
-        {
-            public const string Draft = "DR";
-            public const string Open = "OP";
-            public const string WaitingCustomer = "WA";
-            public const string InProgress = "IP";
-            public const string RouteBack = "RB";
-            public const string Cancelled = "CC";
-            public const string Closed = "CL";
-        }
-
-        public static class SrRoleCode
-        {
-            public const string ITAdministrator = "IT";
-            public const string UserAdministrator = "UA";
-            public const string ContactCenterManager = "CM";
-            public const string ContactCenterSupervisor = "CS";
-            public const string ContactCenterFollowUp = "FL";
-            public const string ContactCenterAgent = "CA";
-            public const string BranchManager = "BM";
-            public const string Branch = "BA";
-            public const string NCB = "NCB";
-        }
-
-        public static class AddressType
-        {
-            public const string SendingDoc = "ที่อยู่ส่งเอกสาร";
-        }
-
-        public static class CMTParamConfig
-        {
-            public const string Offered = "Y";
-            public const string NoOffered = "N";
-            public const string Interested = "Y";
-            public const string NoInterested = "N";
-            public const string RecommendCampaign = "AND";
-            public const string RecommendedCampaign = "OR";
-            public const int NumRecommendCampaign = 5;
-            public const int NumRecommendedCampaign = 30;
-
-            public static string GetInterestedMessage(string interested)
-            {
-                if (Interested.Equals(interested))
-                {
-                    return Resources.Resources.Msg_Interested;
-                }
-
-                if (NoInterested.Equals(interested))
-                {
-                    return Resources.Resources.Msg_NoInterested;
-                }
-
-                return string.Empty;
-            }
-        }
-
-        public static class CustomerLog
-        {
-            public const string AddCustomer = "เพิ่มข้อมูลลูกค้า";
-            public const string EditCustomer = "แก้ไขข้อมูลลูกค้า";
-            public const string AddDocument = "เพิ่มเอกสาร";
-            public const string EditDocument = "แก้ไขเอกสาร";
-            public const string DeleteDocument = "ลบเอกสาร";
-            public const string AddContact = "เพิ่มผู้ติดต่อ";
-            public const string EditContact = "แก้ไขผู้ติดต่อ";
-            public const string DeleteContact = "ลบผู้ติดต่อ";
-        }
-
-        public static class Page
-        {
-            public const string CommunicationPage = "Commu";
-            public const string CustomerPage = "Customer";
-            public const string ServiceRequestPage = "ServiceRequest";
-        }
-
-        public static class Sla
-        {
-            public const int Due = 1;
-            public const int OverDue = 2;
-        }
-
-        public static class CallType
-        {
-            public const string NCB = "NCB";
-            public const string ContactCenter = "CC";
-        }
-
-        public static class ImportBDWContact
-        {
-            public const string DataTypeHeader = "H";
-            public const string DataTypeDetail = "D";
-            public const int LengthOfHeader = 3;
-            public const int LengthOfDetail = 19; //18;
-        }
-
-        public static class ImportCisData
-        {
-            public const string DataTypeHeader = "H";
-            public const string DataTypeDetail = "D";
-
-            public const int LengthOfHeaderCisCorporate = 35;
-            public const int LengthOfHeaderCisIndividual = 52;
-            public const int LengthOfHeaderCisProductGroup = 12;
-            public const int LengthOfHeaderCisSubscription = 40; //39;
-            public const int LengthOfHeaderCisTitle = 9;
-            public const int LengthOfHeaderCisProvince = 7;
-            public const int LengthOfHeaderCisDistrict = 8;
-            public const int LengthOfHeaderCisSubDistrict = 9;
-            public const int LengthOfHeaderCisPhoneType = 6;
-            public const int LengthOfHeaderEmailType = 6;
-            public const int LengthOfHeaderCisSubscriptionAddress = 33; //32;
-            public const int LengthOfHeaderCisSubscribePhone = 18; //17;
-            public const int LengthOfHeaderCisSubscribeMail = 17; //16;
-            public const int LengthOfHeaderCisAddressType = 6;
-            public const int LengthOfHeaderCisCisSubscriptionType = 11;
-            public const int LengthOfHeaderCisCustomerPhone = 15;
-            public const int LengthOfHeaderCisCustomerEmail = 14;
-            public const int LengthOfHeaderCisCountry = 7;
-
-            public const int LengthOfDetailCisCorporate = 33;
-            public const int LengthOfDetailCisIndividual = 50;
-            public const int LengthOfDetailCisProductGroup = 10;
-            public const int LengthOfDetailCisSubscription = 38; //37;
-            public const int LengthOfDetailCisTitle = 7;
-            public const int LengthOfDetailCisProvince = 5;
-            public const int LengthOfDetailCisDistrict = 6;
-            public const int LengthOfDetailCisSubDistrict = 7;
-            public const int LengthOfDetailCisPhoneType = 4;
-            public const int LengthOfDetailEmailType = 4;
-            public const int LengthOfDetailCisSubscriptionAddress = 31; //30;
-            public const int LengthOfDetailCisSubscribePhone = 16; //15;
-            public const int LengthOfDetailCisSubscribeMail = 15; //14;
-            public const int LengthOfDetailCisAddressType = 4;
-            public const int LengthOfDetailCisCisSubscriptionType = 9;
-            public const int LengthOfDetailCisCustomerPhone = 13;
-            public const int LengthOfDetailCisCustomerEmail = 12;
-            public const int LengthOfDetailCisCountry = 5;
-        }
-
-        public static class ImportAfs
-        {
-            public const int LengthOfProperty = 13;
-            public const int LengthOfSaleZone = 7;
-        }
-
-        public static class ImportHp
-        {
-            public const int LengthOfDetail = 33;
-        }
+        
 
         public static class TitleLanguage
         {
@@ -982,29 +686,9 @@ namespace Common.Utilities
             public const int Processing = 2;
         }
 
-        public static class BatchProcessCode
-        {
-            public const string ImportAFS = "A";
-            public const string CreateCommPool = "M";
-            public const string ExportAFS = "E";
-            public const string ExportMarketing = "N";
-            public const string ImportBDW = "B";
-            public const string ImportCIS = "C";
-            public const string ImportHP = "H";
-
-            public const string SyncSRStatusFromReplyEmail = "R";
-            public const string ReSubmitActivityToCARSystem = "S";
-            public const string ReSubmitActivityToCBSHPSystem = "T";
-        }
+        
 
         public const string SystemUserName = "SYSTEM";
-
-        public static class AttachmentPrefix
-        {
-            public const string Customer = "C";
-            public const string Sr = "S";
-            public const string News = "N";
-            public const string Job = "J";
-        }
+        
     }
 }

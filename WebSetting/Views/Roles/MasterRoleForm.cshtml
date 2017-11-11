@@ -79,7 +79,7 @@
         }
 
         function closeMasterRoleForm() {
-            location.replace('@Url.Action("List", "Roles")');
+            location.replace('@Url.Action("SearchRole", "Roles")');
         }
 
         function onBtnSaveClick() {
@@ -115,7 +115,7 @@
                     } else {
                         if (result.is_success) {
                             alert(result.message);
-                            window.location = '@Url.Action("List", "Roles")';
+                            window.location = '@Url.Action("SearchRole", "Roles")';
                         } else {
                             var warningMsg = result.message;
                             doModal("dvAlertMsg", "Message Dialog", warningMsg, "", "");

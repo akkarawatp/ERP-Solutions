@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -20,9 +21,78 @@ namespace WebSetting.Controllers
 {
     public class UserController : BaseController
     {
+        private UserFacade userFacade;
+        private CommonFacade _CommonFacade;
         private LogMessageBuilder _logMsg = new LogMessageBuilder();
         private static readonly ILog Logger = LogManager.GetLogger(typeof(UserController));
 
+        #region "User Master Data"
+        public ActionResult SearchUser()
+        {
+            _CommonFacade = new CommonFacade();
+            SearchUserViewModel model = new SearchUserViewModel();
+            var activeStatusList = _CommonFacade.GetStatusSelectList(Resources.Ddl_Status_All, Constants.ApplicationStatus.All);
+            model.ActiveStatusList = new SelectList((IEnumerable)activeStatusList, "Key", "Value", string.Empty);
+            model.SearchFilter = new UserSearchFilter
+            {
+                Username = string.Empty,
+                FirstName = string.Empty,
+                LastName = string.Empty,
+                OrganizeName = string.Empty,
+                DepartmentName = string.Empty,
+                PositionName = string.Empty,
+                ActiveStatus = string.Empty,
+                PageNo = 1,
+                PageSize = 15,
+                SortField = "FullName",
+                SortOrder = "ASC"
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        ///[CheckUserRole(ScreenCode.SearchCustomer)]
+        public ActionResult SearchUser(UserSearchFilter SearchFilter)
+        {
+            Logger.Info(_logMsg.Clear().SetPrefixMsg("Search User").Add("Username", SearchFilter.Username)
+                .Add("FirstName",SearchFilter.FirstName).Add("LastName",SearchFilter.LastName)
+                .Add("OrganizeName", SearchFilter.OrganizeName).Add("DepartmentName",SearchFilter.DepartmentName)
+                .Add("PositionName", SearchFilter.PositionName).ToInputLogString());
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _CommonFacade = new CommonFacade();
+                    userFacade = new UserFacade();
+                    var model = new SearchUserViewModel();
+                    var activeStatusList = _CommonFacade.GetStatusSelectList(Resources.Ddl_Status_All, Constants.ApplicationStatus.All);
+                    model.ActiveStatusList = new SelectList((IEnumerable)activeStatusList, "Key", "Value", string.Empty);
+                    model.UserList = userFacade.searchUserList(SearchFilter);
+                    model.SearchFilter = SearchFilter;
+
+                    return PartialView("~/Views/User/_UserList.cshtml", model);
+                }
+
+                return Json(new
+                {
+                    Valid = false,
+                    Error = string.Empty,
+                    Errors = GetModelValidationErrors()
+                });
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Exception occur:\n", ex);
+                Logger.Info(_logMsg.Clear().SetPrefixMsg("Search Role").Add("Error Message", ex.Message).ToFailLogString());
+                return Error(new HandleErrorInfo(ex, this.ControllerContext.RouteData.Values["controller"].ToString(),
+                    this.ControllerContext.RouteData.Values["action"].ToString()));
+            }
+        }
+        #endregion;
+
+
+            #region "User Login Function"
         [HttpGet]
         public ActionResult Login(string returnUrl)
         {
@@ -51,7 +121,7 @@ namespace WebSetting.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    UserFacade userFacade = new UserFacade();
+                    userFacade = new UserFacade();
                     DateTime loginTime = DateTime.Now;
                     UserEntity user = userModel.IsValid(userModel.UserName, StringCipher.EncryptTxt(userModel.Password), loginTime);
                     if (user != null && user.UserId > 0)
@@ -136,12 +206,10 @@ namespace WebSetting.Controllers
                     if (System.Web.HttpContext.Current.Session["login_his_id"] != null) {
                         long LoginHisId = Convert.ToInt64(System.Web.HttpContext.Current.Session["login_his_id"]);
                         long userId = Convert.ToInt64(System.Web.HttpContext.Current.Session["user_id"]);
-                        UserFacade userFacade = new UserFacade();
+                        userFacade = new UserFacade();
                         if (userFacade.UpdateChangePsswd(pModel.UserName, LoginHisId, System.Web.HttpContext.Current.Session["UserName"].ToString(), pModel.NewPassword, WebConfig.GetSystemCode()) == false) {
                             pModel.ErrorMessage = "Logout Fail";
                         }
-
-                        userFacade = null;
                     }
                 }
                 else {
@@ -166,7 +234,7 @@ namespace WebSetting.Controllers
 
             try
             {
-                UserFacade userFacade = new UserFacade();
+                userFacade = new UserFacade();
                 bool ret = userFacade.UpdateLogoutTime(Convert.ToInt64(System.Web.HttpContext.Current.Session["login_his_id"]), DateTime.Now, true);
                 if (ret == true)
                 {
@@ -209,6 +277,6 @@ namespace WebSetting.Controllers
             return true;
 
         }
-
+        #endregion;
     }
 }

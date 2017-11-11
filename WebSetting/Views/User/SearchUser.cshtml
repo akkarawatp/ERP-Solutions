@@ -1,0 +1,305 @@
+﻿@model WebSetting.Models.SearchUserViewModel
+@using Common.Resources;
+@{
+    ViewBag.Title = "SearchUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderScript
+{
+
+}
+
+@section MainMenu
+{
+    @Html.Action("MainMenu", "MenuNavigator")
+}
+
+@section Breadcrumb
+{
+    <strong class="font-blue">@Resources.Title_Master</strong>
+    <strong class="font-green-jungle">&rsaquo;&rsaquo; @Resources.Title_User</strong>
+}
+
+@using (Html.BeginForm("SearchUser", "User", FormMethod.Post, new { @class = "form-horizontal", @id = "form1", @DefaultButton = "btnSearch" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div id="dvForm" class="form-box">
+        <h5 class="form-title">Search @Resources.Title_User</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <p class="form-control-static text-primary">
+                            @Resources.Lbl_Username
+                        </p>
+                    </div>
+                    <div class="col-md-8 nopadding">
+                        <input type="text" class="form-control input-sm input-medium" id="txtSearchUserName" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <p class="form-control-static text-primary">
+                            @Resources.Lbl_FirstName
+                        </p>
+                    </div>
+                    <div class="col-md-8 nopadding">
+                        <input type="text" class="form-control input-sm input-medium" id="txtSearchFirstName" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <p class="form-control-static text-primary">
+                            @Resources.Lbl_LastName
+                        </p>
+                    </div>
+                    <div class="col-md-8 nopadding">
+                        <input type="text" class="form-control input-sm input-medium" id="txtSearchLastName" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <p class="form-control-static text-primary">
+                            ชื่อหน่วยงาน
+                        </p>
+                    </div>
+                    <div class="col-md-8 nopadding">
+                        <input type="text" class="form-control input-sm input-medium" id="txtSearchOrganizeName" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <p class="form-control-static text-primary">
+                            ชื่อแผนก
+                        </p>
+                    </div>
+                    <div class="col-md-8 nopadding">
+                        <input type="text" class="form-control input-sm input-medium" id="txtSearchDepartmentName" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <p class="form-control-static text-primary">
+                            ชื่อตำแหน่ง
+                        </p>
+                    </div>
+                    <div class="col-md-8 nopadding">
+                        <input type="text" class="form-control input-sm input-medium" id="txtSearchPositionName" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-1">
+                    <label class="control-label left-label">สถานะ <span class="require">*</span>:</label>
+                </div>
+                <div class="col-sm-5">
+                    @Html.DropDownListFor(m => m.SearchFilter.ActiveStatus, Model.ActiveStatusList, 
+                        Resources.Ddl_PleaseSelect, new { @id = "ddlSearchActiveStatus", @class = "form-control input-sm" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clear"></div>
+    <div class="panel-actions">
+        <div class="pull-left">
+            <button id="btnAdd" type="button" class="btn btn-green btn-sm">
+                <i class="fa fa-plus"></i>&nbsp;New User
+            </button>
+        </div>
+        <div class="pull-right">
+            <div class="form-inline">
+                <div class="form-group">
+                    <button id="btnSearch" type="button" class="btn btn-blue btn-sm btn-xsmall">
+                        <i class="fa fa-search"></i>&nbsp;Search
+                    </button>
+                </div>
+                <div class="form-group">
+                    <button id="btnClear" type="button" class="btn btn-gray btn-sm btn-xsmall">Clear</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div id="dvSearchResult">
+    </div>
+}
+<div id="dvTarget"></div>
+@section FooterScript
+{
+    <script type="text/javascript">
+        var searchFilter;
+        var successFilter;
+        var pageSize = 20; // for autocomplete
+        $jq(document).ready(function () {
+            initializeSearchFilter();
+            loadData();
+
+            $jq("#form1").keypress(function (e) {
+                var kCode = e.keyCode || e.charCode; //for cross browser
+                if (kCode == 13) {
+                    var defaultbtn = $jq(this).attr("DefaultButton");
+                    $jq("#" + defaultbtn).focus();
+                    $jq("#" + defaultbtn).click();
+                    return false;
+                }
+            });
+
+
+            $jq("#btnSearch").click(function (e) {
+                e.preventDefault();
+                clearServerErrors();
+
+                searchFilter.Username = $jq("#txtSearchUsername").val(),
+                    searchFilter.FirstName = $jq("#txtSearchFirstName").val(),
+                    searchFilter.LastName = $jq("#txtSearchLastName").val(),
+                    searchFilter.OrganizeName = $jq("#txtSearchOrganizeName").val(),
+                    searchFilter.DepartmentName = $jq("#txtSearchDepartmentName").val(),
+                    searchFilter.PositionName = $jq("#txtSearchPositionName").val(),
+                    searchFilter.ActiveStatus = $jq("#ddlSearchActiveStatus").val(),
+                    searchFilter.PageNo = 1;
+
+                loadData();
+                return false;
+            });
+
+            $jq("#btnClear").click(function (e) {
+                e.preventDefault();
+                $jq("#dvForm input[type='text'],#dvForm select").val('');
+                initializeSearchFilter();
+                $jq("#dvSearchResult").html('');
+                clearServerErrors();
+                return false;
+            });
+
+            $jq('#btnAdd').click(function (e) {
+                $jq("#dvLoading").show();
+                var actionUrl = "@Url.Action("NewUser", "User")";
+                $jq('#dvTarget').html('');
+                $jq('#dvTarget').append('<form action="' + actionUrl + '" method="POST" class="hidden"></form>');
+                $jq('#dvTarget form').submit();
+            });
+        });
+
+        function initializeSearchFilter() {
+            searchFilter = {
+                Username: $jq("#txtSearchUsername").val(),
+                FirstName: $jq("#txtSearchFirstName").val(),
+                LastName: $jq("#txtSearchLastName").val(),
+                OrganizeName: $jq("#txtSearchOrganizeName").val(),
+                DepartmentName: $jq("#txtSearchDepartmentName").val(),
+                PositionName: $jq("#txtSearchPositionName").val(),
+                ActiveStatus: $jq("#ddlSearchActiveStatus").val(),
+                PageNo: '@Model.SearchFilter.PageNo',
+                PageSize: '@Model.SearchFilter.PageSize',
+                SortField: '@Model.SearchFilter.SortField',
+                SortOrder: '@Model.SearchFilter.SortOrder'
+            };
+            successFilter = searchFilter;
+        };
+
+        function loadData() {
+
+            if (searchFilter.Username == "" && searchFilter.FirstName == "" && searchFilter.LastName == ""
+                && searchFilter.OrganizeName == "" && searchFilter.DepartmentName == "" && searchFilter.PositionName == "")
+            {
+                var warningMsg = '@Resources.Msg_EnteredAtLeastOneCriteria';
+                doModal('dvAlertMsg', 'Message Dialog', warningMsg, '', '');
+                return false;
+            }
+
+            $jq.ajax({
+                url: '@Url.Action("SearchUser", "User")',
+                type: "POST",
+                data: addAntiForgeryToken(searchFilter),
+                beforeSend: function () { $jq("#dvLoading").show(); },
+                complete: function () { $jq("#dvLoading").hide(); },
+                success: function (result) {
+                    if (result.Valid == null) {
+                        $jq("#dvSearchResult").html('');
+                        successFilter = searchFilter;
+                        $jq("#dvSearchResult").html(result);
+                        initializePaging();
+                    } else {
+                        showServerErrors(result);
+                    }
+                },
+                error: function (xhr) {
+                    var handleMsg = '@Common.Resources.Resources.Error_System';
+                    ajaxErrorHandling(xhr, handleMsg, '@FormsAuthentication.LoginUrl', '@Url.Action("AccessDenied", "User")');
+                }
+            });
+
+            return false;
+        };
+
+    
+
+
+        function onEditClick(userId) {
+            var actionUrl = '@Url.Action("EditUser", "User")';
+            $jq('#dvTarget').html('');
+            var input = $jq("<input>").attr("type", "hidden").attr("name", "roleId").val(userId);
+            $jq('#dvTarget').append('<form action="' + actionUrl + '" method="POST" class="hidden"></form>');
+            $jq('#dvTarget form').append($jq(input));
+            $jq('#dvTarget form').submit();
+        }
+
+        function initializePaging() {
+            $jq("#dvSearchResult .input-page").change(function (event) {
+                searchFilter = successFilter;
+                searchFilter.PageNo = $jq(this).val();
+                loadData();
+                return false;
+            }).keypress(function (event) {
+                return validateDigit(event);
+            });
+
+            $jq("#dvSearchResult #pagesizelist").change(function (event) {
+                searchFilter = successFilter;
+                searchFilter.PageNo = "1";
+                searchFilter.PageSize = $jq(this).val();
+                loadData();
+                return false;
+            });
+
+            $jq('#dvSearchResult .pagination ul li a').on('click', function (event) {
+                searchFilter = successFilter;
+                searchFilter.PageNo = getUrlParameter($jq(this).attr("href"), "page");
+                loadData();
+                return false;
+            });
+        };
+
+        function sortField(selectedSortField) {
+            if (selectedSortField == searchFilter.SortField)
+                searchFilter.SortOrder = (searchFilter.SortOrder == 'ASC') ? 'DESC' : 'ASC';
+            else
+                searchFilter.SortOrder = 'ASC';
+            searchFilter.SortField = selectedSortField;
+            searchFilter.PageNo = 1;
+            loadData();
+        }
+    </script>
+
+}

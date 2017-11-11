@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Data.Entity;
+using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 using Common.Resources;
 using Common.Utilities;
+using LinqKit;
 using DataAccess;
 using Entity;
 using log4net;
@@ -20,6 +23,97 @@ namespace BusinessLogic
         {
             _context = new ERPSettingDataContext();
         }
+
+        public IEnumerable<UserEntity> searchUserList(UserSearchFilter SearchFilter)
+        {
+            var whr = PredicateBuilder.True<MS_USER>();
+            var query = from u in _context.MS_USER.AsExpandable().Where(whr)
+                        select new UserEntity
+                        {
+                            UserId = u.user_id,
+                            CreatedDate = u.creaed_date,
+                            CreatedBy = u.created_by,
+                            UpdatedDate = u.updated_date,
+                            UpdatedBy = u.updated_by,
+                            Username = u.username,
+                            PrefixName = u.prefix_name,
+                            FirstName = u.first_name,
+                            LastName = u.last_name,
+                            Gender = u.gender,
+                            OrganizeName = u.organize_name,
+                            DepartmentName = u.department_name,
+                            PositionName = u.position_name,
+                            LastLoginTime = u.last_login_time,
+                            ActiveStatus = u.active_status
+                        };
+
+            int startPageIndex = (SearchFilter.PageNo - 1) * SearchFilter.PageSize;
+            SearchFilter.TotalRecords = query.Count();
+            if (startPageIndex >= SearchFilter.TotalRecords)
+            {
+                startPageIndex = 0;
+                SearchFilter.PageNo = 1;
+            }
+
+            query = SetUserListSort(query, SearchFilter);
+            return query.Skip(startPageIndex).Take(SearchFilter.PageSize).ToList();
+
+        }
+
+        private static IQueryable<UserEntity> SetUserListSort(IEnumerable<UserEntity> userList, UserSearchFilter SearchFilter)
+        {
+            if (SearchFilter.SortOrder.ToUpper(CultureInfo.InvariantCulture).Equals("ASC"))
+            {
+                switch (SearchFilter.SortOrder.ToUpper(CultureInfo.InvariantCulture))
+                {
+                    case "UserName":
+                        return userList.OrderBy(a => a.Username).AsQueryable();
+                    case "FullName":
+                        return userList.OrderBy(a => a.FullName).AsQueryable();
+                    case "Gender":
+                        return userList.OrderBy(a => a.Gender).AsQueryable();
+                    case "OrganizeName":
+                        return userList.OrderBy(a => a.OrganizeName).AsQueryable();
+                    case "DepartmentName":
+                        return userList.OrderBy(a => a.DepartmentName).AsQueryable();
+                    case "PositionName":
+                        return userList.OrderBy(a => a.PositionName).AsQueryable();
+                    case "LastLoginTime":
+                        return userList.OrderBy(a => a.LastLoginTime).AsQueryable();
+                    case "ActiveStatus":
+                        return userList.OrderBy(a => a.ActiveStatus).AsQueryable();
+                    default:
+                        return userList.OrderBy(a => a.FullName).AsQueryable();
+                }
+            }
+            else
+            {
+                switch (SearchFilter.SortOrder.ToUpper(CultureInfo.InvariantCulture))
+                {
+                    case "UserName":
+                        return userList.OrderByDescending(a => a.Username).AsQueryable();
+                    case "FullName":
+                        return userList.OrderByDescending(a => a.FullName).AsQueryable();
+                    case "Gender":
+                        return userList.OrderByDescending(a => a.Gender).AsQueryable();
+                    case "OrganizeName":
+                        return userList.OrderByDescending(a => a.OrganizeName).AsQueryable();
+                    case "DepartmentName":
+                        return userList.OrderByDescending(a => a.DepartmentName).AsQueryable();
+                    case "PositionName":
+                        return userList.OrderByDescending(a => a.PositionName).AsQueryable();
+                    case "LastLoginTime":
+                        return userList.OrderByDescending(a => a.LastLoginTime).AsQueryable();
+                    case "ActiveStatus":
+                        return userList.OrderByDescending(a => a.ActiveStatus).AsQueryable();
+                    default:
+                        return userList.OrderByDescending(a => a.FullName).AsQueryable();
+                }
+            }
+        }
+
+
+        #region "User Login Functions"
 
         public UserEntity Login(string username, string passwd)
         {
@@ -90,7 +184,7 @@ namespace BusinessLogic
             }
         }
 
-        #region "Functions"
+        
 
 
         public UserEntity GetUserByUsername(string login)
@@ -102,8 +196,8 @@ namespace BusinessLogic
                                                Username = u.username,
                                                Psswd = u.psswd,
                                                PrefixName=u.prefix_name,
-                                               Firstname=u.first_name,
-                                               Lastname=u.last_name,
+                                               FirstName=u.first_name,
+                                               LastName=u.last_name,
                                                Gender=u.gender,
                                                OrganizeName=u.organize_name,
                                                DepartmentName=u.department_name,
@@ -268,8 +362,8 @@ namespace BusinessLogic
                 newLogin.token = Guid.NewGuid().ToString();
                 newLogin.session_id = sid;
                 newLogin.username = user.Username;
-                newLogin.first_name = user.Firstname;
-                newLogin.last_name = user.Lastname;
+                newLogin.first_name = user.FirstName;
+                newLogin.last_name = user.LastName;
                 newLogin.logon_time = loginTime;
                 newLogin.system_code = SystemCode;
                 newLogin.client_ip = ClientIP;

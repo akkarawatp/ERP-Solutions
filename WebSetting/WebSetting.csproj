@@ -172,6 +172,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RoleModel.cs" />
     <Compile Include="Models\SearchRolesViewModel.cs" />
+    <Compile Include="Models\SearchUserViewModel.cs" />
     <Compile Include="Models\UserChangePsswdModel.cs" />
     <Compile Include="Models\UserIdentity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -443,6 +444,8 @@
     <Content Include="Views\MenuNavigator\MainMenu.cshtml" />
     <Content Include="Views\Roles\_RoleList.cshtml" />
     <Content Include="Views\Roles\MasterRoleForm.cshtml" />
+    <Content Include="Views\User\SearchUser.cshtml" />
+    <Content Include="Views\User\_UserList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -468,7 +471,7 @@
     <Content Include="css\bootstrap.min.css.map" />
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
-    <Content Include="Views\Roles\List.cshtml" />
+    <Content Include="Views\Roles\SearchRole.cshtml" />
     <Content Include="js\bootstrap-datepicker.min.js.map" />
     <Content Include="js\jquery-1.9.1.min.map" />
   </ItemGroup>

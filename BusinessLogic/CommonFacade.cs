@@ -31,7 +31,7 @@ namespace BusinessLogic
             return this.GetStatusSelectList(null);
         }
 
-        public IDictionary<string, string> GetStatusSelectList(string textName, int? textValue = null)
+        public IDictionary<string, string> GetStatusSelectList(string textName, string textValue = null)
         {
             IDictionary<string, string> dic = new Dictionary<string, string>();
 
