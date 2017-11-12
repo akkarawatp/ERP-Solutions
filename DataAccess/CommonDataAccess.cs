@@ -21,6 +21,30 @@ namespace DataAccess
             _context.Database.CommandTimeout = Constants.CommandTimeout;
         }
 
+        public List<PrefixNameEntity> GetPrefixNameActive()
+        {
+            List<PrefixNameEntity> ret = GetPrefixNameALL();
+            if (ret != null)
+                ret = ret.Where(t => t.ActiveStatus == Constants.ApplicationStatus.Active).ToList();
+
+            return ret.Any() ? ret.ToList(): null;
+        }
+
+        public List<PrefixNameEntity> GetPrefixNameALL()
+        {
+            var query = from t in _context.MS_PREFIX_NAME
+                            //where t.STATUS == Constants.ApplicationStatus.Active
+                        orderby t.prefix_name ascending
+                        select new PrefixNameEntity
+                        {
+                            PrefixNameId = t.prefix_name_id,
+                            PrefixName = t.prefix_name,
+                            ActiveStatus = t.active_status
+                        };
+
+            return query.Any() ? query.ToList() : null;
+        }
+
         //public List<FontEntity> GetFont()
         //{
         //    var fontList = (from ft in _context.TB_C_FONT.AsNoTracking()

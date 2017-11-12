@@ -18,13 +18,7 @@ namespace Entity
         public string ActiveStatusDisplay
         {
             get {
-                string ret = "";
-                if (ActiveStatus == "Y")
-                    ret = "Active";
-                else
-                    ret = "In-Active";
-
-                return ret;
+                return Constants.ApplicationStatus.GetMessage(ActiveStatus);
             }
         }
         public string Username { get; set; }

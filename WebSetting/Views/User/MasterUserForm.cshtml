@@ -1,0 +1,358 @@
+﻿@using Common.Resources
+@using Common.Utilities
+@model WebSetting.Models.UserModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeaderScript
+{
+
+}
+
+@section MainMenu
+{
+    @Html.Action("MainMenu", "MenuNavigator")
+}
+
+@section Breadcrumb
+{
+    <strong class="font-blue">@Resources.Title_Master</strong>
+    <strong class="font-green-jungle">&rsaquo;&rsaquo; @Resources.Title_User</strong>
+}
+
+
+<div class="form-box">
+    <h5 class="form-title">@ViewBag.Title</h5>
+    @Html.HiddenFor(model => model.UserId, new { @id = "hddUserId" })
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        คำนำหน้า:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.DropDownListFor(model => model.PrefixName, Model.PrefixNameSelectList, Resources.Ddl_PleaseSelect,
+                    new { @class = "form-control input-sm", @id = "ddlPrefixName" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        ชื่อ:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control input-sm", @id = "txtFirstName", @maxlength = Constants.MaxLength.FirstName })
+                    @Html.ValidationMessageFor(model => model.FirstName)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        นามสกุล:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.LastName, new { @class = "form-control input-sm", @id = "txtLastNameThai", @maxlength = Constants.MaxLength.LastName })
+                    @Html.ValidationMessageFor(model => model.LastName)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        เพศ:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.RadioButtonFor(model => model.Gender, Constants.PersonalGender.Male)
+                    <label>ชาย</label>
+                    @Html.RadioButtonFor(model => model.Gender, Constants.PersonalGender.Female)
+                    <label>หญิง</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        หน่วยงาน:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.OrganizeName, new { @class = "form-control input-sm", @id = "txtOrganizeName", @maxlength = Constants.MaxLength.OrganizeName })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        แผนก:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.DepartmentName, new { @class = "form-control input-sm", @id = "txtDepartmentName", @maxlength = Constants.MaxLength.DepartmentName })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        ตำแหน่ง:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.TextBoxFor(model => model.PositionName, new { @class = "form-control input-sm", @id = "txtPositionName", @maxlength = Constants.MaxLength.PositionName })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        เวลาที่เข้าระบบครั้งล่าสุด:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    <p class="form-control input-sm static-view">
+                        @Html.DisplayFor(model => model.LastLoginTimeDisplay)
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class="form-group form-group-control">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @Html.CheckBoxFor(model => model.ForceChangePsswd, new { @id = "chkForceChangePsswd"}) &nbsp;บังคับให้เปลี่ยนรหัสผ่านเมื่อเข้าสู่ระบบครั้งถัดไป
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label class="control-label left-label">สถานะ <span class="require">*</span>:</label>
+                </div>
+                <div class="col-sm-8">
+                    @Html.CheckBoxFor(model => model.ActiveStatus, new {@id = "chkActiveStatus"})
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div  class="form-box">
+    <h5 class="form-title">Login Information</h5>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <p class="form-control-static">
+                        ชื่อเข้าระบบ:
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    @if (Model.UserId == 0)
+                    {
+                        @Html.TextBoxFor(model => model.Username, new { @class = "form-control input-sm", @id = "txtUserName", @maxlength = Constants.MaxLength.Username })
+                    }
+                    else
+                    {
+                        <p class="form-control input-sm static-view">
+                            @Html.DisplayFor(model => model.Username)
+                            @Html.HiddenFor(model => model.Username, new { @id = "hddUserName" })
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <p class="form-control-static text-primary">
+                        รหัสผ่าน
+                    </p>
+                </div>
+                <div class="col-md-8">
+                    
+                    @Html.PasswordFor(model => model.Psswd, new
+                        {
+                            @id = "password",
+                            @class = "form-control  input-sm",
+                            @maxlength = @Constants.MaxLength.Password
+                        })
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="col-md-4">
+                    <p class="form-control-static text-primary">
+                        ยืนยันรหัสผ่าน
+                    </p>
+                </div>
+                <div class="col-md-8">                        
+                    @Html.PasswordFor(model => model.ConfirmPsswd, new
+                    {
+                        @id = "confirmPassword",
+                        @class = "form-control  input-sm",
+                        @maxlength = @Constants.MaxLength.Password
+                    })
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+</div>
+<div class="form-box">
+    <div class="row">
+        <div class="form-group">
+            <div class="col-sm-12 text-right">
+                <button id="btnSave" type="button" class="btn btn-sm btn-primary"><i class="fa fa-floppy-o"></i> Save</button>
+                <span id="btnBack" class="btn btn-sm btn-default"><i class="fa fa-times"></i> Cancel</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    @section FooterScript
+{
+        <script type="text/javascript">
+        $jq(document).ready(function () {
+            $jq('#btnBack').click(onBtnBackClick);
+            $jq('#btnSave').click(onBtnSaveClick);
+        });
+
+        function onBtnBackClick(event) {
+            event.preventDefault();
+            var msg = 'ต้องการยกเลิกการบันทึกข้อมูลใช่หรือไม่?';
+            if ($jq.trim(msg) != '') {
+                doModal('dvAlertMsg', 'Message Dialog', msg, 'closeMasterRoleForm()', 'Confirm');
+            }
+            return false;
+        }
+
+        function closeMasterRoleForm() {
+            location.replace('@Url.Action("SearchRole", "Roles")');
+        }
+
+        function onBtnSaveClick() {
+            var roleId = $jq("#roleID").val();
+            var roleName = $jq("#txtRoleName").val();
+            var activeStatus = $jq("#activeStatus").val();
+
+            if (roleName.trim() == "") {
+                var warningMsg = "กรุณากรอก Role Name";
+                doModal("dvAlertMsg", "Message Dialog", warningMsg, "", "");
+                return false;
+            }
+
+            $jq.ajax({
+                url: "@Url.Action("SaveRole","Roles")",
+                method: "POST",
+                data: {
+                    __RequestVerificationToken: getAntiForgeryToken(),
+                    roleId: roleId,
+                    roleName: roleName,
+                    activeStatus: activeStatus
+                },
+            })
+            .done(function (result) {
+                    if (typeof (result) == "string") {
+                        if (isLoginForm(result)) {
+                            location.replace('@FormsAuthentication.LoginUrl');
+                            return;
+                        }
+                    }
+                    if (result.RedirectUrl != undefined) {
+                        topLocation(result.RedirectUrl);
+                    } else {
+                        if (result.is_success) {
+                            alert(result.message);
+                            window.location = '@Url.Action("SearchRole", "Roles")';
+                        } else {
+                            var warningMsg = result.message;
+                            doModal("dvAlertMsg", "Message Dialog", warningMsg, "", "");
+                            return;
+                        }
+                    }
+                })
+                .fail(function() {
+
+                });
+        }
+        </script>
+    }

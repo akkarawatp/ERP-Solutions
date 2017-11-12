@@ -25,7 +25,6 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<MS_USER> MS_USER { get; set; }
         public virtual DbSet<TB_LOGIN_HISTORY> TB_LOGIN_HISTORY { get; set; }
         public virtual DbSet<TB_CHANGE_PSSWD_HISTORY> TB_CHANGE_PSSWD_HISTORY { get; set; }
         public virtual DbSet<MS_MENU> MS_MENU { get; set; }
@@ -35,5 +34,7 @@ namespace DataAccess
         public virtual DbSet<CF_POLICY_CONFIG> CF_POLICY_CONFIG { get; set; }
         public virtual DbSet<CF_SYSTEM_CONFIG> CF_SYSTEM_CONFIG { get; set; }
         public virtual DbSet<MS_ROLE> MS_ROLE { get; set; }
+        public virtual DbSet<MS_PREFIX_NAME> MS_PREFIX_NAME { get; set; }
+        public virtual DbSet<MS_USER> MS_USER { get; set; }
     }
 }

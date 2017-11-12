@@ -17,7 +17,7 @@ namespace BusinessLogic
     public class CommonFacade 
     {
         private readonly ERPSettingDataContext _context;
-        //private CommonDataAccess _commonDataAccess;
+        private CommonDataAccess _commonDataAccess;
         private LogMessageBuilder _logMsg = new LogMessageBuilder();
         private static readonly ILog Logger = LogManager.GetLogger(typeof(CommonFacade));
 
@@ -152,20 +152,19 @@ namespace BusinessLogic
         //    return dic;
         //}
 
-        //public IDictionary<string, string> GetTitleThaiSelectList()
-        //{
-        //    _commonDataAccess = new CommonDataAccess(_context);
-        //    var lst = _commonDataAccess.GetActiveTitle();
-        //    return (from x in lst
-        //            where x.Language.ToUpper(CultureInfo.InvariantCulture) == Constants.TitleLanguage.TitleTh
-        //            select new
-        //            {
-        //                key = x.TitleId.ToString(),
-        //                value = x.TitleName
-        //            }).ToDictionary(t => t.key, t => t.value);
-        //}
+        public IDictionary<string, string> GetPrefixNameSelectList()
+        {
+            _commonDataAccess = new CommonDataAccess(_context);
+            var lst = _commonDataAccess.GetPrefixNameActive();
+            return (from x in lst
+                    select new
+                    {
+                        key = x.PrefixNameId.ToString(),
+                        value = x.PrefixName
+                    }).ToDictionary(t => t.key, t => t.value);
+        }
 
-        //public IDictionary<string, string> GetTitleEnglishSelectList()
+        //public IDictionary<string, string> GetPrefixNzmeEnglishSelectList()
         //{
         //    _commonDataAccess = new CommonDataAccess(_context);
         //    var lst = _commonDataAccess.GetActiveTitle();

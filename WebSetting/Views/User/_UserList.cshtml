@@ -83,7 +83,13 @@ else
             <thead>
                 <tr>
                     <th class="center" style="width: 80px !important;">Action</th>
-                    <th>@LabelForSort("Role Name", "RoleName", sortField, sortOrder)</th>
+                    <th>@LabelForSort("ชื่อเข้าระบบ", "Username", sortField, sortOrder)</th>
+                    <th>@LabelForSort("ชื่อ สกุล", "FullName", sortField, sortOrder)</th>
+                    <th>@LabelForSort("เพศ", "Gender", sortField, sortOrder)</th>
+                    <th>@LabelForSort("หน่วยงาน", "OrganizeName", sortField, sortOrder)</th>
+                    <th>@LabelForSort("แผนก", "DepartmentName", sortField, sortOrder)</th>
+                    <th>@LabelForSort("ตำแหน่ง", "PositionName", sortField, sortOrder)</th>
+                    <th>@LabelForSort("เวลาที่ใช้งานล่าสุด", "LastLoginTime", sortField, sortOrder)</th>
                     <th style="width: 100px;">สถานะ</th>
                     <th style="width: 100px;">แก้ไขโดย</th>
                     <th style="width: 200px;">วันที่แก้ไข</th>
@@ -94,18 +100,20 @@ else
                 {
                     <tr>
                         <td class="center">
-                            <a href='javascript:;' class="edit-active" title="edit" onclick='onEditClick(@item.RoleId)'></a>
+                            <a href='javascript:;' class="edit-active" title="edit" onclick='onEditClick(@item.UserId)'></a>
                         </td>
-                        <td>@item.RoleName</td>
+                        <td>@item.Username</td>
+                        <td > @item.FullName </td>
                         <td class="center">
-                            @item.ActiveStatusDisplay
+                            @item.GenderDisplay
                         </td>
-                        <td class="center">
-                            @item.LastUpdateUserDisplay
-                        </td>
-                        <td class="center">
-                            @item.LastUpdateDateDisplay
-                        </td>
+                        <td>@item.OrganizeName</td>
+                        <td>@item.DepartmentName</td>
+                        <td>@item.PositionName</td>
+                        <td class="center">@item.LastLoginTimeDisplay</td>
+                        <td class="center">@item.ActiveStatusDisplay</td>
+                        <td class="center">@item.LastUpdateUserDisplay</td>
+                        <td class="center">@item.LastUpdateDateDisplay</td>
                     </tr>
                 }
             </tbody>

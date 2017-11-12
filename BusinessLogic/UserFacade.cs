@@ -28,6 +28,7 @@ namespace BusinessLogic
         {
             var whr = PredicateBuilder.True<MS_USER>();
             var query = from u in _context.MS_USER.AsExpandable().Where(whr)
+                        from p in _context.MS_PREFIX_NAME.Where(i => i.prefix_name_id == u.prefix_name_id).DefaultIfEmpty()
                         select new UserEntity
                         {
                             UserId = u.user_id,
@@ -36,7 +37,7 @@ namespace BusinessLogic
                             UpdatedDate = u.updated_date,
                             UpdatedBy = u.updated_by,
                             Username = u.username,
-                            PrefixName = u.prefix_name,
+                            PrefixName = new PrefixNameEntity { PrefixNameId = u.prefix_name_id, PrefixName = p.prefix_name, ActiveStatus = p.active_status },
                             FirstName = u.first_name,
                             LastName = u.last_name,
                             Gender = u.gender,
@@ -190,12 +191,13 @@ namespace BusinessLogic
         public UserEntity GetUserByUsername(string login)
         {
             IQueryable<UserEntity> query = from u in _context.MS_USER.AsNoTracking()
+                                           from p in _context.MS_PREFIX_NAME.Where(x => x.prefix_name_id == u.prefix_name_id).DefaultIfEmpty()
                                            where u.username.ToUpper() == login.ToUpper() && u.active_status == Constants.ApplicationStatus.Active
                                            select new UserEntity {
                                                UserId = u.user_id,
                                                Username = u.username,
                                                Psswd = u.psswd,
-                                               PrefixName=u.prefix_name,
+                                               PrefixName = new PrefixNameEntity { PrefixNameId = u.prefix_name_id, PrefixName = p.prefix_name, ActiveStatus = p.active_status },
                                                FirstName=u.first_name,
                                                LastName=u.last_name,
                                                Gender=u.gender,

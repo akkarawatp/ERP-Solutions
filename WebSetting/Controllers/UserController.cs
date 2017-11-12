@@ -89,10 +89,40 @@ namespace WebSetting.Controllers
                     this.ControllerContext.RouteData.Values["action"].ToString()));
             }
         }
+
+        [HttpPost]
+        public ActionResult NewUser()
+        {
+            try
+            {
+                ViewBag.Title = "New User";
+                UserModel userVM = new UserModel();
+                userVM = initUserModel(userVM);
+                userVM.ActiveStatus = true;
+
+                return View("MasterUserForm", userVM);
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Exception occur:\n", ex);
+                Logger.Info(_logMsg.Clear().SetPrefixMsg("New User").Add("Error Message", ex.Message).ToFailLogString());
+                return Error(new HandleErrorInfo(ex, this.ControllerContext.RouteData.Values["controller"].ToString(),
+                    this.ControllerContext.RouteData.Values["action"].ToString()));
+            }
+        }
+
+        private UserModel initUserModel(UserModel userVM)
+        {
+            _CommonFacade = new CommonFacade();
+            var prefixNameList = _CommonFacade.GetPrefixNameSelectList();
+            userVM.PrefixNameSelectList = new SelectList((IEnumerable)prefixNameList, "Key", "Value", string.Empty);
+            return userVM;
+        }
+
         #endregion;
 
 
-            #region "User Login Function"
+        #region "User Login Function"
         [HttpGet]
         public ActionResult Login(string returnUrl)
         {

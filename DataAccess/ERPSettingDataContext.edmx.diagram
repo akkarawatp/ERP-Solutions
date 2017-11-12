@@ -5,7 +5,6 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a6e97deb01304a0b8f50ef1555c14d6c" Name="Diagram1">
-        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_USER" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.TB_LOGIN_HISTORY" Width="1.5" PointX="3.375" PointY="0.75" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.TB_CHANGE_PSSWD_HISTORY" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.MS_MENU" Width="1.5" PointX="7.375" PointY="8.625" />
@@ -14,12 +13,15 @@
         <EntityTypeShape EntityType="ERPSettingDataAccess.MS_SYSTEM" Width="1.5" PointX="5.125" PointY="9.25" />
         <AssociationConnector Association="ERPSettingDataAccess.FK_MS_MENU_REFERENCE_MS_SYSTE" />
         <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_MENU" />
-        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.CF_POLICY_CONFIG" Width="1.5" PointX="3.75" PointY="5.75" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.CF_SYSTEM_CONFIG" Width="1.5" PointX="0.75" PointY="6.75" />
         <EntityTypeShape EntityType="ERPSettingDataAccess.MS_ROLE" Width="1.5" PointX="2.375" PointY="11.375" />
         <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_ROLE" />
         <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE1_REFERENCE_MS_ROLE" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_PREFIX_NAME" Width="1.5" PointX="0.75" PointY="15" />
+        <EntityTypeShape EntityType="ERPSettingDataAccess.MS_USER" Width="1.5" PointX="3" PointY="15.875" />
+        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_USER_MS_PREFIX_NAME" />
+        <AssociationConnector Association="ERPSettingDataAccess.FK_MS_ROLE__REFERENCE_MS_USER" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

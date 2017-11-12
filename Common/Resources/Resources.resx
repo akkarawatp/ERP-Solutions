@@ -513,4 +513,10 @@
   <data name="Lbl_LastName" xml:space="preserve">
     <value>นามสกุล</value>
   </data>
+  <data name="Msg_GenderFemale" xml:space="preserve">
+    <value>หญิง</value>
+  </data>
+  <data name="Msg_GenderMale" xml:space="preserve">
+    <value>ชาย</value>
+  </data>
 </root>

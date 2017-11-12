@@ -790,6 +790,24 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to หญิง.
+        /// </summary>
+        public static string Msg_GenderFemale {
+            get {
+                return ResourceManager.GetString("Msg_GenderFemale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ชาย.
+        /// </summary>
+        public static string Msg_GenderMale {
+            get {
+                return ResourceManager.GetString("Msg_GenderMale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to สนใจ.
         /// </summary>
         public static string Msg_Interested {

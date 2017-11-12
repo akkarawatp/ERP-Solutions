@@ -1061,7 +1061,8 @@ color:#8877a9!important
 
 .form-box {
 background-color:#fff;
-padding:2px 5px
+padding:2px 5px;
+margin-bottom:10px;
 }
 
 .panel-body.ghostwhite {

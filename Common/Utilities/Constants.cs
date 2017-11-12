@@ -66,56 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        public static class ReportSRStatus
+        public static class PersonalGender
         {
-            public const bool Pass = true;
-            public const bool Fail = false;
-
-            public static string GetMessage(string status)
+            public const string Male = "M";
+            public const string Female = "F";
+            public static string GetMessage(string gender)
             {
-                if (!string.IsNullOrWhiteSpace(status))
+                if (gender == Male)
                 {
-                    if (VerifyResultStatus.Pass.Equals(status))
-                    {
-                        return Resources.Resources.Ddl_VerifyResult_Pass;
-                    }
-                    else if (VerifyResultStatus.Fail.Equals(status))
-                    {
-                        return Resources.Resources.Ddl_VerifyResult_Fail;
-                    }
-                    else
-                    {
-                        return Resources.Resources.Ddl_VerifyResult_Skip;
-                    }
+                    return Resources.Resources.Msg_GenderMale;
+                }
+                if (gender == Female)
+                {
+                    return Resources.Resources.Msg_GenderFemale;
                 }
 
-                return "N/A";
+                return string.Empty;
             }
         }
 
-        public static class AccountStatus
-        {
-            public const string Active = "A";
-        }
-
-        public static class ReportVerify
-        {
-            public const string Pass = VerifyResultStatus.Pass;
-            public const string Fail = VerifyResultStatus.Fail;
-
-            public static string GetMessage(string status)
-            {
-                if (status == Pass)
-                {
-                    return "ถูก";
-                }
-                if (status == Fail)
-                {
-                    return "ผิด";
-                }
-                return "ข้าม";
-            }
-        }
+        
 
         public static class AuditLogStatus
         {
@@ -337,6 +307,9 @@ namespace Common.Utilities
             public const int FirstName = 255; //100;
             public const int LastName = 255; //100;
             public const int RemarkCloseJob = 1000;
+            public const int OrganizeName = 255;
+            public const int DepartmentName = 255;
+            public const int PositionName = 255;
 
             #region "Import BwdContact"
 

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Pager.cs" />
+    <Compile Include="PrefixNameEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PolicyConfigEntity.cs" />
     <Compile Include="RoleEntity.cs" />
