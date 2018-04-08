@@ -322,15 +322,6 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to เลขที่หนังสือเดินทาง.
-        /// </summary>
-        public static string Lbl_CardNo_Passport {
-            get {
-                return ResourceManager.GetString("Lbl_CardNo_Passport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to เปลี่ยนรหัสผ่าน.
         /// </summary>
         public static string Lbl_ChangePsswd {
@@ -340,7 +331,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confirm Password.
+        ///   Looks up a localized string similar to ยืนยันรหัสผ่าน.
         /// </summary>
         public static string Lbl_ConfirmPasswd {
             get {
@@ -372,24 +363,6 @@ namespace Common.Resources {
         public static string Lbl_CustomerInformation {
             get {
                 return ResourceManager.GetString("Lbl_CustomerInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ชื่อลูกค้า.
-        /// </summary>
-        public static string Lbl_CustomerName {
-            get {
-                return ResourceManager.GetString("Lbl_CustomerName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to นามสกุล.
-        /// </summary>
-        public static string Lbl_CustomerSurname {
-            get {
-                return ResourceManager.GetString("Lbl_CustomerSurname", resourceCulture);
             }
         }
         
@@ -475,29 +448,20 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to First name.
+        ///   Looks up a localized string similar to บังคับให้เปลี่ยนรหัสผ่านเมื่อเข้าสู่ระบบครั้งถัดไป.
         /// </summary>
-        public static string Lbl_FirstNameEnglish {
+        public static string Lbl_ForceChangePwdNextLogin {
             get {
-                return ResourceManager.GetString("Lbl_FirstNameEnglish", resourceCulture);
+                return ResourceManager.GetString("Lbl_ForceChangePwdNextLogin", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ชื่อผู้ติดต่อ.
+        ///   Looks up a localized string similar to เพศ.
         /// </summary>
-        public static string Lbl_FirstNameThai_Contact {
+        public static string Lbl_Gender {
             get {
-                return ResourceManager.GetString("Lbl_FirstNameThai_Contact", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ชื่อลูกค้า.
-        /// </summary>
-        public static string Lbl_FirstNameThai_Customer {
-            get {
-                return ResourceManager.GetString("Lbl_FirstNameThai_Customer", resourceCulture);
+                return ResourceManager.GetString("Lbl_Gender", resourceCulture);
             }
         }
         
@@ -525,6 +489,15 @@ namespace Common.Resources {
         public static string Lbl_Interested {
             get {
                 return ResourceManager.GetString("Lbl_Interested", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to วันที่เข้าระบบครั้งล่าสุด.
+        /// </summary>
+        public static string Lbl_LastLoginTime {
+            get {
+                return ResourceManager.GetString("Lbl_LastLoginTime", resourceCulture);
             }
         }
         
@@ -592,7 +565,16 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password.
+        ///   Looks up a localized string similar to เลขที่หนังสือเดินทาง.
+        /// </summary>
+        public static string Lbl_PassportNo {
+            get {
+                return ResourceManager.GetString("Lbl_PassportNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to รหัสผ่าน.
         /// </summary>
         public static string Lbl_Password {
             get {
@@ -624,6 +606,15 @@ namespace Common.Resources {
         public static string Lbl_PositionName {
             get {
                 return ResourceManager.GetString("Lbl_PositionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to คำนำหน้า.
+        /// </summary>
+        public static string Lbl_PrefixName {
+            get {
+                return ResourceManager.GetString("Lbl_PrefixName", resourceCulture);
             }
         }
         
@@ -790,7 +781,16 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Username.
+        ///   Looks up a localized string similar to ผู้ใช้งาน.
+        /// </summary>
+        public static string Lbl_User {
+            get {
+                return ResourceManager.GetString("Lbl_User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ชื่อเข้าระบบ.
         /// </summary>
         public static string Lbl_Username {
             get {
@@ -862,7 +862,7 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to การยืนยันรหัสผานใหม่ไม่ถูกต้อง.
+        ///   Looks up a localized string similar to การยืนยันรหัสผ่านใหม่ไม่ถูกต้อง.
         /// </summary>
         public static string Msg_InvalidConfirmPassword {
             get {

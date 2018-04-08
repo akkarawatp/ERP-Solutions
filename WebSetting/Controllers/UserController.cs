@@ -47,6 +47,8 @@ namespace WebSetting.Controllers
                 SortField = "FullName",
                 SortOrder = "ASC"
             };
+
+            Logger.Info(UserInfo.FullName);
             return View(model);
         }
 
@@ -98,8 +100,6 @@ namespace WebSetting.Controllers
                 ViewBag.Title = "New User";
                 UserModel userVM = new UserModel();
                 userVM = initUserModel(userVM);
-                userVM.ActiveStatus = true;
-
                 return View("MasterUserForm", userVM);
             }
             catch (Exception ex)
@@ -111,11 +111,74 @@ namespace WebSetting.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //[CheckUserRole(ScreenCode.EditCustomer)]
+        public ActionResult SaveUser(UserModel u)
+        {
+            //Custom Validator
+            if (u.Psswd != u.ConfirmPsswd)
+                ModelState.AddModelError("ConfirmPsswd", Resources.Msg_InvalidConfirmPassword);
+
+            if (u.UserId > 0)
+            {
+                if (string.IsNullOrEmpty(u.Psswd) && string.IsNullOrEmpty(u.ConfirmPsswd))
+                {
+                    ModelState.Remove("Psswd");
+                    ModelState.Remove("ConfirmPsswd");
+                }
+            }
+
+            u = initUserModel(u);
+            if (ModelState.IsValid)
+            {
+                userFacade = new UserFacade();
+                UserEntity user = new UserEntity()
+                {
+                    UserId = u.UserId,
+                    Username = u.Username,
+                    Psswd = u.Psswd,
+                    PrefixId = u.PrefixId,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    Gender = u.Gender,
+                    OrganizeName = u.OrganizeName,
+                    DepartmentName = u.DepartmentName,
+                    PositionName = u.PositionName,
+                    ForceChangePsswd = (u.ForceChangePsswd == true ? "Y" : "N"),
+                    ActiveStatus = (u.ActiveStatus == true ? "Y" : "N"),
+                    LoginUsername = UserInfo.LoginUsername
+                };
+                userFacade.saveUser(user);
+
+                return RedirectToAction("SearchUser", "User");
+            }
+            else
+            {
+                if (u.UserId == 0)
+                    ViewBag.Title = "New User";
+                else
+                    ViewBag.Title = "Edit User";
+
+                return View("~/Views/User/MasterUserForm.cshtml", u);
+            }
+            
+            //if (u.UserId == 0)
+            //    ViewBag.Title = "New User";
+            //else
+            //    ViewBag.Title = "Edit User";
+
+            //return View("~/Views/User/MasterUserForm.cshtml", u);
+
+        }
+
         private UserModel initUserModel(UserModel userVM)
         {
             _CommonFacade = new CommonFacade();
             var prefixNameList = _CommonFacade.GetPrefixNameSelectList();
             userVM.PrefixNameSelectList = new SelectList((IEnumerable)prefixNameList, "Key", "Value", string.Empty);
+            userVM.ActiveStatus = true;
+            userVM.ForceChangePsswd = true;
             return userVM;
         }
 
@@ -189,7 +252,7 @@ namespace WebSetting.Controllers
                         }
                         else
                         {
-                            return ForceChangePassword(user.Username);
+                            return ForceChangePassword(userModel.UserName);
                         }
                     }
                     else

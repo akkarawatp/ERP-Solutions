@@ -14,6 +14,7 @@ namespace Entity
         public string UpdatedBy { get; set; }
         public string Username { get; set; }
         public string Psswd { get; set; }
+        public long PrefixId { get; set; }
         public PrefixNameEntity PrefixName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -85,6 +86,7 @@ namespace Entity
         }
 
         public long RoleIdValue { get; set; }
+        public string LoginUsername { get; set; }
     }
 
     public class UserSearchFilter : Pager

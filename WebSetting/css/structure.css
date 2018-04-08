@@ -1236,6 +1236,11 @@ padding:5px 0;
 font-size:11px!important
 }
 
+.require {
+	color:red;
+	font-weight:bold;
+}
+
 .btn-blue {
 color:#FFF;
 background:#578ebe;

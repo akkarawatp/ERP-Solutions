@@ -24,6 +24,7 @@ namespace BusinessLogic
             _context = new ERPSettingDataContext();
         }
 
+        #region "Search User"
         public IEnumerable<UserEntity> searchUserList(UserSearchFilter SearchFilter)
         {
             var query = from u in _context.MS_USER
@@ -74,7 +75,6 @@ namespace BusinessLogic
             return query.Skip(startPageIndex).Take(SearchFilter.PageSize).ToList();
 
         }
-
         private static IQueryable<UserEntity> SetUserListSort(IEnumerable<UserEntity> userList, UserSearchFilter SearchFilter)
         {
             if (SearchFilter.SortOrder.ToUpper(CultureInfo.InvariantCulture).Equals("ASC"))
@@ -126,7 +126,63 @@ namespace BusinessLogic
                 }
             }
         }
+        #endregion
 
+        #region "Save User"
+        public bool saveUser(UserEntity user)
+        {
+            try
+            {
+                Logger.Info(_logMsg.Clear().Add("UserID", user.UserId).Add("Username", user.Username));
+                MS_USER u;
+
+                if (user.UserId == 0)
+                {
+                    u = new MS_USER();
+                    u.creaed_date = DateTime.Now;
+                    u.created_by = user.LoginUsername;
+                    u.username = user.Username;
+                }
+                else
+                {
+                    u = _context.MS_USER.SingleOrDefault(s => s.user_id == user.UserId);
+                    if (u == null)
+                        throw new CustomException("Cannot Update MS_USER: UserID={0} dose not exist", user.UserId);
+                    else {
+                        u.updated_date = DateTime.Now;
+                        u.updated_by = user.LoginUsername;
+                    }
+                }
+                
+                if(user.Psswd != "")
+                    u.psswd = StringCipher.EncryptTxt(user.Psswd);
+
+                u.prefix_name_id = user.PrefixId;
+                u.first_name = user.FirstName;
+                u.last_name = user.LastName;
+                u.gender = user.Gender;
+                u.organize_name = user.OrganizeName;
+                u.department_name = user.DepartmentName;
+                u.position_name = user.PositionName;
+                u.force_change_psswd = user.ForceChangePsswd;
+                u.login_fail_count = 0;
+                u.active_status = user.ActiveStatus;
+
+                if (user.UserId == 0)
+                    _context.MS_USER.Add(u);
+                else
+                    _context.Entry(u).State = EntityState.Modified;
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.Error("Exception occur:\n", ex);
+                return false;
+            }
+        }
+        #endregion 
 
         #region "User Login Functions"
 
@@ -199,9 +255,6 @@ namespace BusinessLogic
             }
         }
 
-        
-
-
         public UserEntity GetUserByUsername(string login)
         {
             IQueryable<UserEntity> query = from u in _context.MS_USER.AsNoTracking()
@@ -212,15 +265,16 @@ namespace BusinessLogic
                                                Username = u.username,
                                                Psswd = u.psswd,
                                                PrefixName = new PrefixNameEntity { PrefixNameId = u.prefix_name_id, PrefixName = p.prefix_name, ActiveStatus = p.active_status },
-                                               FirstName=u.first_name,
-                                               LastName=u.last_name,
-                                               Gender=u.gender,
-                                               OrganizeName=u.organize_name,
-                                               DepartmentName=u.department_name,
-                                               PositionName=u.position_name,
-                                               LastLoginTime=u.last_login_time,
-                                               ForceChangePsswd=u.force_change_psswd,
-                                               LoginFailCount=u.login_fail_count,
+                                               FirstName = u.first_name,
+                                               LastName = u.last_name,
+                                               Gender = u.gender,
+                                               OrganizeName = u.organize_name,
+                                               DepartmentName = u.department_name,
+                                               PositionName = u.position_name,
+                                               LastLoginTime = u.last_login_time,
+                                               ForceChangePsswd = u.force_change_psswd,
+                                               LoginFailCount = u.login_fail_count,
+                                               LoginUsername = u.username
                                            };
 
             var user = query.Any() ? query.FirstOrDefault() : null;

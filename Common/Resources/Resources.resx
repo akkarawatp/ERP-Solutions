@@ -195,11 +195,11 @@
   <data name="Lbl_CardNo" xml:space="preserve">
     <value>เลขที่บัตร ปชช</value>
   </data>
-  <data name="Lbl_CardNo_Passport" xml:space="preserve">
+  <data name="Lbl_PassportNo" xml:space="preserve">
     <value>เลขที่หนังสือเดินทาง</value>
   </data>
   <data name="Lbl_ConfirmPasswd" xml:space="preserve">
-    <value>Confirm Password</value>
+    <value>ยืนยันรหัสผ่าน</value>
   </data>
   <data name="Lbl_Copyright" xml:space="preserve">
     <value>Copyright &amp;copy; {0}{1}</value>
@@ -209,12 +209,6 @@
   </data>
   <data name="Lbl_CustomerInformation" xml:space="preserve">
     <value>Customer Profile Information</value>
-  </data>
-  <data name="Lbl_CustomerName" xml:space="preserve">
-    <value>ชื่อลูกค้า</value>
-  </data>
-  <data name="Lbl_CustomerSurname" xml:space="preserve">
-    <value>นามสกุล</value>
   </data>
   <data name="Lbl_Detail" xml:space="preserve">
     <value>รายละเอียด</value>
@@ -236,15 +230,6 @@
   </data>
   <data name="Lbl_FileAttach" xml:space="preserve">
     <value>เอกสารที่อัพโหลด</value>
-  </data>
-  <data name="Lbl_FirstNameEnglish" xml:space="preserve">
-    <value>First name</value>
-  </data>
-  <data name="Lbl_FirstNameThai_Customer" xml:space="preserve">
-    <value>ชื่อลูกค้า</value>
-  </data>
-  <data name="Lbl_FirstNameThai_Contact" xml:space="preserve">
-    <value>ชื่อผู้ติดต่อ</value>
   </data>
   <data name="Lbl_Home" xml:space="preserve">
     <value>Home</value>
@@ -277,7 +262,7 @@
     <value>รายการที่ {0}-{1} จากรายการทั้งหมด {2}</value>
   </data>
   <data name="Lbl_Password" xml:space="preserve">
-    <value>Password</value>
+    <value>รหัสผ่าน</value>
   </data>
   <data name="Lbl_PhoneNo" xml:space="preserve">
     <value>เบอร์โทรศัพท์</value>
@@ -343,7 +328,7 @@
     <value>Url</value>
   </data>
   <data name="Lbl_Username" xml:space="preserve">
-    <value>Username</value>
+    <value>ชื่อเข้าระบบ</value>
   </data>
   <data name="Msg_CannotConnectToDB" xml:space="preserve">
     <value>ไม่สามารถเชื่อมต่อฐานข้อมูล  กรุณาติดต่อ system administrator</value>
@@ -499,7 +484,7 @@
     <value>กรุณาระบุรหัสผ่านเดิม</value>
   </data>
   <data name="Msg_InvalidConfirmPassword" xml:space="preserve">
-    <value>การยืนยันรหัสผานใหม่ไม่ถูกต้อง</value>
+    <value>การยืนยันรหัสผ่านใหม่ไม่ถูกต้อง</value>
   </data>
   <data name="Msg_LoginMaxFail" xml:space="preserve">
     <value>คุณใส่รหัสผ่านผิดเกิน {0} ครั้ง กรุณาติดต่อผู้ดูแลระบบ</value>
@@ -533,5 +518,20 @@
   </data>
   <data name="Lbl_ButtonSearch" xml:space="preserve">
     <value>Search</value>
+  </data>
+  <data name="Lbl_Gender" xml:space="preserve">
+    <value>เพศ</value>
+  </data>
+  <data name="Lbl_PrefixName" xml:space="preserve">
+    <value>คำนำหน้า</value>
+  </data>
+  <data name="Lbl_ForceChangePwdNextLogin" xml:space="preserve">
+    <value>บังคับให้เปลี่ยนรหัสผ่านเมื่อเข้าสู่ระบบครั้งถัดไป</value>
+  </data>
+  <data name="Lbl_LastLoginTime" xml:space="preserve">
+    <value>วันที่เข้าระบบครั้งล่าสุด</value>
+  </data>
+  <data name="Lbl_User" xml:space="preserve">
+    <value>ผู้ใช้งาน</value>
   </data>
 </root>
