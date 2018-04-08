@@ -328,9 +328,6 @@
     <value>Role Name</value>
   </data>
   <data name="Lbl_Status" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="Lbl_Status_Thai" xml:space="preserve">
     <value>สถานะ</value>
   </data>
   <data name="Lbl_SystemName" xml:space="preserve">
@@ -518,5 +515,23 @@
   </data>
   <data name="Msg_GenderMale" xml:space="preserve">
     <value>ชาย</value>
+  </data>
+  <data name="Lbl_DepartmentName" xml:space="preserve">
+    <value>ชื่อแผนก</value>
+  </data>
+  <data name="Lbl_OrgName" xml:space="preserve">
+    <value>ชื่อหน่วยงาน</value>
+  </data>
+  <data name="Lbl_PositionName" xml:space="preserve">
+    <value>ชื่อตำแหน่ง</value>
+  </data>
+  <data name="Lbl_ButtonClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="Lbl_ButtonNewUser" xml:space="preserve">
+    <value>New User</value>
+  </data>
+  <data name="Lbl_ButtonSearch" xml:space="preserve">
+    <value>Search</value>
   </data>
 </root>

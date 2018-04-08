@@ -5,7 +5,7 @@ using System.Linq;
 using System.Globalization;
 using Common.Resources;
 using Common.Utilities;
-using LinqKit;
+//using LinqKit;
 using DataAccess;
 using Entity;
 using log4net;
@@ -26,8 +26,7 @@ namespace BusinessLogic
 
         public IEnumerable<UserEntity> searchUserList(UserSearchFilter SearchFilter)
         {
-            var whr = PredicateBuilder.True<MS_USER>();
-            var query = from u in _context.MS_USER.AsExpandable().Where(whr)
+            var query = from u in _context.MS_USER
                         from p in _context.MS_PREFIX_NAME.Where(i => i.prefix_name_id == u.prefix_name_id).DefaultIfEmpty()
                         select new UserEntity
                         {
@@ -47,6 +46,21 @@ namespace BusinessLogic
                             LastLoginTime = u.last_login_time,
                             ActiveStatus = u.active_status
                         };
+
+            if (!string.IsNullOrEmpty(SearchFilter.SearchUsername))
+                query = query.Where(q => q.Username.Contains(SearchFilter.SearchUsername));
+            if (!string.IsNullOrEmpty(SearchFilter.FirstName))
+                query = query.Where(q => q.FirstName.Contains(SearchFilter.FirstName));
+            if (!string.IsNullOrEmpty(SearchFilter.LastName))
+                query = query.Where(q => q.LastName.Contains(SearchFilter.LastName));
+            if (!string.IsNullOrEmpty(SearchFilter.OrganizeName))
+                query = query.Where(q => q.OrganizeName.Contains(SearchFilter.OrganizeName));
+            if (!string.IsNullOrEmpty(SearchFilter.DepartmentName))
+                query = query.Where(q => q.DepartmentName.Contains(SearchFilter.DepartmentName));
+            if (!string.IsNullOrEmpty(SearchFilter.PositionName))
+                query = query.Where(q => q.PositionName.Contains(SearchFilter.PositionName));
+            if (!string.IsNullOrEmpty(SearchFilter.ActiveStatus))
+                query = query.Where(q => q.ActiveStatus == SearchFilter.ActiveStatus);
 
             int startPageIndex = (SearchFilter.PageNo - 1) * SearchFilter.PageSize;
             SearchFilter.TotalRecords = query.Count();

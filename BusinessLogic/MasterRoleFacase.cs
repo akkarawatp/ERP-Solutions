@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Globalization;
-using LinqKit;
+//using LinqKit;
 using Common.Resources;
 using Common.Utilities;
 using DataAccess;
@@ -27,10 +27,7 @@ namespace BusinessLogic
 
         public IEnumerable<RoleEntity> searchRoleList(RolesSearchFilter SearchFilter)
         {
-            var whr = PredicateBuilder.True<MS_ROLE>();
-            if (SearchFilter.RoleName != null) whr = whr.And(r => r.role_name.Contains(SearchFilter.RoleName.Trim()));
-
-            var query = from r in _context.MS_ROLE.AsExpandable().Where(whr)
+            var query = from r in _context.MS_ROLE 
                         select new RoleEntity
                         {
                             RoleId = r.role_id,
@@ -41,6 +38,9 @@ namespace BusinessLogic
                             UpdatedBy = r.updated_by,
                             Updateddate = r.updated_date
                         };
+
+            if (!string.IsNullOrEmpty(SearchFilter.RoleName))
+                query = query.Where(q => q.RoleName.Contains(SearchFilter.RoleName.Trim()));
 
             int startPageIndex = (SearchFilter.PageNo - 1) * SearchFilter.PageSize;
             SearchFilter.TotalRecords = query.Count();

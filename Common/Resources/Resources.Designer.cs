@@ -286,6 +286,33 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string Lbl_ButtonClear {
+            get {
+                return ResourceManager.GetString("Lbl_ButtonClear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New User.
+        /// </summary>
+        public static string Lbl_ButtonNewUser {
+            get {
+                return ResourceManager.GetString("Lbl_ButtonNewUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Lbl_ButtonSearch {
+            get {
+                return ResourceManager.GetString("Lbl_ButtonSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to เลขที่บัตร ปชช.
         /// </summary>
         public static string Lbl_CardNo {
@@ -363,6 +390,15 @@ namespace Common.Resources {
         public static string Lbl_CustomerSurname {
             get {
                 return ResourceManager.GetString("Lbl_CustomerSurname", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ชื่อแผนก.
+        /// </summary>
+        public static string Lbl_DepartmentName {
+            get {
+                return ResourceManager.GetString("Lbl_DepartmentName", resourceCulture);
             }
         }
         
@@ -529,6 +565,15 @@ namespace Common.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ชื่อหน่วยงาน.
+        /// </summary>
+        public static string Lbl_OrgName {
+            get {
+                return ResourceManager.GetString("Lbl_OrgName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to หน้าที่.
         /// </summary>
         public static string Lbl_PageNo {
@@ -570,6 +615,15 @@ namespace Common.Resources {
         public static string Lbl_PoolName {
             get {
                 return ResourceManager.GetString("Lbl_PoolName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ชื่อตำแหน่ง.
+        /// </summary>
+        public static string Lbl_PositionName {
+            get {
+                return ResourceManager.GetString("Lbl_PositionName", resourceCulture);
             }
         }
         
@@ -691,20 +745,11 @@ namespace Common.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status.
+        ///   Looks up a localized string similar to สถานะ.
         /// </summary>
         public static string Lbl_Status {
             get {
                 return ResourceManager.GetString("Lbl_Status", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to สถานะ.
-        /// </summary>
-        public static string Lbl_Status_Thai {
-            get {
-                return ResourceManager.GetString("Lbl_Status_Thai", resourceCulture);
             }
         }
         

@@ -89,7 +89,7 @@ namespace Entity
 
     public class UserSearchFilter : Pager
     {
-        public string Username { get; set; }
+        public string SearchUsername { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string OrganizeName { get; set; }

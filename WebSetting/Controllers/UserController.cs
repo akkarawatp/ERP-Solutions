@@ -31,11 +31,11 @@ namespace WebSetting.Controllers
         {
             _CommonFacade = new CommonFacade();
             SearchUserViewModel model = new SearchUserViewModel();
-            var activeStatusList = _CommonFacade.GetStatusSelectList(Resources.Ddl_Status_All, Constants.ApplicationStatus.All);
+            var activeStatusList = _CommonFacade.GetStatusSelectList(Resources.Ddl_Status_All);
             model.ActiveStatusList = new SelectList((IEnumerable)activeStatusList, "Key", "Value", string.Empty);
             model.SearchFilter = new UserSearchFilter
             {
-                Username = string.Empty,
+                SearchUsername = string.Empty,
                 FirstName = string.Empty,
                 LastName = string.Empty,
                 OrganizeName = string.Empty,
@@ -55,7 +55,7 @@ namespace WebSetting.Controllers
         ///[CheckUserRole(ScreenCode.SearchCustomer)]
         public ActionResult SearchUser(UserSearchFilter SearchFilter)
         {
-            Logger.Info(_logMsg.Clear().SetPrefixMsg("Search User").Add("Username", SearchFilter.Username)
+            Logger.Info(_logMsg.Clear().SetPrefixMsg("Search User").Add("Username", SearchFilter.SearchUsername)
                 .Add("FirstName",SearchFilter.FirstName).Add("LastName",SearchFilter.LastName)
                 .Add("OrganizeName", SearchFilter.OrganizeName).Add("DepartmentName",SearchFilter.DepartmentName)
                 .Add("PositionName", SearchFilter.PositionName).ToInputLogString());
@@ -66,7 +66,7 @@ namespace WebSetting.Controllers
                     _CommonFacade = new CommonFacade();
                     userFacade = new UserFacade();
                     var model = new SearchUserViewModel();
-                    var activeStatusList = _CommonFacade.GetStatusSelectList(Resources.Ddl_Status_All, Constants.ApplicationStatus.All);
+                    var activeStatusList = _CommonFacade.GetStatusSelectList(Resources.Ddl_Status_All);
                     model.ActiveStatusList = new SelectList((IEnumerable)activeStatusList, "Key", "Value", string.Empty);
                     model.UserList = userFacade.searchUserList(SearchFilter);
                     model.SearchFilter = SearchFilter;
