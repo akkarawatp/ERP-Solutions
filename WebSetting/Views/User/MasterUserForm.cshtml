@@ -256,6 +256,8 @@
         $jq(document).ready(function () {
             $jq('#btnBack').click(onBtnBackClick);
             //$jq('#btnSave').click(onBtnSaveClick);
+
+            initAutoCompletePrefixName();
         });
 
         function onBtnBackClick(event) {
@@ -271,6 +273,16 @@
             location.replace('@Url.Action("SearchUser", "User")');
         }
 
-        
+
+
+        function initAutoCompletePrefixName() {
+
+            $jq("#ddlPrefixName").select2({
+                minimumInputLength: '@Common.Utilities.Constants.MinLenght.AutoComplete',
+                placeholder: '@Resources.Ddl_AutoComplete',
+                language: "th",
+                allowClear: true
+            });
+        }
     </script>
 }

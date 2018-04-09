@@ -164,6 +164,23 @@ namespace BusinessLogic
                     }).ToDictionary(t => t.key, t => t.value);
         }
 
+        public List<PrefixNameEntity> AutoCompleteSearchPrefixName(string keyword, int limit)
+        {
+            _commonDataAccess = new CommonDataAccess(_context);
+            var query = _context.MS_PREFIX_NAME.AsQueryable();
+            query = query.Where(q => q.active_status == Constants.ApplicationStatus.Active);
+            if (!string.IsNullOrEmpty(keyword))
+                query = query.Where(q => q.prefix_name.Contains(keyword));
+
+            query = query.OrderBy(q => q.prefix_name);
+            
+            return query.Take(limit).Select(item => new PrefixNameEntity {
+                PrefixNameId = item.prefix_name_id,
+                PrefixName = item.prefix_name
+            }).ToList();
+
+        }
+
         //public IDictionary<string, string> GetPrefixNzmeEnglishSelectList()
         //{
         //    _commonDataAccess = new CommonDataAccess(_context);

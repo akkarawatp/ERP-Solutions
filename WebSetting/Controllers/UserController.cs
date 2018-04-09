@@ -117,6 +117,8 @@ namespace WebSetting.Controllers
         public ActionResult SaveUser(UserModel u)
         {
             //Custom Validator
+            if (u.PrefixId == 0)
+                ModelState.AddModelError("PrefixId", Resources.ValErr_RequiredField);
             if (u.Psswd != u.ConfirmPsswd)
                 ModelState.AddModelError("ConfirmPsswd", Resources.Msg_InvalidConfirmPassword);
 
